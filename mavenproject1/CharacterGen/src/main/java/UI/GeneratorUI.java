@@ -5,15 +5,12 @@
  */
 package UI;
 
-import callofcthulhuDB.util.HibernateUtil;
-
 //import java.awt.List;
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
-import org.hibernate.Session;
 import java.util.List;
 import java.util.ArrayList;
-import java.lang.Math;
+import util.Tools;
+import util.AttrChar;
+import util.QuerryUtil;
 
 /**
  *
@@ -28,96 +25,27 @@ public class GeneratorUI extends javax.swing.JFrame {
         initComponents();
     }
         
-private static final String QUERY_FIRST_NAME="from FirstName where id =";
-private static final String QUERY_LAST_NAME="from LastName where id =";
-private static final String QUERY_PROFESSION="from Profession where id =";
 private static final String QUERY_NUMBER_OF_ROWS_FIRST_NAME="from FirstName where id = (select count(*) from FirstName)";
 private static final String QUERY_NUMBER_OF_ROWS_LAST_NAME="from LastName where id = (select count(*) from LastName)";
 private static final String QUERY_NUMBER_OF_ROWS_PROFESSION="from Profession where id = (select count(*) from Profession)";
     
 private void runAllQueries() {
-    executeHQLQueryNumberOfFirstName(QUERY_NUMBER_OF_ROWS_FIRST_NAME);
-    executeHQLQueryNumberOfLastName(QUERY_NUMBER_OF_ROWS_LAST_NAME);
-    executeHQLQueryNumberOfProfession(QUERY_NUMBER_OF_ROWS_PROFESSION);
+    List result = QuerryUtil.executeHQLQueryNumberOfFirstName(QUERY_NUMBER_OF_ROWS_FIRST_NAME);
+    displayResultFirstName(result);
+    
+    result = QuerryUtil.executeHQLQueryNumberOfLastName(QUERY_NUMBER_OF_ROWS_LAST_NAME);
+    displayResultLastName(result);
+    
+    result = QuerryUtil.executeHQLQueryNumberOfProfession(QUERY_NUMBER_OF_ROWS_PROFESSION);
+    displayResultProfession(result);
 }
 
-private void executeHQLQueryNumberOfFirstName(String hql) {
-    try {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query q = session.createQuery(hql);
-        List result = q.list();
-        readNumberOfFirstName(result);
-        session.getTransaction().commit();
-    } catch (HibernateException he) {
-        he.printStackTrace();
-    }
-}
-private void readNumberOfFirstName(List result) {
-       
-    for (Object o : result) {
-        callofcthulhuDB.entity.FirstName name = (callofcthulhuDB.entity.FirstName) o;
-        randomFirstName(name.getId());
-    }
-}
-private void randomFirstName(Integer number) {
-        int numberOfFirstName = (int) (Math.random() * (number)) + 1;
-        executeHQLQueryFirstName(QUERY_FIRST_NAME + " " + numberOfFirstName);
-}
-private void executeHQLQueryFirstName(String hql) {
-    try {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query q = session.createQuery(hql);
-        List result = q.list();
-        displayResultFirstName(result);
-        session.getTransaction().commit();
-    } catch (HibernateException he) {
-        he.printStackTrace();
-    }
-}
 private void displayResultFirstName(List result) {
        
     for (Object o : result) {
         callofcthulhuDB.entity.FirstName name = (callofcthulhuDB.entity.FirstName)o;
         firstNameField.setText(name.getFirstName());
         sexField.setText(name.getSex());
-    }
-}
-
-private void executeHQLQueryNumberOfLastName(String hql) {
-    try {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query q = session.createQuery(hql);
-        List result = q.list();
-        readNumberOfLastName(result);
-        session.getTransaction().commit();
-    } catch (HibernateException he) {
-        he.printStackTrace();
-    }
-}
-private void readNumberOfLastName(List result) {
-       
-    for (Object o : result) {
-        callofcthulhuDB.entity.LastName name = (callofcthulhuDB.entity.LastName) o;
-        randomLastName(name.getId());
-    }
-}
-private void randomLastName(Integer number) {
-        int numberOfLastName = (int) (Math.random() * (number)) + 1;
-        executeHQLQueryLastName(QUERY_LAST_NAME + " " + numberOfLastName);
-}
-private void executeHQLQueryLastName(String hql) {
-    try {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query q = session.createQuery(hql);
-        List result = q.list();
-        displayResultLastName(result);
-        session.getTransaction().commit();
-    } catch (HibernateException he) {
-        he.printStackTrace();
     }
 }
 private void displayResultLastName(List result) {
@@ -127,49 +55,13 @@ private void displayResultLastName(List result) {
         lastNameField.setText(name.getLastName());
     }
 }
-
-private void executeHQLQueryNumberOfProfession(String hql) {
-    try {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query q = session.createQuery(hql);
-        List result = q.list();
-        readNumberOfProfession(result);
-        session.getTransaction().commit();
-    } catch (HibernateException he) {
-        he.printStackTrace();
-    }
-}
-private void readNumberOfProfession(List result) {
-       
-    for (Object o : result) {
-        callofcthulhuDB.entity.Profession profession = (callofcthulhuDB.entity.Profession) o;
-        randomProfession(profession.getId());
-    }
-}
-private void randomProfession(Integer number) {
-        int numberOfProfession = (int) (Math.random() * (number)) + 1;
-        executeHQLQueryProfession(QUERY_PROFESSION + " " + numberOfProfession);
-}
-private void executeHQLQueryProfession(String hql) {
-    try {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query q = session.createQuery(hql);
-        List result = q.list();
-        displayResultProfession(result);
-        session.getTransaction().commit();
-    } catch (HibernateException he) {
-        he.printStackTrace();
-    }
-}
 private void displayResultProfession(List result) {
     aggregateSkillFields();
             
     for (Object o : result) {
         callofcthulhuDB.entity.Profession profession = (callofcthulhuDB.entity.Profession)o;
-        util.Tools.mapSkillFields(profession, skillFields);
-        int age = util.Tools.randomAge(profession);
+        util.SkillChar.mapSkillFields(profession, skillFields);
+        int age = util.InfoChar.randomAge(profession);
         ageField.setText(Integer.toString(age));
     }
 }
@@ -217,42 +109,42 @@ private void adjustAttributesByCharacterAge() {
     short age = Short.parseShort(ageField.getText());
     
     if (age >= 15 && age < 20) {
-        util.Tools.remove2Args(strengthField, sizeField, 5);
-        util.Tools.removePoint(educationField, 5);
+        AttrChar.remove2Args(strengthField, sizeField, 5);
+        Tools.removePoint(educationField, 5);
     }
     
     else if (age >= 20 && age < 40) {
-        util.Tools.improvementValue(educationField, 1);
+        Tools.improvementValue(educationField, 1);
     }
     
     else if (age >= 40 && age < 50) {
-        util.Tools.improvementValue(educationField, 2);
-        util.Tools.remove3Args(logArea, strengthField, conditionField, dexterityField, 5);
-        util.Tools.removePoint(appearanceField, 5);
+        Tools.improvementValue(educationField, 2);
+        AttrChar.remove3Args(logArea, strengthField, conditionField, dexterityField, 5);
+        Tools.removePoint(appearanceField, 5);
     }
     
     else if (age >= 50 && age < 60) {
-        util.Tools.improvementValue(educationField, 3);
-        util.Tools.remove3Args(logArea,strengthField, conditionField, dexterityField, 10);
-        util.Tools.removePoint(appearanceField, 10);
+        Tools.improvementValue(educationField, 3);
+        AttrChar.remove3Args(logArea,strengthField, conditionField, dexterityField, 10);
+        Tools.removePoint(appearanceField, 10);
     }
     
     else if (age >= 60 && age < 70) {
-        util.Tools.improvementValue(educationField, 4);
-        util.Tools.remove3Args(logArea,strengthField, conditionField, dexterityField, 20);
-        util.Tools.removePoint(appearanceField, 15);
+        Tools.improvementValue(educationField, 4);
+        AttrChar.remove3Args(logArea, strengthField, conditionField, dexterityField, 20);
+        Tools.removePoint(appearanceField, 15);
     }
     
     else if (age >= 70 && age < 80) {
-        util.Tools.improvementValue(educationField, 4);
-        util.Tools.remove3Args(logArea,strengthField, conditionField, dexterityField, 40);
-        util.Tools.removePoint(appearanceField, 20);
+        Tools.improvementValue(educationField, 4);
+        AttrChar.remove3Args(logArea, strengthField, conditionField, dexterityField, 40);
+        Tools.removePoint(appearanceField, 20);
     }
     
     else if (age >= 80 && age < 90) {
-        util.Tools.improvementValue(educationField, 4);
-        util.Tools.remove3Args(logArea,strengthField, conditionField, dexterityField, 80);
-        util.Tools.removePoint(appearanceField, 25);
+        Tools.improvementValue(educationField, 4);
+        AttrChar.remove3Args(logArea, strengthField, conditionField, dexterityField, 80);
+        Tools.removePoint(appearanceField, 25);
     }
 }
 

@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import util.DBManagerUtil;
 
 /**
  *
@@ -111,12 +112,12 @@ private void executeHQLQueryProfession(String hql) {
 private void displayResultProfession(List resultList) {
     Vector<String> tableHeaders = new Vector<String>();
     Vector tableData = new Vector();
-    tableHeaders = util.Tools.mapTable(tableHeaders);
+    tableHeaders = DBManagerUtil.mapTable(tableHeaders);
 
     for(Object o : resultList) {
         callofcthulhuDB.entity.Profession name = (callofcthulhuDB.entity.Profession)o;
         Vector<Object> oneRow = new Vector<Object>();
-        util.Tools.fillRow(oneRow, name);
+        DBManagerUtil.fillRow(oneRow, name);
         tableData.add(oneRow);
     }
     DbTable.setModel(new DefaultTableModel(tableData, tableHeaders));
