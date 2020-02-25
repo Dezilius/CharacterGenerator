@@ -41,7 +41,7 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="callofcthulhuDB"/>
-  <table-filter match-name="profession"/>
   <table-filter match-name="firstName"/>
+  <table-filter match-name="profession"/>
   <table-filter match-name="lastName"/>
 </hibernate-reverse-engineering>

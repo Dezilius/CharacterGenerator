@@ -48,8 +48,8 @@ Contributor(s):
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
-    <mapping class="" file="" jar="" package="callofcthulhuDB.entity" resource="callofcthulhuDB/entity/Profession.hbm.xml"/>
-    <mapping class="" file="" jar="" package="callofcthulhuDB.entity" resource="callofcthulhuDB/entity/LastName.hbm.xml"/>
-    <mapping class="" file="" jar="" package="callofcthulhuDB.entity" resource="callofcthulhuDB/entity/FirstName.hbm.xml"/>
+    <mapping resource="callofcthulhuDB/entity/Profession.hbm.xml"/>
+    <mapping resource="callofcthulhuDB/entity/LastName.hbm.xml"/>
+    <mapping resource="callofcthulhuDB/entity/FirstName.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

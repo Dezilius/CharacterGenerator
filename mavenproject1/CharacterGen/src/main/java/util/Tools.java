@@ -6,6 +6,7 @@
 package util;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 /**
  *
@@ -81,67 +82,43 @@ public final class Tools {
         log.append(message + "\n");
     }
     
+    public static Vector<Object> fillRow(Vector<Object> row, callofcthulhuDB.entity.Profession profession) {
+        row.add(Integer.toString(profession.getId()));
+        row.add(profession.getProfession());
+        row.add(Integer.toString(profession.getMinAge()));
+        row.add(Integer.toString(profession.getMaxAge()));
+
+        return row;
+    }
+    
+    public static Vector<String> mapTable(Vector<String> headers) {
+        headers.add("idProfession");
+        headers.add("Profession");
+        headers.add("minAge");
+        headers.add("maxAge");
+
+        return headers;
+    }
+    
     public static void mapSkillFields(callofcthulhuDB.entity.Profession profession, ArrayList<javax.swing.JTextField> skillFields) {
-        skillFields.get(0).setText(Integer.toString(profession.getAccounting()));
-        skillFields.get(1).setText(Integer.toString(profession.getAnthropology()));
-        skillFields.get(2).setText(Integer.toString(profession.getAppraise()));
-        skillFields.get(3).setText(Integer.toString(profession.getArcheology()));
-        skillFields.get(4).setText(Integer.toString(profession.getCraft()));
-        skillFields.get(5).setText(Integer.toString(profession.getCraft2nd()));
-        skillFields.get(6).setText(Integer.toString(profession.getCraft3rd()));
-        skillFields.get(7).setText(Integer.toString(profession.getCharm()));
-        skillFields.get(8).setText(Integer.toString(profession.getClimb()));
-        skillFields.get(9).setText(Integer.toString(profession.getCreditRating()));
-        skillFields.get(10).setText(Integer.toString(profession.getCthulhuMythos()));
-        skillFields.get(11).setText(Integer.toString(profession.getDisguise()));
-        skillFields.get(12).setText(Integer.toString(profession.getDodge()));
-        skillFields.get(13).setText(Integer.toString(profession.getDrive()));
-        skillFields.get(14).setText(Integer.toString(profession.getElectricalRepair()));
-        skillFields.get(15).setText(Integer.toString(profession.getFastTalk()));
-        skillFields.get(16).setText(Integer.toString(profession.getFighting()));
-        skillFields.get(17).setText(Integer.toString(profession.getFighting2nd()));
-        skillFields.get(18).setText(Integer.toString(profession.getFighting3rd()));
-        skillFields.get(19).setText(Integer.toString(profession.getHandgun()));
-        skillFields.get(20).setText(Integer.toString(profession.getRifle()));
-        skillFields.get(21).setText(Integer.toString(profession.getRifle2nd()));
-        skillFields.get(22).setText(Integer.toString(profession.getFirstAid()));
-        skillFields.get(23).setText(Integer.toString(profession.getHistory()));
-        skillFields.get(24).setText(Integer.toString(profession.getIntimidate()));
-        skillFields.get(25).setText(Integer.toString(profession.getJump()));
-        skillFields.get(26).setText(Integer.toString(profession.getLanguageOther()));
-        skillFields.get(27).setText(Integer.toString(profession.getLanguageOther2nd()));
-        skillFields.get(28).setText(Integer.toString(profession.getLanguageOther3rd()));
-        skillFields.get(29).setText(Integer.toString(profession.getLanguageOwn()));
-        skillFields.get(30).setText(Integer.toString(profession.getLaw()));
-        skillFields.get(31).setText(Integer.toString(profession.getLibraryUse()));
-        skillFields.get(32).setText(Integer.toString(profession.getListen()));
-        skillFields.get(33).setText(Integer.toString(profession.getLocksmithing()));
-        skillFields.get(34).setText(Integer.toString(profession.getMechanicalRepair()));
-        skillFields.get(35).setText(Integer.toString(profession.getMedicine()));
-        skillFields.get(36).setText(Integer.toString(profession.getNaturalWorld()));
-        skillFields.get(37).setText(Integer.toString(profession.getNavigate()));
-        skillFields.get(38).setText(Integer.toString(profession.getOccult()));
-        skillFields.get(39).setText(Integer.toString(profession.getOpHvMachine()));
-        skillFields.get(40).setText(Integer.toString(profession.getPersuade()));
-        skillFields.get(41).setText(Integer.toString(profession.getPilot()));
-        skillFields.get(42).setText(Integer.toString(profession.getPsychology()));
-        skillFields.get(43).setText(Integer.toString(profession.getPsychoanalysis()));
-        skillFields.get(44).setText(Integer.toString(profession.getRiding()));
-        skillFields.get(45).setText(Integer.toString(profession.getScience()));
-        skillFields.get(46).setText(Integer.toString(profession.getScience2nd()));
-        skillFields.get(47).setText(Integer.toString(profession.getScience3rd()));
-        skillFields.get(48).setText(Integer.toString(profession.getSleightOfHand()));
-        skillFields.get(49).setText(Integer.toString(profession.getSpotHidden()));
-        skillFields.get(50).setText(Integer.toString(profession.getStealth()));
-        skillFields.get(51).setText(Integer.toString(profession.getSurvival()));
-        skillFields.get(52).setText(Integer.toString(profession.getSwim()));
-        skillFields.get(53).setText(Integer.toString(profession.getThrow_()));
-        skillFields.get(54).setText(Integer.toString(profession.getTrack()));
-        skillFields.get(55).setText(Integer.toString(profession.getOther1st()));
-        skillFields.get(56).setText(Integer.toString(profession.getOther2nd()));
-        skillFields.get(57).setText(Integer.toString(profession.getOther3rd()));
-        skillFields.get(58).setText(Integer.toString(profession.getOther4th()));
-        skillFields.get(59).setText(Integer.toString(profession.getOther5th()));
         skillFields.get(60).setText(profession.getProfession());
+    }
+    
+    public static int randomAge(callofcthulhuDB.entity.Profession profession) {
+        int ageMin = profession.getMinAge();
+        int ageMax = profession.getMaxAge();
+        if (ageMin < 15 && ageMin > 90) ageMin = 15;
+        if (ageMax < 15 && ageMax > 90) ageMax = 90;
+        if (ageMin > ageMax) ageMax = ageMin;
+        return util.Tools.roll(ageMin, ageMax);
+    }
+    
+    public static int setAge(callofcthulhuDB.entity.Profession profession) {
+        int ageMin = profession.getMinAge();
+        int ageMax = profession.getMaxAge();
+        if (ageMin < 15 && ageMin > 90) ageMin = 15;
+        if (ageMax < 15 && ageMax > 90) ageMax = 90;
+        if (ageMin > ageMax) ageMax = ageMin;
+        return util.Tools.roll(ageMin, ageMax);
     }
 }
