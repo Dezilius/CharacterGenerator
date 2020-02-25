@@ -5,12 +5,14 @@
  */
 package UI;
 
+
 //import java.awt.List;
 import java.util.List;
 import java.util.ArrayList;
 import util.Tools;
 import util.AttrChar;
 import util.QuerryUtil;
+import util.SkillChar;
 
 /**
  *
@@ -60,9 +62,9 @@ private void displayResultProfession(List result) {
             
     for (Object o : result) {
         callofcthulhuDB.entity.Profession profession = (callofcthulhuDB.entity.Profession)o;
-        util.SkillChar.mapSkillFields(profession, skillFields);
         int age = util.InfoChar.randomAge(profession);
         ageField.setText(Integer.toString(age));
+        professionField.setText(profession.getProfession());
     }
 }
 
@@ -2058,6 +2060,7 @@ private void adjustAttributesByCharacterAge() {
         setMoveRate();
         runAllQueries();
         adjustAttributesByCharacterAge();
+        SkillChar.setDefaultValues(skillFields);
     }//GEN-LAST:event_generateNewButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -2339,7 +2342,6 @@ private void adjustAttributesByCharacterAge() {
         skillFields.add(other3rdField);
         skillFields.add(other4thField);
         skillFields.add(other5thField);
-        skillFields.add(professionField);
     }
     private void aggregateCharacterFields() {
         characterFields = new ArrayList<>();

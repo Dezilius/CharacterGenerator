@@ -13,7 +13,9 @@ import java.util.ArrayList;
  */
 public class SkillChar {
     
-    public static void mapSkillFields(callofcthulhuDB.entity.Profession profession, ArrayList<javax.swing.JTextField> skillFields) {
-        skillFields.get(60).setText(profession.getProfession());
+    public static void setDefaultValues(ArrayList<javax.swing.JTextField> skillFields) {
+        for (javax.swing.JTextField iter : skillFields) {
+            iter.setText("0");
+        }
     }
 }

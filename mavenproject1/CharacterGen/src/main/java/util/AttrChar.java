@@ -31,24 +31,33 @@ public class AttrChar {
     }
     
     public static void remove3Args(javax.swing.JTextArea log, javax.swing.JTextField field1, javax.swing.JTextField field2, javax.swing.JTextField field3, int times) {
+        short totalStrRemoved = 0;
+        short totalConRemoved = 0;
+        short totalDexRemoved = 0;
+        String logMessage = "";
         for (int i = 0; i < times; i ++) {
             int flag = roll(1,3);
             if (flag == 1) {
                 removePoint(field1);
-                String logMessage = "1 point removed from strength.";
-                appendLog(log, logMessage);
+                totalStrRemoved++;
             }
             else if (flag == 2) {
                 removePoint(field2);
-                String logMessage = "1 point removed from condition";
-                appendLog(log, logMessage);
+                totalConRemoved++;
             }
             else if (flag == 3) {
                 removePoint(field3);
-                String logMessage = "1 point removed from dexterity";
-                appendLog(log, logMessage);
+                totalDexRemoved++;
             }
         }
+        logMessage = "" + totalStrRemoved + " point(s) removed from strength.";
+        appendLog(log, logMessage);
+        
+        logMessage = "" + totalConRemoved + " point(s) removed from condition";
+        appendLog(log, logMessage);
+        
+        logMessage = "" + totalDexRemoved + " point(s) removed from dexterity";
+        appendLog(log, logMessage);
     }
     
     
