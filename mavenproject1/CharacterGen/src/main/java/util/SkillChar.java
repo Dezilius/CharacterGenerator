@@ -13,8 +13,11 @@ import java.util.ArrayList;
  */
 public class SkillChar {
     
-    public static void setDefaultValues(ArrayList<javax.swing.JTextField> skillFields) {
-
+    public static void setDefaultValues(ArrayList<javax.swing.JTextField> skillFields, javax.swing.JTextField education, javax.swing.JTextField dexterity) {
+            
+            String edu = education.getText();
+            String dodge = Integer.toString(Integer.parseInt(dexterity.getText())/2);
+            
             skillFields.get(0).setText("5");
             skillFields.get(1).setText("1");
             skillFields.get(2).setText("5");
@@ -27,7 +30,7 @@ public class SkillChar {
             skillFields.get(9).setText("0");
             skillFields.get(10).setText("0");
             skillFields.get(11).setText("5");
-            skillFields.get(12).setText("11");
+            skillFields.get(12).setText(dodge);
             skillFields.get(13).setText("20");
             skillFields.get(14).setText("10");
             skillFields.get(15).setText("5");
@@ -44,7 +47,7 @@ public class SkillChar {
             skillFields.get(26).setText("1");
             skillFields.get(27).setText("0");
             skillFields.get(28).setText("0");
-            skillFields.get(29).setText("11");
+            skillFields.get(29).setText(edu);
             skillFields.get(30).setText("5");
             skillFields.get(31).setText("20");
             skillFields.get(32).setText("20");
@@ -77,4 +80,5 @@ public class SkillChar {
             skillFields.get(59).setText("10");
             
     }
+    
 }

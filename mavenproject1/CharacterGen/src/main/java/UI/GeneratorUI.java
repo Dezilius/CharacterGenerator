@@ -61,7 +61,7 @@ private void randomAttributes() {
                 value += util.Tools.roll(1,6);
             }
         }
-        value *= 5;
+        value *= 5;     
         iter.setText(Integer.toString(value));
     }
 } 
@@ -84,45 +84,69 @@ private void setMoveRate() {
 }
 private void adjustAttributesByCharacterAge() {
     short age = Short.parseShort(ageField.getText());
+    int movementRate = Integer.parseInt(moveRateField.getText());
+    String message = "";
     
     if (age >= 15 && age < 20) {
         AttrChar.remove2Attr(logArea, strengthField, sizeField, 5);
         Tools.removePoint(educationField, 5);
+        message = "5 point(s) removed from education";
     }
     
     else if (age >= 20 && age < 40) {
-        Tools.improvementValue(educationField, 1);
+        AttrChar.improvementValue(logArea, educationField, 1);
     }
     
     else if (age >= 40 && age < 50) {
-        Tools.improvementValue(educationField, 2);
+        AttrChar.improvementValue(logArea, educationField, 2);
         AttrChar.remove3Attr(logArea, strengthField, conditionField, dexterityField, 5);
         Tools.removePoint(appearanceField, 5);
+        movementRate -= 1;
+        message = "5 point(s) removed from appearance\n 1 point(s) removed from movement rate";
     }
     
     else if (age >= 50 && age < 60) {
-        Tools.improvementValue(educationField, 3);
+        AttrChar.improvementValue(logArea, educationField, 3);
         AttrChar.remove3Attr(logArea,strengthField, conditionField, dexterityField, 10);
         Tools.removePoint(appearanceField, 10);
+        movementRate -= 2;
+        message = "10 point(s) removed from appearance\n 2 point(s) removed from movement rate";
     }
     
     else if (age >= 60 && age < 70) {
-        Tools.improvementValue(educationField, 4);
+        AttrChar.improvementValue(logArea, educationField, 4);
         AttrChar.remove3Attr(logArea, strengthField, conditionField, dexterityField, 20);
         Tools.removePoint(appearanceField, 15);
+        movementRate -= 3;
+        message = "15 point(s) removed from appearance\n 3 point(s) removed from movement rate";
     }
     
     else if (age >= 70 && age < 80) {
-        Tools.improvementValue(educationField, 4);
+        AttrChar.improvementValue(logArea, educationField, 4);
         AttrChar.remove3Attr(logArea, strengthField, conditionField, dexterityField, 40);
         Tools.removePoint(appearanceField, 20);
+        movementRate -= 4;
+        message = "20 point(s) removed from appearance\n 4 point(s) removed from movement rate";
     }
     
     else if (age >= 80 && age < 90) {
-        Tools.improvementValue(educationField, 4);
+        AttrChar.improvementValue(logArea, educationField, 4);
         AttrChar.remove3Attr(logArea, strengthField, conditionField, dexterityField, 80);
         Tools.removePoint(appearanceField, 25);
+        movementRate -= 5;
+        message = "25 point(s) removed from appearance\n 5 point(s) removed from movement rate";
     }
+    moveRateField.setText(Integer.toString(movementRate));
+    AttrChar.appendLog(logArea, message);
+}
+
+private void setSkillPoints() {
+    int skillPoints = calculateSkillPoints(intelligenceField);
+    String skillPointsText = "Skill points available: " + skillPoints;
+    skillPointsField.setText(skillPointsText);
+}
+private int calculateSkillPoints(javax.swing.JTextField intelligence) {
+    return Integer.parseInt(intelligence.getText()) * 2;
 }
 
     /**
@@ -293,11 +317,14 @@ private void adjustAttributesByCharacterAge() {
         jScrollPane1 = new javax.swing.JScrollPane();
         logArea = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
+        skillPointsField = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Character Generator");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setPreferredSize(new java.awt.Dimension(1350, 785));
+        setFocusableWindowState(false);
+        setLocation(new java.awt.Point(500, 500));
+        setPreferredSize(new java.awt.Dimension(1200, 855));
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -1730,6 +1757,9 @@ private void adjustAttributesByCharacterAge() {
             }
         });
 
+        skillPointsField.setFont(new java.awt.Font("Nimbus Sans", 0, 18)); // NOI18N
+        skillPointsField.setText("Skill points available: 0");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1747,6 +1777,10 @@ private void adjustAttributesByCharacterAge() {
                         .addComponent(jButton1))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(378, 378, 378))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(345, 345, 345)
+                .addComponent(skillPointsField)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1759,11 +1793,13 @@ private void adjustAttributesByCharacterAge() {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(generateNewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(skillPointsField)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         pack();
@@ -2030,12 +2066,15 @@ private void adjustAttributesByCharacterAge() {
     }//GEN-LAST:event_moveRateFieldActionPerformed
 
     private void generateNewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateNewButtonActionPerformed
+        logArea.setText("");
         randomAttributes(); 
         aggregateCharacterFields();
         setMoveRate();
         runAllQueries();
         adjustAttributesByCharacterAge();
-        SkillChar.setDefaultValues(skillFields);
+        aggregateSkillFields();
+        SkillChar.setDefaultValues(skillFields, educationField, dexterityField);
+        setSkillPoints();
     }//GEN-LAST:event_generateNewButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -2221,6 +2260,7 @@ private void adjustAttributesByCharacterAge() {
     private javax.swing.JLabel sexLabel;
     private javax.swing.JTextField sizeField;
     private javax.swing.JLabel sizeLabel;
+    private javax.swing.JLabel skillPointsField;
     private javax.swing.JTextField sleightOfHandField;
     private javax.swing.JLabel sleightOfHandLabel;
     private javax.swing.JTextField spotHiddenField;

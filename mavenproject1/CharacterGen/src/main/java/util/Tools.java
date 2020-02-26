@@ -32,19 +32,6 @@ public final class Tools {
         return field;
     }
     
-    public static javax.swing.JTextField improvementValue(javax.swing.JTextField field, int times) {
-        short fieldValue = (short) Short.parseShort(field.getText());
-        if (checkIfPassed(fieldValue)) {
-            fieldValue += roll(1,10);
-            field.setText(Short.toString(fieldValue));
-        }
-        return field;
-    }
-    
-    private static boolean checkIfPassed(short value) {
-        return roll(1,100) > value;
-    }
-    
     
     
 
