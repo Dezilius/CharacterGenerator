@@ -1,5 +1,5 @@
 package callofcthulhuDB.entity;
-// Generated 23 lut 2020, 09:37:02 by Hibernate Tools 4.3.1
+// Generated 25 lut 2020, 05:02:34 by Hibernate Tools 4.3.1
 
 
 

@@ -5,15 +5,15 @@
  */
 package UI;
 
-import callofcthulhuDB.util.HibernateUtil;
 
 //import java.awt.List;
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
-import org.hibernate.Session;
 import java.util.List;
 import java.util.ArrayList;
-import java.lang.Math;
+import util.Tools;
+import util.AttrChar;
+import util.InfoChar;
+import util.QuerryUtil;
+import util.SkillChar;
 
 /**
  *
@@ -28,152 +28,23 @@ public class GeneratorUI extends javax.swing.JFrame {
         initComponents();
     }
         
-private static final String QUERY_FIRST_NAME="from FirstName where id =";
-private static final String QUERY_LAST_NAME="from LastName where id =";
-private static final String QUERY_PROFESSION="from Profession where id =";
 private static final String QUERY_NUMBER_OF_ROWS_FIRST_NAME="from FirstName where id = (select count(*) from FirstName)";
 private static final String QUERY_NUMBER_OF_ROWS_LAST_NAME="from LastName where id = (select count(*) from LastName)";
 private static final String QUERY_NUMBER_OF_ROWS_PROFESSION="from Profession where id = (select count(*) from Profession)";
     
 private void runAllQueries() {
-    executeHQLQueryNumberOfFirstName(QUERY_NUMBER_OF_ROWS_FIRST_NAME);
-    executeHQLQueryNumberOfLastName(QUERY_NUMBER_OF_ROWS_LAST_NAME);
-    executeHQLQueryNumberOfProfession(QUERY_NUMBER_OF_ROWS_PROFESSION);
-}
-
-private void executeHQLQueryNumberOfFirstName(String hql) {
-    try {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query q = session.createQuery(hql);
-        List result = q.list();
-        readNumberOfFirstName(result);
-        session.getTransaction().commit();
-    } catch (HibernateException he) {
-        he.printStackTrace();
-    }
-}
-private void readNumberOfFirstName(List result) {
-       
-    for (Object o : result) {
-        callofcthulhuDB.entity.FirstName name = (callofcthulhuDB.entity.FirstName) o;
-        randomFirstName(name.getId());
-    }
-}
-private void randomFirstName(Integer number) {
-        int numberOfFirstName = (int) (Math.random() * (number)) + 1;
-        executeHQLQueryFirstName(QUERY_FIRST_NAME + " " + numberOfFirstName);
-}
-private void executeHQLQueryFirstName(String hql) {
-    try {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query q = session.createQuery(hql);
-        List result = q.list();
-        displayResultFirstName(result);
-        session.getTransaction().commit();
-    } catch (HibernateException he) {
-        he.printStackTrace();
-    }
-}
-private void displayResultFirstName(List result) {
-       
-    for (Object o : result) {
-        callofcthulhuDB.entity.FirstName name = (callofcthulhuDB.entity.FirstName)o;
-        firstNameField.setText(name.getFirstName());
-        sexField.setText(name.getSex());
-    }
-}
-
-private void executeHQLQueryNumberOfLastName(String hql) {
-    try {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query q = session.createQuery(hql);
-        List result = q.list();
-        readNumberOfLastName(result);
-        session.getTransaction().commit();
-    } catch (HibernateException he) {
-        he.printStackTrace();
-    }
-}
-private void readNumberOfLastName(List result) {
-       
-    for (Object o : result) {
-        callofcthulhuDB.entity.LastName name = (callofcthulhuDB.entity.LastName) o;
-        randomLastName(name.getId());
-    }
-}
-private void randomLastName(Integer number) {
-        int numberOfLastName = (int) (Math.random() * (number)) + 1;
-        executeHQLQueryLastName(QUERY_LAST_NAME + " " + numberOfLastName);
-}
-private void executeHQLQueryLastName(String hql) {
-    try {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query q = session.createQuery(hql);
-        List result = q.list();
-        displayResultLastName(result);
-        session.getTransaction().commit();
-    } catch (HibernateException he) {
-        he.printStackTrace();
-    }
-}
-private void displayResultLastName(List result) {
-       
-    for (Object o : result) {
-        callofcthulhuDB.entity.LastName name = (callofcthulhuDB.entity.LastName)o;
-        lastNameField.setText(name.getLastName());
-    }
-}
-
-private void executeHQLQueryNumberOfProfession(String hql) {
-    try {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query q = session.createQuery(hql);
-        List result = q.list();
-        readNumberOfProfession(result);
-        session.getTransaction().commit();
-    } catch (HibernateException he) {
-        he.printStackTrace();
-    }
-}
-private void readNumberOfProfession(List result) {
-       
-    for (Object o : result) {
-        callofcthulhuDB.entity.Profession profession = (callofcthulhuDB.entity.Profession) o;
-        randomProfession(profession.getId());
-    }
-}
-private void randomProfession(Integer number) {
-        int numberOfProfession = (int) (Math.random() * (number)) + 1;
-        executeHQLQueryProfession(QUERY_PROFESSION + " " + numberOfProfession);
-}
-private void executeHQLQueryProfession(String hql) {
-    try {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query q = session.createQuery(hql);
-        List result = q.list();
-        displayResultProfession(result);
-        session.getTransaction().commit();
-    } catch (HibernateException he) {
-        he.printStackTrace();
-    }
-}
-private void displayResultProfession(List result) {
-    aggregateSkillFields();
-            
-    for (Object o : result) {
-        callofcthulhuDB.entity.Profession profession = (callofcthulhuDB.entity.Profession)o;
-        util.Tools.mapSkillFields(profession, skillFields);
-    }
+    List result = QuerryUtil.executeHQLQueryNumberOfFirstName(QUERY_NUMBER_OF_ROWS_FIRST_NAME);
+    InfoChar.displayResultFirstName(firstNameField, sexField, result);
+    
+    result = QuerryUtil.executeHQLQueryNumberOfLastName(QUERY_NUMBER_OF_ROWS_LAST_NAME);
+    InfoChar.displayResultLastName(lastNameField, result);
+    
+    result = QuerryUtil.executeHQLQueryNumberOfProfession(QUERY_NUMBER_OF_ROWS_PROFESSION);
+    InfoChar.displayResultProfession(ageField, professionField, result);
 }
 
 private void randomAttributes() {
-    aggregateFields();
+    aggregateAttributesFields();
     for (javax.swing.JTextField iter : attributesFields) {
         int value = 0;
         
@@ -194,12 +65,6 @@ private void randomAttributes() {
         iter.setText(Integer.toString(value));
     }
 } 
-private void randomAge() {
-    short ageMin = 15;
-    short ageMax = 90;
-    int age = util.Tools.roll(ageMin, ageMax);
-    ageField.setText(Integer.toString(age));
-}
 private void setMoveRate() {
     short moveRate = 0;
     short dex = (short) Integer.parseInt(dexterityField.getText());
@@ -221,42 +86,42 @@ private void adjustAttributesByCharacterAge() {
     short age = Short.parseShort(ageField.getText());
     
     if (age >= 15 && age < 20) {
-        util.Tools.remove2Args(strengthField, sizeField, 5);
-        util.Tools.removePoint(educationField, 5);
+        AttrChar.remove2Attr(logArea, strengthField, sizeField, 5);
+        Tools.removePoint(educationField, 5);
     }
     
     else if (age >= 20 && age < 40) {
-        util.Tools.improvementValue(educationField, 1);
+        Tools.improvementValue(educationField, 1);
     }
     
     else if (age >= 40 && age < 50) {
-        util.Tools.improvementValue(educationField, 2);
-        util.Tools.remove3Args(logArea, strengthField, conditionField, dexterityField, 5);
-        util.Tools.removePoint(appearanceField, 5);
+        Tools.improvementValue(educationField, 2);
+        AttrChar.remove3Attr(logArea, strengthField, conditionField, dexterityField, 5);
+        Tools.removePoint(appearanceField, 5);
     }
     
     else if (age >= 50 && age < 60) {
-        util.Tools.improvementValue(educationField, 3);
-        util.Tools.remove3Args(logArea,strengthField, conditionField, dexterityField, 10);
-        util.Tools.removePoint(appearanceField, 10);
+        Tools.improvementValue(educationField, 3);
+        AttrChar.remove3Attr(logArea,strengthField, conditionField, dexterityField, 10);
+        Tools.removePoint(appearanceField, 10);
     }
     
     else if (age >= 60 && age < 70) {
-        util.Tools.improvementValue(educationField, 4);
-        util.Tools.remove3Args(logArea,strengthField, conditionField, dexterityField, 20);
-        util.Tools.removePoint(appearanceField, 15);
+        Tools.improvementValue(educationField, 4);
+        AttrChar.remove3Attr(logArea, strengthField, conditionField, dexterityField, 20);
+        Tools.removePoint(appearanceField, 15);
     }
     
     else if (age >= 70 && age < 80) {
-        util.Tools.improvementValue(educationField, 4);
-        util.Tools.remove3Args(logArea,strengthField, conditionField, dexterityField, 40);
-        util.Tools.removePoint(appearanceField, 20);
+        Tools.improvementValue(educationField, 4);
+        AttrChar.remove3Attr(logArea, strengthField, conditionField, dexterityField, 40);
+        Tools.removePoint(appearanceField, 20);
     }
     
     else if (age >= 80 && age < 90) {
-        util.Tools.improvementValue(educationField, 4);
-        util.Tools.remove3Args(logArea,strengthField, conditionField, dexterityField, 80);
-        util.Tools.removePoint(appearanceField, 25);
+        Tools.improvementValue(educationField, 4);
+        AttrChar.remove3Attr(logArea, strengthField, conditionField, dexterityField, 80);
+        Tools.removePoint(appearanceField, 25);
     }
 }
 
@@ -427,10 +292,12 @@ private void adjustAttributesByCharacterAge() {
         ageLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         logArea = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Character Generator");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setPreferredSize(new java.awt.Dimension(1350, 785));
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -1856,6 +1723,13 @@ private void adjustAttributesByCharacterAge() {
         logArea.setRows(5);
         jScrollPane1.setViewportView(logArea);
 
+        jButton1.setText("Open DB Management");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1865,15 +1739,14 @@ private void adjustAttributesByCharacterAge() {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                         .addComponent(generateNewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(504, 504, 504))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(378, 378, 378))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1883,7 +1756,9 @@ private void adjustAttributesByCharacterAge() {
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addComponent(generateNewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(generateNewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2156,11 +2031,16 @@ private void adjustAttributesByCharacterAge() {
 
     private void generateNewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateNewButtonActionPerformed
         randomAttributes(); 
+        aggregateCharacterFields();
         setMoveRate();
-        randomAge();
-        adjustAttributesByCharacterAge();
         runAllQueries();
+        adjustAttributesByCharacterAge();
+        SkillChar.setDefaultValues(skillFields);
     }//GEN-LAST:event_generateNewButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        DBManagementUI.start();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2258,6 +2138,7 @@ private void adjustAttributesByCharacterAge() {
     private javax.swing.JLabel intelligenceLabel;
     private javax.swing.JTextField intimidateField;
     private javax.swing.JLabel intimidateLabel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -2358,10 +2239,11 @@ private void adjustAttributesByCharacterAge() {
     private javax.swing.JLabel trackLabel;
     // End of variables declaration//GEN-END:variables
 
+    private ArrayList<javax.swing.JTextField> characterFields;
     private javax.swing.JTextField[] attributesFields;
     private ArrayList<javax.swing.JTextField> skillFields;
     
-    private void aggregateFields() {
+    private void aggregateAttributesFields() {
         attributesFields = new javax.swing.JTextField[] {
             strengthField,
             dexterityField,
@@ -2435,9 +2317,15 @@ private void adjustAttributesByCharacterAge() {
         skillFields.add(other3rdField);
         skillFields.add(other4thField);
         skillFields.add(other5thField);
-        skillFields.add(professionField);
     }
-
+    private void aggregateCharacterFields() {
+        characterFields = new ArrayList<>();
+        characterFields.add(firstNameField);
+        characterFields.add(lastNameField);
+        characterFields.add(sexField);
+        characterFields.add(ageField);
+        characterFields.add(professionField);
+    }
 }
 
     

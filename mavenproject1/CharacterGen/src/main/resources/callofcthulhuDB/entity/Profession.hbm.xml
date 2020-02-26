@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 23 lut 2020, 09:37:02 by Hibernate Tools 4.3.1 -->
+<!-- Generated 25 lut 2020, 05:02:34 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="callofcthulhuDB.entity.Profession" table="profession" catalog="callofcthulhuDB" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
@@ -11,185 +11,11 @@
         <property name="profession" type="string">
             <column name="profession" length="45" not-null="true" />
         </property>
-        <property name="accounting" type="java.lang.Integer">
-            <column name="accounting" />
+        <property name="minAge" type="int">
+            <column name="minAge" not-null="true" />
         </property>
-        <property name="anthropology" type="java.lang.Integer">
-            <column name="anthropology" />
-        </property>
-        <property name="appraise" type="java.lang.Integer">
-            <column name="appraise" />
-        </property>
-        <property name="archeology" type="java.lang.Integer">
-            <column name="archeology" />
-        </property>
-        <property name="craft" type="java.lang.Integer">
-            <column name="craft" />
-        </property>
-        <property name="craft2nd" type="java.lang.Integer">
-            <column name="craft2nd" />
-        </property>
-        <property name="craft3rd" type="java.lang.Integer">
-            <column name="craft3rd" />
-        </property>
-        <property name="charm" type="java.lang.Integer">
-            <column name="charm" />
-        </property>
-        <property name="climb" type="java.lang.Integer">
-            <column name="climb" />
-        </property>
-        <property name="creditRating" type="java.lang.Integer">
-            <column name="creditRating" />
-        </property>
-        <property name="cthulhuMythos" type="java.lang.Integer">
-            <column name="cthulhuMythos" />
-        </property>
-        <property name="disguise" type="java.lang.Integer">
-            <column name="disguise" />
-        </property>
-        <property name="dodge" type="java.lang.Integer">
-            <column name="dodge" />
-        </property>
-        <property name="drive" type="java.lang.Integer">
-            <column name="drive" />
-        </property>
-        <property name="electricalRepair" type="java.lang.Integer">
-            <column name="electricalRepair" />
-        </property>
-        <property name="fastTalk" type="java.lang.Integer">
-            <column name="fastTalk" />
-        </property>
-        <property name="fighting" type="java.lang.Integer">
-            <column name="fighting" />
-        </property>
-        <property name="fighting2nd" type="java.lang.Integer">
-            <column name="fighting2nd" />
-        </property>
-        <property name="fighting3rd" type="java.lang.Integer">
-            <column name="fighting3rd" />
-        </property>
-        <property name="handgun" type="java.lang.Integer">
-            <column name="handgun" />
-        </property>
-        <property name="rifle" type="java.lang.Integer">
-            <column name="rifle" />
-        </property>
-        <property name="rifle2nd" type="java.lang.Integer">
-            <column name="rifle2nd" />
-        </property>
-        <property name="firstAid" type="java.lang.Integer">
-            <column name="firstAid" />
-        </property>
-        <property name="history" type="java.lang.Integer">
-            <column name="history" />
-        </property>
-        <property name="intimidate" type="java.lang.Integer">
-            <column name="intimidate" />
-        </property>
-        <property name="jump" type="java.lang.Integer">
-            <column name="jump" />
-        </property>
-        <property name="languageOther" type="java.lang.Integer">
-            <column name="languageOther" />
-        </property>
-        <property name="languageOther2nd" type="java.lang.Integer">
-            <column name="languageOther2nd" />
-        </property>
-        <property name="languageOther3rd" type="java.lang.Integer">
-            <column name="languageOther3rd" />
-        </property>
-        <property name="languageOwn" type="java.lang.Integer">
-            <column name="languageOwn" />
-        </property>
-        <property name="law" type="java.lang.Integer">
-            <column name="law" />
-        </property>
-        <property name="libraryUse" type="java.lang.Integer">
-            <column name="libraryUse" />
-        </property>
-        <property name="listen" type="java.lang.Integer">
-            <column name="listen" />
-        </property>
-        <property name="locksmithing" type="java.lang.Integer">
-            <column name="locksmithing" />
-        </property>
-        <property name="mechanicalRepair" type="java.lang.Integer">
-            <column name="mechanicalRepair" />
-        </property>
-        <property name="medicine" type="java.lang.Integer">
-            <column name="medicine" />
-        </property>
-        <property name="naturalWorld" type="java.lang.Integer">
-            <column name="naturalWorld" />
-        </property>
-        <property name="navigate" type="java.lang.Integer">
-            <column name="navigate" />
-        </property>
-        <property name="occult" type="java.lang.Integer">
-            <column name="occult" />
-        </property>
-        <property name="opHvMachine" type="java.lang.Integer">
-            <column name="opHvMachine" />
-        </property>
-        <property name="persuade" type="java.lang.Integer">
-            <column name="persuade" />
-        </property>
-        <property name="pilot" type="java.lang.Integer">
-            <column name="pilot" />
-        </property>
-        <property name="psychology" type="java.lang.Integer">
-            <column name="psychology" />
-        </property>
-        <property name="psychoanalysis" type="java.lang.Integer">
-            <column name="psychoanalysis" />
-        </property>
-        <property name="riding" type="java.lang.Integer">
-            <column name="riding" />
-        </property>
-        <property name="science" type="java.lang.Integer">
-            <column name="science" />
-        </property>
-        <property name="science2nd" type="java.lang.Integer">
-            <column name="science2nd" />
-        </property>
-        <property name="science3rd" type="java.lang.Integer">
-            <column name="science3rd" />
-        </property>
-        <property name="sleightOfHand" type="java.lang.Integer">
-            <column name="sleightOfHand" />
-        </property>
-        <property name="spotHidden" type="java.lang.Integer">
-            <column name="spotHidden" />
-        </property>
-        <property name="stealth" type="java.lang.Integer">
-            <column name="stealth" />
-        </property>
-        <property name="survival" type="java.lang.Integer">
-            <column name="survival" />
-        </property>
-        <property name="swim" type="java.lang.Integer">
-            <column name="swim" />
-        </property>
-        <property name="throw_" type="java.lang.Integer">
-            <column name="throw" />
-        </property>
-        <property name="track" type="java.lang.Integer">
-            <column name="track" />
-        </property>
-        <property name="other1st" type="java.lang.Integer">
-            <column name="other1st" />
-        </property>
-        <property name="other2nd" type="java.lang.Integer">
-            <column name="other2nd" />
-        </property>
-        <property name="other3rd" type="java.lang.Integer">
-            <column name="other3rd" />
-        </property>
-        <property name="other4th" type="java.lang.Integer">
-            <column name="other4th" />
-        </property>
-        <property name="other5th" type="java.lang.Integer">
-            <column name="other5th" />
+        <property name="maxAge" type="int">
+            <column name="maxAge" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>
