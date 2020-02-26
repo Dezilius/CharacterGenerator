@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.ArrayList;
 import util.Tools;
 import util.AttrChar;
+import util.InfoChar;
 import util.QuerryUtil;
 import util.SkillChar;
 
@@ -33,39 +34,13 @@ private static final String QUERY_NUMBER_OF_ROWS_PROFESSION="from Profession whe
     
 private void runAllQueries() {
     List result = QuerryUtil.executeHQLQueryNumberOfFirstName(QUERY_NUMBER_OF_ROWS_FIRST_NAME);
-    displayResultFirstName(result);
+    InfoChar.displayResultFirstName(firstNameField, sexField, result);
     
     result = QuerryUtil.executeHQLQueryNumberOfLastName(QUERY_NUMBER_OF_ROWS_LAST_NAME);
-    displayResultLastName(result);
+    InfoChar.displayResultLastName(lastNameField, result);
     
     result = QuerryUtil.executeHQLQueryNumberOfProfession(QUERY_NUMBER_OF_ROWS_PROFESSION);
-    displayResultProfession(result);
-}
-
-private void displayResultFirstName(List result) {
-       
-    for (Object o : result) {
-        callofcthulhuDB.entity.FirstName name = (callofcthulhuDB.entity.FirstName)o;
-        firstNameField.setText(name.getFirstName());
-        sexField.setText(name.getSex());
-    }
-}
-private void displayResultLastName(List result) {
-       
-    for (Object o : result) {
-        callofcthulhuDB.entity.LastName name = (callofcthulhuDB.entity.LastName)o;
-        lastNameField.setText(name.getLastName());
-    }
-}
-private void displayResultProfession(List result) {
-    aggregateSkillFields();
-            
-    for (Object o : result) {
-        callofcthulhuDB.entity.Profession profession = (callofcthulhuDB.entity.Profession)o;
-        int age = util.InfoChar.randomAge(profession);
-        ageField.setText(Integer.toString(age));
-        professionField.setText(profession.getProfession());
-    }
+    InfoChar.displayResultProfession(ageField, professionField, result);
 }
 
 private void randomAttributes() {
@@ -111,7 +86,7 @@ private void adjustAttributesByCharacterAge() {
     short age = Short.parseShort(ageField.getText());
     
     if (age >= 15 && age < 20) {
-        AttrChar.remove2Args(strengthField, sizeField, 5);
+        AttrChar.remove2Attr(logArea, strengthField, sizeField, 5);
         Tools.removePoint(educationField, 5);
     }
     
@@ -121,31 +96,31 @@ private void adjustAttributesByCharacterAge() {
     
     else if (age >= 40 && age < 50) {
         Tools.improvementValue(educationField, 2);
-        AttrChar.remove3Args(logArea, strengthField, conditionField, dexterityField, 5);
+        AttrChar.remove3Attr(logArea, strengthField, conditionField, dexterityField, 5);
         Tools.removePoint(appearanceField, 5);
     }
     
     else if (age >= 50 && age < 60) {
         Tools.improvementValue(educationField, 3);
-        AttrChar.remove3Args(logArea,strengthField, conditionField, dexterityField, 10);
+        AttrChar.remove3Attr(logArea,strengthField, conditionField, dexterityField, 10);
         Tools.removePoint(appearanceField, 10);
     }
     
     else if (age >= 60 && age < 70) {
         Tools.improvementValue(educationField, 4);
-        AttrChar.remove3Args(logArea, strengthField, conditionField, dexterityField, 20);
+        AttrChar.remove3Attr(logArea, strengthField, conditionField, dexterityField, 20);
         Tools.removePoint(appearanceField, 15);
     }
     
     else if (age >= 70 && age < 80) {
         Tools.improvementValue(educationField, 4);
-        AttrChar.remove3Args(logArea, strengthField, conditionField, dexterityField, 40);
+        AttrChar.remove3Attr(logArea, strengthField, conditionField, dexterityField, 40);
         Tools.removePoint(appearanceField, 20);
     }
     
     else if (age >= 80 && age < 90) {
         Tools.improvementValue(educationField, 4);
-        AttrChar.remove3Args(logArea, strengthField, conditionField, dexterityField, 80);
+        AttrChar.remove3Attr(logArea, strengthField, conditionField, dexterityField, 80);
         Tools.removePoint(appearanceField, 25);
     }
 }
