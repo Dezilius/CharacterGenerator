@@ -314,6 +314,14 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
         nameLabel = new javax.swing.JLabel();
         professionLabel = new javax.swing.JLabel();
         ageLabel = new javax.swing.JLabel();
+        sanityLabel = new javax.swing.JLabel();
+        HPLabel = new javax.swing.JLabel();
+        MPLabel = new javax.swing.JLabel();
+        luckLabel = new javax.swing.JLabel();
+        HPField = new javax.swing.JTextField();
+        sanityField = new javax.swing.JTextField();
+        MPField = new javax.swing.JTextField();
+        luckField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         logArea = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
@@ -328,83 +336,101 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.setFont(new java.awt.Font("Droid Serif", 1, 12)); // NOI18N
 
         jPanel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel4.setInheritsPopupMenu(true);
 
         anthropologyField.setEditable(false);
         anthropologyField.setColumns(2);
+        anthropologyField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         anthropologyField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 anthropologyFieldActionPerformed(evt);
             }
         });
 
+        anthropologyLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         anthropologyLabel.setText("Anthropology");
 
+        appraiseLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         appraiseLabel.setText("Appraise");
 
         appraiseField.setEditable(false);
         appraiseField.setColumns(2);
+        appraiseField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         appraiseField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 appraiseFieldActionPerformed(evt);
             }
         });
 
+        archeologyLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         archeologyLabel.setText("Archeology");
 
         archeologyField.setEditable(false);
         archeologyField.setColumns(2);
+        archeologyField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         archeologyField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 archeologyFieldActionPerformed(evt);
             }
         });
 
+        craftLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         craftLabel.setText("Craft");
 
         craftField.setEditable(false);
         craftField.setColumns(2);
+        craftField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         craftField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 craftFieldActionPerformed(evt);
             }
         });
 
+        charmLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         charmLabel.setText("Charm");
 
         charmField.setEditable(false);
         charmField.setColumns(2);
+        charmField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         charmField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 charmFieldActionPerformed(evt);
             }
         });
 
+        climbLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         climbLabel.setText("Climb");
 
         climbField.setEditable(false);
         climbField.setColumns(2);
+        climbField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         climbField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 climbFieldActionPerformed(evt);
             }
         });
 
+        disguiseLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         disguiseLabel.setText("Disguise");
 
         disguiseField.setEditable(false);
         disguiseField.setColumns(2);
+        disguiseField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         disguiseField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 disguiseFieldActionPerformed(evt);
             }
         });
 
+        electricalRepairLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         electricalRepairLabel.setText("Electrical Repair");
 
         electricalRepairField.setEditable(false);
         electricalRepairField.setColumns(2);
+        electricalRepairField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         electricalRepairField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 electricalRepairFieldActionPerformed(evt);
@@ -413,64 +439,80 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
 
         accountingField.setEditable(false);
         accountingField.setColumns(2);
+        accountingField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         accountingField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 accountingFieldActionPerformed(evt);
             }
         });
 
+        accountingLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         accountingLabel.setText("Accounting");
 
+        dodgeLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         dodgeLabel.setText("Dodge (half DEX)");
 
         dodgeField.setEditable(false);
         dodgeField.setColumns(2);
+        dodgeField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         dodgeField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dodgeFieldActionPerformed(evt);
             }
         });
 
+        craft2ndLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
+
         craft2ndField.setEditable(false);
         craft2ndField.setColumns(2);
+        craft2ndField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         craft2ndField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 craft2ndFieldActionPerformed(evt);
             }
         });
 
+        craft3rdLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
+
         craft3rdField.setEditable(false);
         craft3rdField.setColumns(2);
+        craft3rdField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         craft3rdField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 craft3rdFieldActionPerformed(evt);
             }
         });
 
+        creditRatingLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         creditRatingLabel.setText("Credit Rating");
 
         creditRatingField.setEditable(false);
         creditRatingField.setColumns(2);
+        creditRatingField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         creditRatingField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 creditRatingFieldActionPerformed(evt);
             }
         });
 
+        cthulhuMythosLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         cthulhuMythosLabel.setText("Cthulhu Mythos");
 
         cthulhuMythosField.setEditable(false);
         cthulhuMythosField.setColumns(2);
+        cthulhuMythosField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         cthulhuMythosField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cthulhuMythosFieldActionPerformed(evt);
             }
         });
 
+        driveLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         driveLabel.setText("Drive");
 
         driveField.setEditable(false);
         driveField.setColumns(2);
+        driveField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         driveField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 driveFieldActionPerformed(evt);
@@ -626,42 +668,51 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
 
         jPanel5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        handgunLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         handgunLabel.setText("Handgun");
 
         rifleField.setEditable(false);
         rifleField.setColumns(2);
+        rifleField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         rifleField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rifleFieldActionPerformed(evt);
             }
         });
 
+        rifleLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         rifleLabel.setText("Rifle");
 
         historyField.setEditable(false);
         historyField.setColumns(2);
+        historyField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         historyField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 historyFieldActionPerformed(evt);
             }
         });
 
+        historyLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         historyLabel.setText("History");
 
         intimidateField.setEditable(false);
         intimidateField.setColumns(2);
+        intimidateField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         intimidateField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 intimidateFieldActionPerformed(evt);
             }
         });
 
+        intimidateLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         intimidateLabel.setText("Intimidate");
 
+        jumpLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         jumpLabel.setText("Jump");
 
         jumpField.setEditable(false);
         jumpField.setColumns(2);
+        jumpField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         jumpField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jumpFieldActionPerformed(evt);
@@ -670,48 +721,58 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
 
         languageOtherField.setEditable(false);
         languageOtherField.setColumns(2);
+        languageOtherField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         languageOtherField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 languageOtherFieldActionPerformed(evt);
             }
         });
 
+        languageOtherLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         languageOtherLabel.setText("Language (Other)");
 
         languageOwnField.setEditable(false);
         languageOwnField.setColumns(2);
+        languageOwnField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         languageOwnField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 languageOwnFieldActionPerformed(evt);
             }
         });
 
+        languageOwn.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         languageOwn.setText("Language (Own)(EDU)");
 
         firstAidField.setEditable(false);
         firstAidField.setColumns(2);
+        firstAidField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         firstAidField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 firstAidFieldActionPerformed(evt);
             }
         });
 
+        firstAidLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         firstAidLabel.setText("First Aid");
 
+        fastTalkLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         fastTalkLabel.setText("Fast Talk");
 
         fastTalkField.setEditable(false);
         fastTalkField.setColumns(2);
+        fastTalkField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         fastTalkField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fastTalkFieldActionPerformed(evt);
             }
         });
 
+        fightingLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         fightingLabel.setText("Fighting (Brawl)");
 
         fightingField.setEditable(false);
         fightingField.setColumns(2);
+        fightingField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         fightingField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fightingFieldActionPerformed(evt);
@@ -720,14 +781,18 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
 
         handgunField.setEditable(false);
         handgunField.setColumns(2);
+        handgunField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         handgunField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 handgunFieldActionPerformed(evt);
             }
         });
 
+        fightinh2ndLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
+
         fighting2ndField.setEditable(false);
         fighting2ndField.setColumns(2);
+        fighting2ndField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         fighting2ndField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fighting2ndFieldActionPerformed(evt);
@@ -736,30 +801,42 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
 
         fighting3rdField.setEditable(false);
         fighting3rdField.setColumns(2);
+        fighting3rdField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         fighting3rdField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fighting3rdFieldActionPerformed(evt);
             }
         });
 
+        fighting3rdLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
+
         rifle2ndField.setEditable(false);
         rifle2ndField.setColumns(2);
+        rifle2ndField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         rifle2ndField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rifle2ndFieldActionPerformed(evt);
             }
         });
 
+        rifle2ndLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
+
         languageOther2ndField.setEditable(false);
         languageOther2ndField.setColumns(2);
+        languageOther2ndField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         languageOther2ndField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 languageOther2ndFieldActionPerformed(evt);
             }
         });
 
+        languageOther2ndLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
+
+        languageOther3rdLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
+
         languageOther3rdField.setEditable(false);
         languageOther3rdField.setColumns(2);
+        languageOther3rdField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         languageOther3rdField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 languageOther3rdFieldActionPerformed(evt);
@@ -898,95 +975,113 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(languageOwnField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(languageOwn))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         lawField.setEditable(false);
         lawField.setColumns(2);
+        lawField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         lawField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lawFieldActionPerformed(evt);
             }
         });
 
+        lawLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         lawLabel.setText("Law");
 
         libraryUseField.setEditable(false);
         libraryUseField.setColumns(2);
+        libraryUseField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         libraryUseField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 libraryUseFieldActionPerformed(evt);
             }
         });
 
+        libraryUseLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         libraryUseLabel.setText("Library use");
 
         listenField.setEditable(false);
         listenField.setColumns(2);
+        listenField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         listenField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listenFieldActionPerformed(evt);
             }
         });
 
+        listenLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         listenLabel.setText("Listen");
 
+        locksmithingLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         locksmithingLabel.setText("Locksmithing");
 
         locksmithingField.setEditable(false);
         locksmithingField.setColumns(2);
+        locksmithingField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         locksmithingField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 locksmithingFieldActionPerformed(evt);
             }
         });
 
+        mechanicalRepairLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         mechanicalRepairLabel.setText("Mechanical Repair");
 
         mechanicalRepairField.setEditable(false);
         mechanicalRepairField.setColumns(2);
+        mechanicalRepairField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         mechanicalRepairField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mechanicalRepairFieldActionPerformed(evt);
             }
         });
 
+        medicineLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         medicineLabel.setText("Medicine");
 
         medicineField.setEditable(false);
         medicineField.setColumns(2);
+        medicineField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         medicineField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 medicineFieldActionPerformed(evt);
             }
         });
 
+        persuadeLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         persuadeLabel.setText("Persuade");
 
         persuadeField.setEditable(false);
         persuadeField.setColumns(2);
+        persuadeField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         persuadeField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 persuadeFieldActionPerformed(evt);
             }
         });
 
+        pilotLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         pilotLabel.setText("Pilot");
 
         pilotField.setEditable(false);
         pilotField.setColumns(2);
+        pilotField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         pilotField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pilotFieldActionPerformed(evt);
             }
         });
 
+        opHvMachineLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         opHvMachineLabel.setText("Op.Hv.Machine");
 
         opHvMachineField.setEditable(false);
         opHvMachineField.setColumns(2);
+        opHvMachineField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         opHvMachineField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opHvMachineFieldActionPerformed(evt);
@@ -995,38 +1090,46 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
 
         psychoanalysisField.setEditable(false);
         psychoanalysisField.setColumns(2);
+        psychoanalysisField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         psychoanalysisField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 psychoanalysisFieldActionPerformed(evt);
             }
         });
 
+        psychoanalysisLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         psychoanalysisLabel.setText("Psychoanalysis");
 
         ridingField.setEditable(false);
         ridingField.setColumns(2);
+        ridingField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         ridingField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ridingFieldActionPerformed(evt);
             }
         });
 
+        ridingLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         ridingLabel.setText("Riding");
 
         occultField.setEditable(false);
         occultField.setColumns(2);
+        occultField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         occultField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 occultFieldActionPerformed(evt);
             }
         });
 
+        occultLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         occultLabel.setText("Occult");
 
+        naturalWorldLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         naturalWorldLabel.setText("Natural World");
 
         naturalWorldField.setEditable(false);
         naturalWorldField.setColumns(2);
+        naturalWorldField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         naturalWorldField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 naturalWorldFieldActionPerformed(evt);
@@ -1035,18 +1138,22 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
 
         navigateField.setEditable(false);
         navigateField.setColumns(2);
+        navigateField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         navigateField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 navigateFieldActionPerformed(evt);
             }
         });
 
+        navigateLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         navigateLabel.setText("Navigate");
 
+        psychologyLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         psychologyLabel.setText("Psychology");
 
         psychologyField.setEditable(false);
         psychologyField.setColumns(2);
+        psychologyField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         psychologyField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 psychologyFieldActionPerformed(evt);
@@ -1185,51 +1292,63 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ridingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ridingLabel))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         scienceField.setEditable(false);
         scienceField.setColumns(2);
+        scienceField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         scienceField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 scienceFieldActionPerformed(evt);
             }
         });
 
+        scienceLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         scienceLabel.setText("Science");
 
         science2ndField.setEditable(false);
         science2ndField.setColumns(2);
+        science2ndField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         science2ndField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 science2ndFieldActionPerformed(evt);
             }
         });
 
+        science2ndLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
+
         science3rdField.setEditable(false);
         science3rdField.setColumns(2);
+        science3rdField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         science3rdField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 science3rdFieldActionPerformed(evt);
             }
         });
 
+        science3rdLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
+
+        sleightOfHandLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         sleightOfHandLabel.setText("Sleight of Hand");
 
         sleightOfHandField.setEditable(false);
         sleightOfHandField.setColumns(2);
+        sleightOfHandField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         sleightOfHandField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sleightOfHandFieldActionPerformed(evt);
             }
         });
 
+        spotHiddenLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         spotHiddenLabel.setText("Spot Hidden");
 
         spotHiddenField.setEditable(false);
         spotHiddenField.setColumns(2);
+        spotHiddenField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         spotHiddenField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 spotHiddenFieldActionPerformed(evt);
@@ -1238,80 +1357,102 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
 
         stealthField.setEditable(false);
         stealthField.setColumns(2);
+        stealthField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         stealthField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stealthFieldActionPerformed(evt);
             }
         });
 
+        stealthLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         stealthLabel.setText("Stealth");
 
+        survivalLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         survivalLabel.setText("Survival");
 
         survivalField.setEditable(false);
         survivalField.setColumns(2);
+        survivalField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         survivalField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 survivalFieldActionPerformed(evt);
             }
         });
 
+        swimLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         swimLabel.setText("Swim");
 
         swimField.setEditable(false);
         swimField.setColumns(2);
+        swimField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         swimField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 swimFieldActionPerformed(evt);
             }
         });
 
+        throwLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         throwLabel.setText("Throw");
 
         throwField.setEditable(false);
         throwField.setColumns(2);
+        throwField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         throwField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 throwFieldActionPerformed(evt);
             }
         });
 
+        trackLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         trackLabel.setText("Track");
 
         trackField.setEditable(false);
         trackField.setColumns(2);
+        trackField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         trackField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 trackFieldActionPerformed(evt);
             }
         });
 
+        other1stLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
+
         other1stField.setEditable(false);
         other1stField.setColumns(2);
+        other1stField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         other1stField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 other1stFieldActionPerformed(evt);
             }
         });
 
+        other2ndLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
+
         other2ndField.setEditable(false);
         other2ndField.setColumns(2);
+        other2ndField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         other2ndField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 other2ndFieldActionPerformed(evt);
             }
         });
 
+        other3rdLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
+
         other3rdField.setEditable(false);
         other3rdField.setColumns(2);
+        other3rdField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         other3rdField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 other3rdFieldActionPerformed(evt);
             }
         });
 
+        other4thLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
+
         other4thField.setEditable(false);
         other4thField.setColumns(2);
+        other4thField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         other4thField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 other4thFieldActionPerformed(evt);
@@ -1320,11 +1461,14 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
 
         other5thField.setEditable(false);
         other5thField.setColumns(2);
+        other5thField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         other5thField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 other5thFieldActionPerformed(evt);
             }
         });
+
+        other5thLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -1458,7 +1602,7 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(other5thField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(other5thLabel))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -1474,7 +1618,7 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1488,6 +1632,7 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
                 .addContainerGap())
         );
 
+        generateNewButton.setFont(new java.awt.Font("Droid Serif", 1, 12)); // NOI18N
         generateNewButton.setText("Generate NEW!");
         generateNewButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1504,34 +1649,45 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        appearanceLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         appearanceLabel.setText("APP");
 
+        powerLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         powerLabel.setText("POW");
 
+        sizeLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         sizeLabel.setText("SIZ");
 
+        educationLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         educationLabel.setText("EDU");
 
+        moveRateLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         moveRateLabel.setText("Move Rate");
         moveRateLabel.setToolTipText("");
 
         strengthField.setEditable(false);
         strengthField.setColumns(5);
+        strengthField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         dexterityField.setEditable(false);
         dexterityField.setColumns(5);
+        dexterityField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         intelligenceField.setEditable(false);
         intelligenceField.setColumns(5);
+        intelligenceField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         conditionField.setEditable(false);
         conditionField.setColumns(5);
+        conditionField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         appearanceField.setEditable(false);
         appearanceField.setColumns(5);
+        appearanceField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         powerField.setEditable(false);
         powerField.setColumns(5);
+        powerField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         powerField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 powerFieldActionPerformed(evt);
@@ -1540,24 +1696,31 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
 
         sizeField.setEditable(false);
         sizeField.setColumns(5);
+        sizeField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         educationField.setEditable(false);
         educationField.setColumns(5);
+        educationField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         moveRateField.setEditable(false);
         moveRateField.setColumns(5);
+        moveRateField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         moveRateField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 moveRateFieldActionPerformed(evt);
             }
         });
 
+        dexterityLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         dexterityLabel.setText("DEX");
 
+        strengthLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         strengthLabel.setText("STR");
 
+        intelligenceLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         intelligenceLabel.setText("INT");
 
+        conditionLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         conditionLabel.setText("CON");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -1633,13 +1796,14 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
                     .addComponent(sizeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(educationField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(educationLabel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         firstNameField.setEditable(false);
         firstNameField.setColumns(8);
+        firstNameField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         firstNameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 firstNameFieldActionPerformed(evt);
@@ -1648,28 +1812,84 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
 
         lastNameField.setEditable(false);
         lastNameField.setColumns(8);
+        lastNameField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         professionField.setEditable(false);
         professionField.setColumns(10);
+        professionField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         ageField.setEditable(false);
         ageField.setColumns(3);
+        ageField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         sexField.setEditable(false);
         sexField.setColumns(5);
+        sexField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         sexField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sexFieldActionPerformed(evt);
             }
         });
 
+        sexLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         sexLabel.setText("Sex");
 
+        nameLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         nameLabel.setText("Name");
 
+        professionLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         professionLabel.setText("Profession");
 
+        ageLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         ageLabel.setText("Age");
+
+        sanityLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
+        sanityLabel.setText("Sanity");
+
+        HPLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
+        HPLabel.setText("HP ");
+
+        MPLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
+        MPLabel.setText("MP");
+
+        luckLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
+        luckLabel.setText("Luck");
+
+        HPField.setEditable(false);
+        HPField.setColumns(2);
+        HPField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
+        HPField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HPFieldActionPerformed(evt);
+            }
+        });
+
+        sanityField.setEditable(false);
+        sanityField.setColumns(2);
+        sanityField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
+        sanityField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sanityFieldActionPerformed(evt);
+            }
+        });
+
+        MPField.setEditable(false);
+        MPField.setColumns(2);
+        MPField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
+        MPField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MPFieldActionPerformed(evt);
+            }
+        });
+
+        luckField.setEditable(false);
+        luckField.setColumns(2);
+        luckField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
+        luckField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                luckFieldActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -1680,21 +1900,40 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(professionLabel)
                     .addComponent(nameLabel)
-                    .addComponent(ageLabel))
+                    .addComponent(ageLabel)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(HPLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(HPField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lastNameField))
+                        .addComponent(lastNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))
+                    .addComponent(professionField)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(sexLabel)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(sexLabel))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(sanityLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(sanityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addComponent(sexField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(professionField))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(sexField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(MPLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(MPField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(14, 14, 14)
+                                .addComponent(luckLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(luckField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -1715,7 +1954,17 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
                     .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sexLabel)
                     .addComponent(sexField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sanityLabel)
+                    .addComponent(MPLabel)
+                    .addComponent(HPLabel)
+                    .addComponent(luckLabel)
+                    .addComponent(HPField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sanityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(MPField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(luckField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         firstNameField.getAccessibleContext().setAccessibleName("firstNameField");
@@ -1740,9 +1989,9 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1750,6 +1999,7 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
         logArea.setRows(5);
         jScrollPane1.setViewportView(logArea);
 
+        jButton1.setFont(new java.awt.Font("Droid Serif", 1, 12)); // NOI18N
         jButton1.setText("Open DB Management");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1757,7 +2007,7 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
             }
         });
 
-        skillPointsField.setFont(new java.awt.Font("Nimbus Sans", 0, 18)); // NOI18N
+        skillPointsField.setFont(new java.awt.Font("Droid Serif", 1, 18)); // NOI18N
         skillPointsField.setText("Skill points available: 0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1778,7 +2028,7 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(378, 378, 378))
             .addGroup(layout.createSequentialGroup()
-                .addGap(345, 345, 345)
+                .addGap(344, 344, 344)
                 .addComponent(skillPointsField)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1793,13 +2043,14 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(generateNewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(skillPointsField)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(skillPointsField)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         pack();
@@ -2075,11 +2326,31 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
         aggregateSkillFields();
         SkillChar.setDefaultValues(skillFields, educationField, dexterityField);
         setSkillPoints();
+        InfoChar.setMagicPoints(MPField, powerField);
+        InfoChar.setLuck(luckField);
+        InfoChar.setHP(HPField, conditionField, sizeField);
+        InfoChar.setSanity(sanityField, powerField);
     }//GEN-LAST:event_generateNewButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         DBManagementUI.start();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void HPFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HPFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HPFieldActionPerformed
+
+    private void sanityFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sanityFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sanityFieldActionPerformed
+
+    private void MPFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MPFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MPFieldActionPerformed
+
+    private void luckFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_luckFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_luckFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2117,6 +2388,10 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
         });
     }    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField HPField;
+    private javax.swing.JLabel HPLabel;
+    private javax.swing.JTextField MPField;
+    private javax.swing.JLabel MPLabel;
     private javax.swing.JTextField accountingField;
     private javax.swing.JLabel accountingLabel;
     private javax.swing.JTextField ageField;
@@ -2207,6 +2482,8 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
     private javax.swing.JTextField locksmithingField;
     private javax.swing.JLabel locksmithingLabel;
     private javax.swing.JTextArea logArea;
+    private javax.swing.JTextField luckField;
+    private javax.swing.JLabel luckLabel;
     private javax.swing.JTextField mechanicalRepairField;
     private javax.swing.JLabel mechanicalRepairLabel;
     private javax.swing.JTextField medicineField;
@@ -2250,6 +2527,8 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
     private javax.swing.JLabel rifle2ndLabel;
     private javax.swing.JTextField rifleField;
     private javax.swing.JLabel rifleLabel;
+    private javax.swing.JTextField sanityField;
+    private javax.swing.JLabel sanityLabel;
     private javax.swing.JTextField science2ndField;
     private javax.swing.JLabel science2ndLabel;
     private javax.swing.JTextField science3rdField;

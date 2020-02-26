@@ -53,7 +53,7 @@
               <EmptySpace min="-2" pref="378" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="345" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="344" max="-2" attributes="0"/>
               <Component id="skillPointsField" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -73,14 +73,16 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="40" max="32767" attributes="0"/>
-              <Component id="skillPointsField" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="484" max="-2" attributes="0"/>
+              <EmptySpace pref="92" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jScrollPane1" alignment="1" min="-2" pref="484" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="skillPointsField" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="49" max="32767" attributes="0"/>
+              <EmptySpace pref="7" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -92,6 +94,9 @@
           <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
             <EtchetBorder/>
           </Border>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Droid Serif" size="12" style="1"/>
         </Property>
       </Properties>
 
@@ -107,7 +112,7 @@
                   <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="14" max="32767" attributes="0"/>
+                  <EmptySpace pref="52" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -134,6 +139,7 @@
                 <BevelBorder/>
               </Border>
             </Property>
+            <Property name="inheritsPopupMenu" type="boolean" value="true"/>
           </Properties>
 
           <Layout>
@@ -332,6 +338,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="anthropologyFieldActionPerformed"/>
@@ -339,11 +348,17 @@
             </Component>
             <Component class="javax.swing.JLabel" name="anthropologyLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Anthropology"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="appraiseLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Appraise"/>
               </Properties>
             </Component>
@@ -351,6 +366,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="appraiseFieldActionPerformed"/>
@@ -358,6 +376,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="archeologyLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Archeology"/>
               </Properties>
             </Component>
@@ -365,6 +386,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="archeologyFieldActionPerformed"/>
@@ -372,6 +396,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="craftLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Craft"/>
               </Properties>
             </Component>
@@ -379,6 +406,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="craftFieldActionPerformed"/>
@@ -386,6 +416,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="charmLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Charm"/>
               </Properties>
             </Component>
@@ -393,6 +426,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="charmFieldActionPerformed"/>
@@ -400,6 +436,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="climbLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Climb"/>
               </Properties>
             </Component>
@@ -407,6 +446,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="climbFieldActionPerformed"/>
@@ -414,6 +456,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="disguiseLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Disguise"/>
               </Properties>
             </Component>
@@ -421,6 +466,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="disguiseFieldActionPerformed"/>
@@ -428,6 +476,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="electricalRepairLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Electrical Repair"/>
               </Properties>
             </Component>
@@ -435,6 +486,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="electricalRepairFieldActionPerformed"/>
@@ -444,6 +498,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="accountingFieldActionPerformed"/>
@@ -451,11 +508,17 @@
             </Component>
             <Component class="javax.swing.JLabel" name="accountingLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Accounting"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="dodgeLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Dodge (half DEX)"/>
               </Properties>
             </Component>
@@ -463,28 +526,47 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dodgeFieldActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="craft2ndLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="craft2ndField">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="craft2ndFieldActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="craft3rdLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="craft3rdField">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="craft3rdFieldActionPerformed"/>
@@ -492,6 +574,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="creditRatingLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Credit Rating"/>
               </Properties>
             </Component>
@@ -499,6 +584,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="creditRatingFieldActionPerformed"/>
@@ -506,6 +594,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="cthulhuMythosLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Cthulhu Mythos"/>
               </Properties>
             </Component>
@@ -513,6 +604,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cthulhuMythosFieldActionPerformed"/>
@@ -520,6 +614,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="driveLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Drive"/>
               </Properties>
             </Component>
@@ -527,6 +624,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="driveFieldActionPerformed"/>
@@ -707,7 +807,7 @@
                           <Component id="languageOwnField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="languageOwn" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="25" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -715,6 +815,9 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="handgunLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Handgun"/>
               </Properties>
             </Component>
@@ -722,6 +825,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rifleFieldActionPerformed"/>
@@ -729,6 +835,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="rifleLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Rifle"/>
               </Properties>
             </Component>
@@ -736,6 +845,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="historyFieldActionPerformed"/>
@@ -743,6 +855,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="historyLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="History"/>
               </Properties>
             </Component>
@@ -750,6 +865,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="intimidateFieldActionPerformed"/>
@@ -757,11 +875,17 @@
             </Component>
             <Component class="javax.swing.JLabel" name="intimidateLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Intimidate"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jumpLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Jump"/>
               </Properties>
             </Component>
@@ -769,6 +893,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jumpFieldActionPerformed"/>
@@ -778,6 +905,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="languageOtherFieldActionPerformed"/>
@@ -785,6 +915,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="languageOtherLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Language (Other)"/>
               </Properties>
             </Component>
@@ -792,6 +925,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="languageOwnFieldActionPerformed"/>
@@ -799,6 +935,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="languageOwn">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Language (Own)(EDU)"/>
               </Properties>
             </Component>
@@ -806,6 +945,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="firstAidFieldActionPerformed"/>
@@ -813,11 +955,17 @@
             </Component>
             <Component class="javax.swing.JLabel" name="firstAidLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="First Aid"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="fastTalkLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Fast Talk"/>
               </Properties>
             </Component>
@@ -825,6 +973,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fastTalkFieldActionPerformed"/>
@@ -832,6 +983,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="fightingLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Fighting (Brawl)"/>
               </Properties>
             </Component>
@@ -839,6 +993,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fightingFieldActionPerformed"/>
@@ -848,17 +1005,28 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="handgunFieldActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="fightinh2ndLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="fighting2ndField">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fighting2ndFieldActionPerformed"/>
@@ -868,41 +1036,73 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fighting3rdFieldActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="fighting3rdLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="rifle2ndField">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rifle2ndFieldActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="rifle2ndLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="languageOther2ndField">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="languageOther2ndFieldActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="languageOther2ndLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="languageOther3rdLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="languageOther3rdField">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="languageOther3rdFieldActionPerformed"/>
@@ -1083,7 +1283,7 @@
                           <Component id="ridingField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="ridingLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="25" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1093,6 +1293,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lawFieldActionPerformed"/>
@@ -1100,6 +1303,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="lawLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Law"/>
               </Properties>
             </Component>
@@ -1107,6 +1313,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="libraryUseFieldActionPerformed"/>
@@ -1114,6 +1323,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="libraryUseLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Library use"/>
               </Properties>
             </Component>
@@ -1121,6 +1333,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listenFieldActionPerformed"/>
@@ -1128,11 +1343,17 @@
             </Component>
             <Component class="javax.swing.JLabel" name="listenLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Listen"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="locksmithingLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Locksmithing"/>
               </Properties>
             </Component>
@@ -1140,6 +1361,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="locksmithingFieldActionPerformed"/>
@@ -1147,6 +1371,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="mechanicalRepairLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Mechanical Repair"/>
               </Properties>
             </Component>
@@ -1154,6 +1381,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mechanicalRepairFieldActionPerformed"/>
@@ -1161,6 +1391,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="medicineLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Medicine"/>
               </Properties>
             </Component>
@@ -1168,6 +1401,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="medicineFieldActionPerformed"/>
@@ -1175,6 +1411,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="persuadeLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Persuade"/>
               </Properties>
             </Component>
@@ -1182,6 +1421,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="persuadeFieldActionPerformed"/>
@@ -1189,6 +1431,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="pilotLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Pilot"/>
               </Properties>
             </Component>
@@ -1196,6 +1441,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pilotFieldActionPerformed"/>
@@ -1203,6 +1451,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="opHvMachineLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Op.Hv.Machine"/>
               </Properties>
             </Component>
@@ -1210,6 +1461,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="opHvMachineFieldActionPerformed"/>
@@ -1219,6 +1473,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="psychoanalysisFieldActionPerformed"/>
@@ -1226,6 +1483,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="psychoanalysisLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Psychoanalysis"/>
               </Properties>
             </Component>
@@ -1233,6 +1493,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ridingFieldActionPerformed"/>
@@ -1240,6 +1503,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="ridingLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Riding"/>
               </Properties>
             </Component>
@@ -1247,6 +1513,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="occultFieldActionPerformed"/>
@@ -1254,11 +1523,17 @@
             </Component>
             <Component class="javax.swing.JLabel" name="occultLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Occult"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="naturalWorldLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Natural World"/>
               </Properties>
             </Component>
@@ -1266,6 +1541,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="naturalWorldFieldActionPerformed"/>
@@ -1275,6 +1553,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="navigateFieldActionPerformed"/>
@@ -1282,11 +1563,17 @@
             </Component>
             <Component class="javax.swing.JLabel" name="navigateLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Navigate"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="psychologyLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Psychology"/>
               </Properties>
             </Component>
@@ -1294,6 +1581,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="psychologyFieldActionPerformed"/>
@@ -1474,7 +1764,7 @@
                           <Component id="other5thField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="other5thLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="25" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1484,6 +1774,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="scienceFieldActionPerformed"/>
@@ -1491,6 +1784,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="scienceLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Science"/>
               </Properties>
             </Component>
@@ -1498,26 +1794,45 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="science2ndFieldActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="science2ndLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="science3rdField">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="science3rdFieldActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="science3rdLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="sleightOfHandLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Sleight of Hand"/>
               </Properties>
             </Component>
@@ -1525,6 +1840,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sleightOfHandFieldActionPerformed"/>
@@ -1532,6 +1850,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="spotHiddenLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Spot Hidden"/>
               </Properties>
             </Component>
@@ -1539,6 +1860,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="spotHiddenFieldActionPerformed"/>
@@ -1548,6 +1872,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stealthFieldActionPerformed"/>
@@ -1555,11 +1882,17 @@
             </Component>
             <Component class="javax.swing.JLabel" name="stealthLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Stealth"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="survivalLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Survival"/>
               </Properties>
             </Component>
@@ -1567,6 +1900,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="survivalFieldActionPerformed"/>
@@ -1574,6 +1910,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="swimLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Swim"/>
               </Properties>
             </Component>
@@ -1581,6 +1920,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="swimFieldActionPerformed"/>
@@ -1588,6 +1930,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="throwLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Throw"/>
               </Properties>
             </Component>
@@ -1595,6 +1940,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="throwFieldActionPerformed"/>
@@ -1602,6 +1950,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="trackLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Track"/>
               </Properties>
             </Component>
@@ -1609,50 +1960,85 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="trackFieldActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="other1stLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="other1stField">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="other1stFieldActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="other2ndLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="other2ndField">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="other2ndFieldActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="other3rdLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="other3rdField">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="other3rdFieldActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="other4thLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="other4thField">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="other4thFieldActionPerformed"/>
@@ -1662,12 +2048,20 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="other5thFieldActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="other5thLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -1675,6 +2069,9 @@
     </Container>
     <Component class="javax.swing.JButton" name="generateNewButton">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Droid Serif" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Generate NEW!"/>
       </Properties>
       <Events>
@@ -1707,9 +2104,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jPanel3" max="32767" attributes="0"/>
+                      <Component id="jPanel2" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -1813,7 +2210,7 @@
                           <Component id="educationField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="educationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="16" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1821,26 +2218,41 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="appearanceLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="APP"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="powerLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="POW"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="sizeLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="SIZ"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="educationLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="EDU"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="moveRateLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Move Rate"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
@@ -1849,36 +2261,54 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="5"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="dexterityField">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="5"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="intelligenceField">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="5"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="conditionField">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="5"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="appearanceField">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="5"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="powerField">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="5"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="powerFieldActionPerformed"/>
@@ -1888,18 +2318,27 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="5"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="educationField">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="5"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="moveRateField">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="5"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="moveRateFieldActionPerformed"/>
@@ -1907,21 +2346,33 @@
             </Component>
             <Component class="javax.swing.JLabel" name="dexterityLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="DEX"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="strengthLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="STR"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="intelligenceLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="INT"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="conditionLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="CON"/>
               </Properties>
             </Component>
@@ -1939,29 +2390,54 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="professionLabel" min="-2" max="-2" attributes="0"/>
                           <Component id="nameLabel" min="-2" max="-2" attributes="0"/>
                           <Component id="ageLabel" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="HPLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="HPField" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="firstNameField" min="-2" pref="112" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lastNameField" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="ageField" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="sexLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="sexField" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="lastNameField" pref="178" max="32767" attributes="0"/>
                           </Group>
                           <Component id="professionField" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="ageField" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="sexLabel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="sanityLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="sanityField" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="sexField" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="MPLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="MPField" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                      <Component id="luckLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="luckField" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -1988,7 +2464,18 @@
                           <Component id="sexLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="sexField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="20" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="sanityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="MPLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="HPLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="luckLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="HPField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="sanityField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="MPField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="luckField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1998,6 +2485,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="8"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <AccessibilityProperties>
                 <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="firstNameField"/>
@@ -2010,6 +2500,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="8"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <AccessibilityProperties>
                 <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="LastNameField"/>
@@ -2019,6 +2512,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="10"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <AccessibilityProperties>
                 <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="professionField"/>
@@ -2029,6 +2525,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="3"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <AccessibilityProperties>
                 <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ageField"/>
@@ -2038,6 +2537,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="5"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
               </Properties>
               <AccessibilityProperties>
                 <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="mfField"/>
@@ -2048,23 +2550,115 @@
             </Component>
             <Component class="javax.swing.JLabel" name="sexLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Sex"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="nameLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Name"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="professionLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Profession"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="ageLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Age"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="sanityLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Sanity"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="HPLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="HP "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="MPLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="MP"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="luckLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Luck"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="HPField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HPFieldActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="sanityField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sanityFieldActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="MPField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MPFieldActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="luckField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="columns" type="int" value="2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="luckFieldActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -2087,6 +2681,9 @@
     </Container>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Droid Serif" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Open DB Management"/>
       </Properties>
       <Events>
@@ -2096,7 +2693,7 @@
     <Component class="javax.swing.JLabel" name="skillPointsField">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Nimbus Sans" size="18" style="0"/>
+          <Font name="Droid Serif" size="18" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Skill points available: 0"/>
       </Properties>

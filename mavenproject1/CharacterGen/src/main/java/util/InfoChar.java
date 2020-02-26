@@ -22,6 +22,30 @@ public class InfoChar {
         return util.Tools.roll(ageMin, ageMax);
     }
     
+    public static void setHP(javax.swing.JTextField hpField, javax.swing.JTextField condition, javax.swing.JTextField size) {
+        int con = Integer.parseInt(condition.getText());
+        int siz = Integer.parseInt(size.getText());
+        int hp = (con + siz) / 10;
+        hpField.setText(Integer.toString(hp));
+    }
+    
+    public static void setMagicPoints(javax.swing.JTextField MPField, javax.swing.JTextField power) {
+        int MP = Integer.parseInt(power.getText()) / 5;
+        MPField.setText(Integer.toString(MP));
+    }
+    
+    public static void setSanity(javax.swing.JTextField sanityField, javax.swing.JTextField power) {
+        sanityField.setText(power.getText());
+    }
+    
+    public static void setLuck(javax.swing.JTextField luckField) {
+        int luck = 0;
+        for (int i = 0; i < 3; i++) {
+            luck += util.Tools.roll(1, 6);
+        }
+        luckField.setText(Integer.toString(luck));
+    }
+    
     public static void displayResultFirstName(javax.swing.JTextField firstNameField, javax.swing.JTextField sexField, List result) {
 
         for (Object o : result) {
