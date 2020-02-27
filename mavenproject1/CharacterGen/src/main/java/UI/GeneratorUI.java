@@ -32,19 +32,24 @@ private static final String QUERY_NUMBER_OF_ROWS_FIRST_NAME="from FirstName wher
 private static final String QUERY_NUMBER_OF_ROWS_LAST_NAME="from LastName where id = (select count(*) from LastName)";
 private static final String QUERY_NUMBER_OF_ROWS_PROFESSION="from Profession where id = (select count(*) from Profession)";
     
-private void runAllQueries() {
-    List result = QuerryUtil.executeHQLQueryNumberOfFirstName(QUERY_NUMBER_OF_ROWS_FIRST_NAME);
-    InfoChar.displayResultFirstName(firstNameField, sexField, result);
-    
-    result = QuerryUtil.executeHQLQueryNumberOfLastName(QUERY_NUMBER_OF_ROWS_LAST_NAME);
-    InfoChar.displayResultLastName(lastNameField, result);
-    
-    result = QuerryUtil.executeHQLQueryNumberOfProfession(QUERY_NUMBER_OF_ROWS_PROFESSION);
-    InfoChar.displayResultProfession(ageField, professionField, result);
+private void randomAll() {
+    randomFirstName();
+    randomLastName();
+    randomProfession();
 }
-
+private void randomFirstName() {
+    List result = QuerryUtil.executeHQLQueryNumberOfFirstName(QUERY_NUMBER_OF_ROWS_FIRST_NAME);
+    InfoChar.displayResultFirstName(result);
+}
+private void randomLastName() {
+    List result = QuerryUtil.executeHQLQueryNumberOfLastName(QUERY_NUMBER_OF_ROWS_LAST_NAME);
+    InfoChar.displayResultLastName(result);
+}
+private void randomProfession() {
+    List result = QuerryUtil.executeHQLQueryNumberOfProfession(QUERY_NUMBER_OF_ROWS_PROFESSION);
+    InfoChar.displayResultProfession(result);
+}
 private void randomAttributes() {
-    aggregateAttributesFields();
     for (javax.swing.JTextField iter : attributesFields) {
         int value = 0;
         
@@ -64,7 +69,13 @@ private void randomAttributes() {
         value *= 5;     
         iter.setText(Integer.toString(value));
     }
+    setMoveRate();
+    InfoChar.setMagicPoints();
+    InfoChar.setLuck();
+    InfoChar.setHP();
+    InfoChar.setSanity();
 } 
+
 private void setMoveRate() {
     short moveRate = 0;
     short dex = (short) Integer.parseInt(dexterityField.getText());
@@ -88,65 +99,56 @@ private void adjustAttributesByCharacterAge() {
     String message = "";
     
     if (age >= 15 && age < 20) {
-        AttrChar.remove2Attr(logArea, strengthField, sizeField, 5);
+        AttrChar.remove2Attr(5);
         Tools.removePoint(educationField, 5);
         message = "5 point(s) removed from education";
     }
     
     else if (age >= 20 && age < 40) {
-        AttrChar.improvementValue(logArea, educationField, 1);
+        AttrChar.improvementValue(1);
     }
     
     else if (age >= 40 && age < 50) {
-        AttrChar.improvementValue(logArea, educationField, 2);
-        AttrChar.remove3Attr(logArea, strengthField, conditionField, dexterityField, 5);
+        AttrChar.improvementValue(2);
+        AttrChar.remove3Attr(5);
         Tools.removePoint(appearanceField, 5);
         movementRate -= 1;
         message = "5 point(s) removed from appearance\n 1 point(s) removed from movement rate";
     }
     
     else if (age >= 50 && age < 60) {
-        AttrChar.improvementValue(logArea, educationField, 3);
-        AttrChar.remove3Attr(logArea,strengthField, conditionField, dexterityField, 10);
+        AttrChar.improvementValue(3);
+        AttrChar.remove3Attr(10);
         Tools.removePoint(appearanceField, 10);
         movementRate -= 2;
         message = "10 point(s) removed from appearance\n 2 point(s) removed from movement rate";
     }
     
     else if (age >= 60 && age < 70) {
-        AttrChar.improvementValue(logArea, educationField, 4);
-        AttrChar.remove3Attr(logArea, strengthField, conditionField, dexterityField, 20);
+        AttrChar.improvementValue(4);
+        AttrChar.remove3Attr(20);
         Tools.removePoint(appearanceField, 15);
         movementRate -= 3;
         message = "15 point(s) removed from appearance\n 3 point(s) removed from movement rate";
     }
     
     else if (age >= 70 && age < 80) {
-        AttrChar.improvementValue(logArea, educationField, 4);
-        AttrChar.remove3Attr(logArea, strengthField, conditionField, dexterityField, 40);
+        AttrChar.improvementValue(4);
+        AttrChar.remove3Attr(40);
         Tools.removePoint(appearanceField, 20);
         movementRate -= 4;
         message = "20 point(s) removed from appearance\n 4 point(s) removed from movement rate";
     }
     
     else if (age >= 80 && age < 90) {
-        AttrChar.improvementValue(logArea, educationField, 4);
-        AttrChar.remove3Attr(logArea, strengthField, conditionField, dexterityField, 80);
+        AttrChar.improvementValue(4);
+        AttrChar.remove3Attr(80);
         Tools.removePoint(appearanceField, 25);
         movementRate -= 5;
         message = "25 point(s) removed from appearance\n 5 point(s) removed from movement rate";
     }
     moveRateField.setText(Integer.toString(movementRate));
-    AttrChar.appendLog(logArea, message);
-}
-
-private void setSkillPoints() {
-    int skillPoints = calculateSkillPoints(intelligenceField);
-    String skillPointsText = "Skill points available: " + skillPoints;
-    skillPointsField.setText(skillPointsText);
-}
-private int calculateSkillPoints(javax.swing.JTextField intelligence) {
-    return Integer.parseInt(intelligence.getText()) * 2;
+    AttrChar.appendLog(message);
 }
 
     /**
@@ -2316,21 +2318,126 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
     }//GEN-LAST:event_moveRateFieldActionPerformed
 
     private void generateNewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateNewButtonActionPerformed
-        logArea.setText("");
+        innitializeStartingConditions();
+        randomAll();
         randomAttributes(); 
-        aggregateCharacterFields();
-        setMoveRate();
-        runAllQueries();
         adjustAttributesByCharacterAge();
-        aggregateSkillFields();
         SkillChar.setDefaultValues(skillFields, educationField, dexterityField);
-        setSkillPoints();
-        InfoChar.setMagicPoints(MPField, powerField);
-        InfoChar.setLuck(luckField);
-        InfoChar.setHP(HPField, conditionField, sizeField);
-        InfoChar.setSanity(sanityField, powerField);
+        SkillChar.setSkillPoints();
     }//GEN-LAST:event_generateNewButtonActionPerformed
 
+    private void innitializeStartingConditions() {
+        logArea.setText("");
+        aggregateCharacterFields();
+        aggregateAttrCharFields();
+        aggregateAttributesFields();
+        aggregateSkillFields();
+        AttrChar.initAttrChar(attrCharFields, logArea);
+        InfoChar.initInfoChar(characterFields, conditionField, sizeField, powerField);
+        SkillChar.initSkillChar(skillPointsField, intelligenceField);
+    }
+    
+    private ArrayList<javax.swing.JTextField> characterFields;
+    private ArrayList<javax.swing.JTextField> skillFields;
+    private ArrayList<javax.swing.JTextField> attrCharFields;
+    private javax.swing.JTextField[] attributesFields;
+    
+    private void aggregateAttributesFields() {
+        attributesFields = new javax.swing.JTextField[] {
+            strengthField,
+            dexterityField,
+            intelligenceField,
+            conditionField,
+            appearanceField,
+            powerField,
+            educationField,
+            sizeField
+        };
+    }
+    private void aggregateAttrCharFields() {
+        attrCharFields = new ArrayList<>();
+        attrCharFields.add(strengthField);
+        attrCharFields.add(sizeField);
+        attrCharFields.add(conditionField);
+        attrCharFields.add(dexterityField);
+        attrCharFields.add(educationField);
+    }
+    private void aggregateSkillFields() {
+        skillFields = new ArrayList<>();
+        skillFields.add(accountingField);
+        skillFields.add(anthropologyField);
+        skillFields.add(appraiseField);
+        skillFields.add(archeologyField);
+        skillFields.add(craftField);
+        skillFields.add(craft2ndField);
+        skillFields.add(craft3rdField);
+        skillFields.add(charmField);
+        skillFields.add(climbField);
+        skillFields.add(creditRatingField);
+        skillFields.add(cthulhuMythosField);
+        skillFields.add(disguiseField);
+        skillFields.add(dodgeField);
+        skillFields.add(driveField);
+        skillFields.add(electricalRepairField);
+        skillFields.add(fastTalkField);
+        skillFields.add(fightingField);
+        skillFields.add(fighting2ndField);
+        skillFields.add(fighting3rdField);
+        skillFields.add(handgunField);
+        skillFields.add(rifleField);
+        skillFields.add(rifle2ndField);
+        skillFields.add(firstAidField);
+        skillFields.add(historyField);
+        skillFields.add(intimidateField);
+        skillFields.add(jumpField);
+        skillFields.add(languageOtherField);
+        skillFields.add(languageOther2ndField);
+        skillFields.add(languageOther3rdField);
+        skillFields.add(languageOwnField);
+        skillFields.add(lawField);
+        skillFields.add(libraryUseField);
+        skillFields.add(listenField);
+        skillFields.add(locksmithingField);
+        skillFields.add(mechanicalRepairField);
+        skillFields.add(medicineField);
+        skillFields.add(naturalWorldField);
+        skillFields.add(navigateField);
+        skillFields.add(occultField);
+        skillFields.add(opHvMachineField);
+        skillFields.add(persuadeField);
+        skillFields.add(pilotField);
+        skillFields.add(psychologyField);
+        skillFields.add(psychoanalysisField);
+        skillFields.add(ridingField);
+        skillFields.add(scienceField);
+        skillFields.add(science2ndField);
+        skillFields.add(science3rdField);
+        skillFields.add(sleightOfHandField);
+        skillFields.add(spotHiddenField);
+        skillFields.add(stealthField);
+        skillFields.add(survivalField);
+        skillFields.add(swimField);
+        skillFields.add(throwField);
+        skillFields.add(trackField);
+        skillFields.add(other1stField);
+        skillFields.add(other2ndField);
+        skillFields.add(other3rdField);
+        skillFields.add(other4thField);
+        skillFields.add(other5thField);
+    }
+    private void aggregateCharacterFields() {
+        characterFields = new ArrayList<>();
+        characterFields.add(firstNameField);
+        characterFields.add(lastNameField);
+        characterFields.add(sexField);
+        characterFields.add(ageField);
+        characterFields.add(professionField);
+        characterFields.add(HPField);
+        characterFields.add(MPField);
+        characterFields.add(sanityField);
+        characterFields.add(luckField);
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         DBManagementUI.start();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -2378,7 +2485,7 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
         }
         //</editor-fold>
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -2386,6 +2493,7 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
             }
         });
     }    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField HPField;
     private javax.swing.JLabel HPLabel;
@@ -2556,94 +2664,6 @@ private int calculateSkillPoints(javax.swing.JTextField intelligence) {
     private javax.swing.JTextField trackField;
     private javax.swing.JLabel trackLabel;
     // End of variables declaration//GEN-END:variables
-
-    private ArrayList<javax.swing.JTextField> characterFields;
-    private javax.swing.JTextField[] attributesFields;
-    private ArrayList<javax.swing.JTextField> skillFields;
-    
-    private void aggregateAttributesFields() {
-        attributesFields = new javax.swing.JTextField[] {
-            strengthField,
-            dexterityField,
-            intelligenceField,
-            conditionField,
-            appearanceField,
-            powerField,
-            educationField,
-            sizeField
-        };
-    }   
-    private void aggregateSkillFields() {
-        skillFields = new ArrayList<>();
-        skillFields.add(accountingField);
-        skillFields.add(anthropologyField);
-        skillFields.add(appraiseField);
-        skillFields.add(archeologyField);
-        skillFields.add(craftField);
-        skillFields.add(craft2ndField);
-        skillFields.add(craft3rdField);
-        skillFields.add(charmField);
-        skillFields.add(climbField);
-        skillFields.add(creditRatingField);
-        skillFields.add(cthulhuMythosField);
-        skillFields.add(disguiseField);
-        skillFields.add(dodgeField);
-        skillFields.add(driveField);
-        skillFields.add(electricalRepairField);
-        skillFields.add(fastTalkField);
-        skillFields.add(fightingField);
-        skillFields.add(fighting2ndField);
-        skillFields.add(fighting3rdField);
-        skillFields.add(handgunField);
-        skillFields.add(rifleField);
-        skillFields.add(rifle2ndField);
-        skillFields.add(firstAidField);
-        skillFields.add(historyField);
-        skillFields.add(intimidateField);
-        skillFields.add(jumpField);
-        skillFields.add(languageOtherField);
-        skillFields.add(languageOther2ndField);
-        skillFields.add(languageOther3rdField);
-        skillFields.add(languageOwnField);
-        skillFields.add(lawField);
-        skillFields.add(libraryUseField);
-        skillFields.add(listenField);
-        skillFields.add(locksmithingField);
-        skillFields.add(mechanicalRepairField);
-        skillFields.add(medicineField);
-        skillFields.add(naturalWorldField);
-        skillFields.add(navigateField);
-        skillFields.add(occultField);
-        skillFields.add(opHvMachineField);
-        skillFields.add(persuadeField);
-        skillFields.add(pilotField);
-        skillFields.add(psychologyField);
-        skillFields.add(psychoanalysisField);
-        skillFields.add(ridingField);
-        skillFields.add(scienceField);
-        skillFields.add(science2ndField);
-        skillFields.add(science3rdField);
-        skillFields.add(sleightOfHandField);
-        skillFields.add(spotHiddenField);
-        skillFields.add(stealthField);
-        skillFields.add(survivalField);
-        skillFields.add(swimField);
-        skillFields.add(throwField);
-        skillFields.add(trackField);
-        skillFields.add(other1stField);
-        skillFields.add(other2ndField);
-        skillFields.add(other3rdField);
-        skillFields.add(other4thField);
-        skillFields.add(other5thField);
-    }
-    private void aggregateCharacterFields() {
-        characterFields = new ArrayList<>();
-        characterFields.add(firstNameField);
-        characterFields.add(lastNameField);
-        characterFields.add(sexField);
-        characterFields.add(ageField);
-        characterFields.add(professionField);
-    }
 }
 
     
