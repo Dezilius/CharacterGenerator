@@ -13,6 +13,14 @@ import java.util.ArrayList;
  */
 public class SkillChar {
     
+    private static javax.swing.JLabel skillPointsField;
+    private static javax.swing.JTextField intelligenceField;
+    
+    public static void initSkillChar(javax.swing.JLabel skillPoints, javax.swing.JTextField intelligence) {
+        skillPointsField = skillPoints;
+        intelligenceField = intelligence;
+    }
+    
     public static void setDefaultValues(ArrayList<javax.swing.JTextField> skillFields, javax.swing.JTextField education, javax.swing.JTextField dexterity) {
             
             String edu = education.getText();
@@ -79,6 +87,16 @@ public class SkillChar {
             skillFields.get(58).setText("10");
             skillFields.get(59).setText("10");
             
+    }
+    
+    public static void setSkillPoints() {
+        int skillPoints = calculateSkillPoints(intelligenceField);
+        String skillPointsText = "Skill points available: " + skillPoints;
+        skillPointsField.setText(skillPointsText);
+    }
+    
+    private static int calculateSkillPoints(javax.swing.JTextField intelligence) {
+        return Integer.parseInt(intelligence.getText()) * 2;
     }
     
 }

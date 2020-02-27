@@ -5,6 +5,7 @@
  */
 package util;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,6 +13,34 @@ import java.util.List;
  * @author dezilius
  */
 public class InfoChar {
+    
+    private static javax.swing.JTextField firstNameField;
+    private static javax.swing.JTextField lastNameField;
+    private static javax.swing.JTextField professionField;
+    private static javax.swing.JTextField ageField;
+    private static javax.swing.JTextField sexField;
+    private static javax.swing.JTextField HPField;
+    private static javax.swing.JTextField MPField;
+    private static javax.swing.JTextField sanityField;
+    private static javax.swing.JTextField luckField;
+    private static javax.swing.JTextField conditionField;
+    private static javax.swing.JTextField sizeField;
+    private static javax.swing.JTextField powerField;
+    
+    public static void initInfoChar(ArrayList<javax.swing.JTextField> characterFields, javax.swing.JTextField conditionFieldInit, javax.swing.JTextField sizeFieldInit, javax.swing.JTextField powerFieldInit) {
+        firstNameField = characterFields.get(0);
+        lastNameField = characterFields.get(1);
+        sexField = characterFields.get(2);
+        ageField = characterFields.get(3);
+        professionField = characterFields.get(4);
+        HPField = characterFields.get(5);
+        MPField = characterFields.get(6);
+        sanityField = characterFields.get(7);
+        luckField = characterFields.get(8);
+        conditionField = conditionFieldInit;
+        sizeField = sizeFieldInit;
+        powerField = powerFieldInit;
+    }
     
     private static int randomAge(callofcthulhuDB.entity.Profession profession) {
         int ageMin = profession.getMinAge();
@@ -22,7 +51,31 @@ public class InfoChar {
         return util.Tools.roll(ageMin, ageMax);
     }
     
-    public static void displayResultFirstName(javax.swing.JTextField firstNameField, javax.swing.JTextField sexField, List result) {
+    public static void setHP() {
+        int con = Integer.parseInt(conditionField.getText());
+        int siz = Integer.parseInt(sizeField.getText());
+        int hp = (con + siz) / 10;
+        HPField.setText(Integer.toString(hp));
+    }
+    
+    public static void setMagicPoints() {
+        int MP = Integer.parseInt(powerField.getText()) / 5;
+        MPField.setText(Integer.toString(MP));
+    }
+    
+    public static void setSanity() {
+        sanityField.setText(powerField.getText());
+    }
+    
+    public static void setLuck() {
+        int luck = 0;
+        for (int i = 0; i < 3; i++) {
+            luck += util.Tools.roll(1, 6);
+        }
+        luckField.setText(Integer.toString(luck));
+    }
+    
+    public static void displayResultFirstName(List result) {
 
         for (Object o : result) {
             callofcthulhuDB.entity.FirstName name = (callofcthulhuDB.entity.FirstName)o;
@@ -31,7 +84,7 @@ public class InfoChar {
         }
     }
     
-    public static void displayResultLastName(javax.swing.JTextField lastNameField, List result) {
+    public static void displayResultLastName(List result) {
        
         for (Object o : result) {
             callofcthulhuDB.entity.LastName name = (callofcthulhuDB.entity.LastName)o;
@@ -39,7 +92,7 @@ public class InfoChar {
         }
     }
     
-    public static void displayResultProfession(javax.swing.JTextField ageField, javax.swing.JTextField professionField, List result) {
+    public static void displayResultProfession(List result) {
             
         for (Object o : result) {
             callofcthulhuDB.entity.Profession profession = (callofcthulhuDB.entity.Profession)o;
