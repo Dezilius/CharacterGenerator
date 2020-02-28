@@ -285,7 +285,13 @@ private void adjustAttributesByCharacterAge() {
         other4thField = new javax.swing.JTextField();
         other5thField = new javax.swing.JTextField();
         other5thLabel = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
         generateNewButton = new javax.swing.JButton();
+        rollFirstNameButton = new javax.swing.JButton();
+        rollLastNameButton = new javax.swing.JButton();
+        rollProfessionButton = new javax.swing.JButton();
+        rollAttributesButton = new javax.swing.JButton();
+        manageSPButton = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         appearanceLabel = new javax.swing.JLabel();
@@ -326,16 +332,19 @@ private void adjustAttributesByCharacterAge() {
         luckField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         logArea = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
+        OpenDBMButton = new javax.swing.JButton();
         skillPointsField = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Character Generator");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setFocusableWindowState(false);
-        setLocation(new java.awt.Point(500, 500));
-        setPreferredSize(new java.awt.Dimension(1200, 855));
+        setLocation(new java.awt.Point(0, 0));
+        setMinimumSize(new java.awt.Dimension(1220, 780));
+        setPreferredSize(new java.awt.Dimension(1220, 780));
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setFont(new java.awt.Font("Droid Serif", 1, 12)); // NOI18N
@@ -346,11 +355,6 @@ private void adjustAttributesByCharacterAge() {
         anthropologyField.setEditable(false);
         anthropologyField.setColumns(2);
         anthropologyField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        anthropologyField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                anthropologyFieldActionPerformed(evt);
-            }
-        });
 
         anthropologyLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         anthropologyLabel.setText("Anthropology");
@@ -361,11 +365,6 @@ private void adjustAttributesByCharacterAge() {
         appraiseField.setEditable(false);
         appraiseField.setColumns(2);
         appraiseField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        appraiseField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                appraiseFieldActionPerformed(evt);
-            }
-        });
 
         archeologyLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         archeologyLabel.setText("Archeology");
@@ -373,11 +372,6 @@ private void adjustAttributesByCharacterAge() {
         archeologyField.setEditable(false);
         archeologyField.setColumns(2);
         archeologyField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        archeologyField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                archeologyFieldActionPerformed(evt);
-            }
-        });
 
         craftLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         craftLabel.setText("Craft");
@@ -385,11 +379,6 @@ private void adjustAttributesByCharacterAge() {
         craftField.setEditable(false);
         craftField.setColumns(2);
         craftField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        craftField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                craftFieldActionPerformed(evt);
-            }
-        });
 
         charmLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         charmLabel.setText("Charm");
@@ -397,11 +386,6 @@ private void adjustAttributesByCharacterAge() {
         charmField.setEditable(false);
         charmField.setColumns(2);
         charmField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        charmField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                charmFieldActionPerformed(evt);
-            }
-        });
 
         climbLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         climbLabel.setText("Climb");
@@ -409,11 +393,6 @@ private void adjustAttributesByCharacterAge() {
         climbField.setEditable(false);
         climbField.setColumns(2);
         climbField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        climbField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                climbFieldActionPerformed(evt);
-            }
-        });
 
         disguiseLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         disguiseLabel.setText("Disguise");
@@ -421,11 +400,6 @@ private void adjustAttributesByCharacterAge() {
         disguiseField.setEditable(false);
         disguiseField.setColumns(2);
         disguiseField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        disguiseField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                disguiseFieldActionPerformed(evt);
-            }
-        });
 
         electricalRepairLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         electricalRepairLabel.setText("Electrical Repair");
@@ -433,20 +407,10 @@ private void adjustAttributesByCharacterAge() {
         electricalRepairField.setEditable(false);
         electricalRepairField.setColumns(2);
         electricalRepairField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        electricalRepairField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                electricalRepairFieldActionPerformed(evt);
-            }
-        });
 
         accountingField.setEditable(false);
         accountingField.setColumns(2);
         accountingField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        accountingField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                accountingFieldActionPerformed(evt);
-            }
-        });
 
         accountingLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         accountingLabel.setText("Accounting");
@@ -457,33 +421,18 @@ private void adjustAttributesByCharacterAge() {
         dodgeField.setEditable(false);
         dodgeField.setColumns(2);
         dodgeField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        dodgeField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dodgeFieldActionPerformed(evt);
-            }
-        });
 
         craft2ndLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         craft2ndField.setEditable(false);
         craft2ndField.setColumns(2);
         craft2ndField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        craft2ndField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                craft2ndFieldActionPerformed(evt);
-            }
-        });
 
         craft3rdLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         craft3rdField.setEditable(false);
         craft3rdField.setColumns(2);
         craft3rdField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        craft3rdField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                craft3rdFieldActionPerformed(evt);
-            }
-        });
 
         creditRatingLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         creditRatingLabel.setText("Credit Rating");
@@ -491,11 +440,6 @@ private void adjustAttributesByCharacterAge() {
         creditRatingField.setEditable(false);
         creditRatingField.setColumns(2);
         creditRatingField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        creditRatingField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                creditRatingFieldActionPerformed(evt);
-            }
-        });
 
         cthulhuMythosLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         cthulhuMythosLabel.setText("Cthulhu Mythos");
@@ -503,11 +447,6 @@ private void adjustAttributesByCharacterAge() {
         cthulhuMythosField.setEditable(false);
         cthulhuMythosField.setColumns(2);
         cthulhuMythosField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        cthulhuMythosField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cthulhuMythosFieldActionPerformed(evt);
-            }
-        });
 
         driveLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         driveLabel.setText("Drive");
@@ -515,11 +454,6 @@ private void adjustAttributesByCharacterAge() {
         driveField.setEditable(false);
         driveField.setColumns(2);
         driveField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        driveField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                driveFieldActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -527,101 +461,94 @@ private void adjustAttributesByCharacterAge() {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addComponent(cthulhuMythosLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(cthulhuMythosField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addComponent(creditRatingLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(creditRatingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addComponent(craft3rdLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(craft3rdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addComponent(craft2ndLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(craft2ndField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(craft3rdLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(craft3rdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(craft2ndLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(craft2ndField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(cthulhuMythosLabel)
+                                .addGap(12, 12, 12)
+                                .addComponent(cthulhuMythosField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(creditRatingLabel)
+                                .addGap(12, 12, 12)
+                                .addComponent(creditRatingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addContainerGap(49, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(disguiseLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(dodgeLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(driveLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(electricalRepairLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(accountingLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(accountingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(anthropologyLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(anthropologyField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(appraiseLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(appraiseField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(archeologyLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(archeologyField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(craftLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(craftField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(65, 65, 65)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(charmLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(charmField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addComponent(electricalRepairField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(disguiseField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dodgeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(driveField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                    .addComponent(craftLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(craftField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(accountingLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(anthropologyLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(appraiseLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(archeologyLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(accountingField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(anthropologyField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(appraiseField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(archeologyField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addGap(45, 45, 45)
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(climbLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(climbField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(electricalRepairLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(electricalRepairField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(disguiseLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(disguiseField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(dodgeLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(dodgeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(driveLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(driveField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(20, Short.MAX_VALUE))
+                                        .addComponent(charmLabel))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(climbField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(charmField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(accountingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33))
+                            .addComponent(anthropologyField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(accountingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(accountingLabel))
-                        .addGap(33, 33, 33))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(anthropologyField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(anthropologyLabel)))
-                .addGap(6, 6, 6)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(appraiseField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(appraiseLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(archeologyField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(archeologyLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(appraiseField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(appraiseLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(archeologyField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(archeologyLabel)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(accountingLabel)
+                                .addGap(39, 39, 39))
+                            .addComponent(anthropologyLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(69, 69, 69)))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(craftField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(craftLabel))
@@ -676,11 +603,6 @@ private void adjustAttributesByCharacterAge() {
         rifleField.setEditable(false);
         rifleField.setColumns(2);
         rifleField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        rifleField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rifleFieldActionPerformed(evt);
-            }
-        });
 
         rifleLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         rifleLabel.setText("Rifle");
@@ -688,11 +610,6 @@ private void adjustAttributesByCharacterAge() {
         historyField.setEditable(false);
         historyField.setColumns(2);
         historyField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        historyField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                historyFieldActionPerformed(evt);
-            }
-        });
 
         historyLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         historyLabel.setText("History");
@@ -700,11 +617,6 @@ private void adjustAttributesByCharacterAge() {
         intimidateField.setEditable(false);
         intimidateField.setColumns(2);
         intimidateField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        intimidateField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                intimidateFieldActionPerformed(evt);
-            }
-        });
 
         intimidateLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         intimidateLabel.setText("Intimidate");
@@ -715,20 +627,10 @@ private void adjustAttributesByCharacterAge() {
         jumpField.setEditable(false);
         jumpField.setColumns(2);
         jumpField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        jumpField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jumpFieldActionPerformed(evt);
-            }
-        });
 
         languageOtherField.setEditable(false);
         languageOtherField.setColumns(2);
         languageOtherField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        languageOtherField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                languageOtherFieldActionPerformed(evt);
-            }
-        });
 
         languageOtherLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         languageOtherLabel.setText("Language (Other)");
@@ -736,11 +638,6 @@ private void adjustAttributesByCharacterAge() {
         languageOwnField.setEditable(false);
         languageOwnField.setColumns(2);
         languageOwnField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        languageOwnField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                languageOwnFieldActionPerformed(evt);
-            }
-        });
 
         languageOwn.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         languageOwn.setText("Language (Own)(EDU)");
@@ -748,11 +645,6 @@ private void adjustAttributesByCharacterAge() {
         firstAidField.setEditable(false);
         firstAidField.setColumns(2);
         firstAidField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        firstAidField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                firstAidFieldActionPerformed(evt);
-            }
-        });
 
         firstAidLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         firstAidLabel.setText("First Aid");
@@ -763,11 +655,6 @@ private void adjustAttributesByCharacterAge() {
         fastTalkField.setEditable(false);
         fastTalkField.setColumns(2);
         fastTalkField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        fastTalkField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fastTalkFieldActionPerformed(evt);
-            }
-        });
 
         fightingLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         fightingLabel.setText("Fighting (Brawl)");
@@ -775,62 +662,32 @@ private void adjustAttributesByCharacterAge() {
         fightingField.setEditable(false);
         fightingField.setColumns(2);
         fightingField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        fightingField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fightingFieldActionPerformed(evt);
-            }
-        });
 
         handgunField.setEditable(false);
         handgunField.setColumns(2);
         handgunField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        handgunField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                handgunFieldActionPerformed(evt);
-            }
-        });
 
         fightinh2ndLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         fighting2ndField.setEditable(false);
         fighting2ndField.setColumns(2);
         fighting2ndField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        fighting2ndField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fighting2ndFieldActionPerformed(evt);
-            }
-        });
 
         fighting3rdField.setEditable(false);
         fighting3rdField.setColumns(2);
         fighting3rdField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        fighting3rdField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fighting3rdFieldActionPerformed(evt);
-            }
-        });
 
         fighting3rdLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         rifle2ndField.setEditable(false);
         rifle2ndField.setColumns(2);
         rifle2ndField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        rifle2ndField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rifle2ndFieldActionPerformed(evt);
-            }
-        });
 
         rifle2ndLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         languageOther2ndField.setEditable(false);
         languageOther2ndField.setColumns(2);
         languageOther2ndField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        languageOther2ndField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                languageOther2ndFieldActionPerformed(evt);
-            }
-        });
 
         languageOther2ndLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
@@ -839,18 +696,13 @@ private void adjustAttributesByCharacterAge() {
         languageOther3rdField.setEditable(false);
         languageOther3rdField.setColumns(2);
         languageOther3rdField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        languageOther3rdField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                languageOther3rdFieldActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
+                .addContainerGap(28, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addComponent(fastTalkLabel)
@@ -912,12 +764,12 @@ private void adjustAttributesByCharacterAge() {
                         .addComponent(languageOther3rdLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(languageOther3rdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 20, 20))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fastTalkField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fastTalkLabel))
@@ -976,8 +828,7 @@ private void adjustAttributesByCharacterAge() {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(languageOwnField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(languageOwn))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(languageOwn)))
         );
 
         jPanel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -985,11 +836,6 @@ private void adjustAttributesByCharacterAge() {
         lawField.setEditable(false);
         lawField.setColumns(2);
         lawField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        lawField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lawFieldActionPerformed(evt);
-            }
-        });
 
         lawLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         lawLabel.setText("Law");
@@ -997,11 +843,6 @@ private void adjustAttributesByCharacterAge() {
         libraryUseField.setEditable(false);
         libraryUseField.setColumns(2);
         libraryUseField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        libraryUseField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                libraryUseFieldActionPerformed(evt);
-            }
-        });
 
         libraryUseLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         libraryUseLabel.setText("Library use");
@@ -1009,11 +850,6 @@ private void adjustAttributesByCharacterAge() {
         listenField.setEditable(false);
         listenField.setColumns(2);
         listenField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        listenField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listenFieldActionPerformed(evt);
-            }
-        });
 
         listenLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         listenLabel.setText("Listen");
@@ -1024,11 +860,6 @@ private void adjustAttributesByCharacterAge() {
         locksmithingField.setEditable(false);
         locksmithingField.setColumns(2);
         locksmithingField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        locksmithingField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                locksmithingFieldActionPerformed(evt);
-            }
-        });
 
         mechanicalRepairLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         mechanicalRepairLabel.setText("Mechanical Repair");
@@ -1036,11 +867,6 @@ private void adjustAttributesByCharacterAge() {
         mechanicalRepairField.setEditable(false);
         mechanicalRepairField.setColumns(2);
         mechanicalRepairField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        mechanicalRepairField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mechanicalRepairFieldActionPerformed(evt);
-            }
-        });
 
         medicineLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         medicineLabel.setText("Medicine");
@@ -1048,11 +874,6 @@ private void adjustAttributesByCharacterAge() {
         medicineField.setEditable(false);
         medicineField.setColumns(2);
         medicineField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        medicineField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                medicineFieldActionPerformed(evt);
-            }
-        });
 
         persuadeLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         persuadeLabel.setText("Persuade");
@@ -1060,11 +881,6 @@ private void adjustAttributesByCharacterAge() {
         persuadeField.setEditable(false);
         persuadeField.setColumns(2);
         persuadeField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        persuadeField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                persuadeFieldActionPerformed(evt);
-            }
-        });
 
         pilotLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         pilotLabel.setText("Pilot");
@@ -1072,11 +888,6 @@ private void adjustAttributesByCharacterAge() {
         pilotField.setEditable(false);
         pilotField.setColumns(2);
         pilotField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        pilotField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pilotFieldActionPerformed(evt);
-            }
-        });
 
         opHvMachineLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         opHvMachineLabel.setText("Op.Hv.Machine");
@@ -1084,20 +895,10 @@ private void adjustAttributesByCharacterAge() {
         opHvMachineField.setEditable(false);
         opHvMachineField.setColumns(2);
         opHvMachineField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        opHvMachineField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opHvMachineFieldActionPerformed(evt);
-            }
-        });
 
         psychoanalysisField.setEditable(false);
         psychoanalysisField.setColumns(2);
         psychoanalysisField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        psychoanalysisField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                psychoanalysisFieldActionPerformed(evt);
-            }
-        });
 
         psychoanalysisLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         psychoanalysisLabel.setText("Psychoanalysis");
@@ -1105,11 +906,6 @@ private void adjustAttributesByCharacterAge() {
         ridingField.setEditable(false);
         ridingField.setColumns(2);
         ridingField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        ridingField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ridingFieldActionPerformed(evt);
-            }
-        });
 
         ridingLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         ridingLabel.setText("Riding");
@@ -1117,11 +913,6 @@ private void adjustAttributesByCharacterAge() {
         occultField.setEditable(false);
         occultField.setColumns(2);
         occultField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        occultField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                occultFieldActionPerformed(evt);
-            }
-        });
 
         occultLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         occultLabel.setText("Occult");
@@ -1132,20 +923,10 @@ private void adjustAttributesByCharacterAge() {
         naturalWorldField.setEditable(false);
         naturalWorldField.setColumns(2);
         naturalWorldField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        naturalWorldField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                naturalWorldFieldActionPerformed(evt);
-            }
-        });
 
         navigateField.setEditable(false);
         navigateField.setColumns(2);
         navigateField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        navigateField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                navigateFieldActionPerformed(evt);
-            }
-        });
 
         navigateLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         navigateLabel.setText("Navigate");
@@ -1156,11 +937,6 @@ private void adjustAttributesByCharacterAge() {
         psychologyField.setEditable(false);
         psychologyField.setColumns(2);
         psychologyField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        psychologyField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                psychologyFieldActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -1229,12 +1005,12 @@ private void adjustAttributesByCharacterAge() {
                         .addComponent(mechanicalRepairLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(mechanicalRepairField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lawField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lawLabel))
@@ -1293,8 +1069,7 @@ private void adjustAttributesByCharacterAge() {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ridingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ridingLabel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(ridingLabel)))
         );
 
         jPanel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -1302,11 +1077,6 @@ private void adjustAttributesByCharacterAge() {
         scienceField.setEditable(false);
         scienceField.setColumns(2);
         scienceField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        scienceField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scienceFieldActionPerformed(evt);
-            }
-        });
 
         scienceLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         scienceLabel.setText("Science");
@@ -1314,22 +1084,12 @@ private void adjustAttributesByCharacterAge() {
         science2ndField.setEditable(false);
         science2ndField.setColumns(2);
         science2ndField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        science2ndField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                science2ndFieldActionPerformed(evt);
-            }
-        });
 
         science2ndLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         science3rdField.setEditable(false);
         science3rdField.setColumns(2);
         science3rdField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        science3rdField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                science3rdFieldActionPerformed(evt);
-            }
-        });
 
         science3rdLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
@@ -1339,11 +1099,6 @@ private void adjustAttributesByCharacterAge() {
         sleightOfHandField.setEditable(false);
         sleightOfHandField.setColumns(2);
         sleightOfHandField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        sleightOfHandField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sleightOfHandFieldActionPerformed(evt);
-            }
-        });
 
         spotHiddenLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         spotHiddenLabel.setText("Spot Hidden");
@@ -1351,20 +1106,10 @@ private void adjustAttributesByCharacterAge() {
         spotHiddenField.setEditable(false);
         spotHiddenField.setColumns(2);
         spotHiddenField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        spotHiddenField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                spotHiddenFieldActionPerformed(evt);
-            }
-        });
 
         stealthField.setEditable(false);
         stealthField.setColumns(2);
         stealthField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        stealthField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stealthFieldActionPerformed(evt);
-            }
-        });
 
         stealthLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         stealthLabel.setText("Stealth");
@@ -1375,11 +1120,6 @@ private void adjustAttributesByCharacterAge() {
         survivalField.setEditable(false);
         survivalField.setColumns(2);
         survivalField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        survivalField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                survivalFieldActionPerformed(evt);
-            }
-        });
 
         swimLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         swimLabel.setText("Swim");
@@ -1387,11 +1127,6 @@ private void adjustAttributesByCharacterAge() {
         swimField.setEditable(false);
         swimField.setColumns(2);
         swimField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        swimField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                swimFieldActionPerformed(evt);
-            }
-        });
 
         throwLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         throwLabel.setText("Throw");
@@ -1399,11 +1134,6 @@ private void adjustAttributesByCharacterAge() {
         throwField.setEditable(false);
         throwField.setColumns(2);
         throwField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        throwField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                throwFieldActionPerformed(evt);
-            }
-        });
 
         trackLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         trackLabel.setText("Track");
@@ -1411,64 +1141,34 @@ private void adjustAttributesByCharacterAge() {
         trackField.setEditable(false);
         trackField.setColumns(2);
         trackField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        trackField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                trackFieldActionPerformed(evt);
-            }
-        });
 
         other1stLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         other1stField.setEditable(false);
         other1stField.setColumns(2);
         other1stField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        other1stField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                other1stFieldActionPerformed(evt);
-            }
-        });
 
         other2ndLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         other2ndField.setEditable(false);
         other2ndField.setColumns(2);
         other2ndField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        other2ndField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                other2ndFieldActionPerformed(evt);
-            }
-        });
 
         other3rdLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         other3rdField.setEditable(false);
         other3rdField.setColumns(2);
         other3rdField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        other3rdField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                other3rdFieldActionPerformed(evt);
-            }
-        });
 
         other4thLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         other4thField.setEditable(false);
         other4thField.setColumns(2);
         other4thField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        other4thField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                other4thFieldActionPerformed(evt);
-            }
-        });
 
         other5thField.setEditable(false);
         other5thField.setColumns(2);
         other5thField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        other5thField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                other5thFieldActionPerformed(evt);
-            }
-        });
 
         other5thLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
@@ -1539,12 +1239,12 @@ private void adjustAttributesByCharacterAge() {
                         .addComponent(other4thLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(other4thField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(scienceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(scienceLabel))
@@ -1603,49 +1303,125 @@ private void adjustAttributesByCharacterAge() {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(other5thField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(other5thLabel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(other5thLabel)))
         );
+
+        generateNewButton.setFont(new java.awt.Font("Droid Serif", 1, 12)); // NOI18N
+        generateNewButton.setText("Generate NEW!");
+        generateNewButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generateNewButtonActionPerformed(evt);
+            }
+        });
+
+        rollFirstNameButton.setFont(new java.awt.Font("Droid Serif", 1, 12)); // NOI18N
+        rollFirstNameButton.setText("New First Name");
+        rollFirstNameButton.setEnabled(false);
+        rollFirstNameButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rollFirstNameButtonActionPerformed(evt);
+            }
+        });
+
+        rollLastNameButton.setFont(new java.awt.Font("Droid Serif", 1, 12)); // NOI18N
+        rollLastNameButton.setText("New Last Name");
+        rollLastNameButton.setEnabled(false);
+        rollLastNameButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rollLastNameButtonActionPerformed(evt);
+            }
+        });
+
+        rollProfessionButton.setFont(new java.awt.Font("Droid Serif", 1, 12)); // NOI18N
+        rollProfessionButton.setText("New Profession");
+        rollProfessionButton.setEnabled(false);
+        rollProfessionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rollProfessionButtonActionPerformed(evt);
+            }
+        });
+
+        rollAttributesButton.setFont(new java.awt.Font("Droid Serif", 1, 12)); // NOI18N
+        rollAttributesButton.setText("Roll Attributes");
+        rollAttributesButton.setEnabled(false);
+        rollAttributesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rollAttributesButtonActionPerformed(evt);
+            }
+        });
+
+        manageSPButton.setFont(new java.awt.Font("Droid Serif", 1, 12)); // NOI18N
+        manageSPButton.setText("Manage SP");
+        manageSPButton.setEnabled(false);
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(rollFirstNameButton, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                        .addComponent(generateNewButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(manageSPButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rollAttributesButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rollProfessionButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                        .addComponent(rollLastNameButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addComponent(generateNewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rollFirstNameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rollLastNameButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rollProfessionButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rollAttributesButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(manageSPButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jPanel10Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {generateNewButton, rollAttributesButton, rollLastNameButton, rollProfessionButton});
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        generateNewButton.setFont(new java.awt.Font("Droid Serif", 1, 12)); // NOI18N
-        generateNewButton.setText("Generate NEW!");
-        generateNewButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                generateNewButtonMouseClicked(evt);
-            }
-        });
-        generateNewButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                generateNewButtonActionPerformed(evt);
-            }
-        });
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 970, 530));
 
         jPanel8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -1690,11 +1466,6 @@ private void adjustAttributesByCharacterAge() {
         powerField.setEditable(false);
         powerField.setColumns(5);
         powerField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        powerField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                powerFieldActionPerformed(evt);
-            }
-        });
 
         sizeField.setEditable(false);
         sizeField.setColumns(5);
@@ -1707,11 +1478,6 @@ private void adjustAttributesByCharacterAge() {
         moveRateField.setEditable(false);
         moveRateField.setColumns(5);
         moveRateField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        moveRateField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                moveRateFieldActionPerformed(evt);
-            }
-        });
 
         dexterityLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         dexterityLabel.setText("DEX");
@@ -1730,7 +1496,7 @@ private void adjustAttributesByCharacterAge() {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(strengthLabel)
                     .addComponent(conditionLabel)
@@ -1763,13 +1529,13 @@ private void adjustAttributesByCharacterAge() {
                                 .addComponent(powerLabel))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(educationField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(moveRateLabel)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(moveRateField)
                             .addComponent(powerField))))
-                .addGap(30, 30, 30))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1806,11 +1572,6 @@ private void adjustAttributesByCharacterAge() {
         firstNameField.setEditable(false);
         firstNameField.setColumns(8);
         firstNameField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        firstNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                firstNameFieldActionPerformed(evt);
-            }
-        });
 
         lastNameField.setEditable(false);
         lastNameField.setColumns(8);
@@ -1827,11 +1588,6 @@ private void adjustAttributesByCharacterAge() {
         sexField.setEditable(false);
         sexField.setColumns(5);
         sexField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        sexField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sexFieldActionPerformed(evt);
-            }
-        });
 
         sexLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         sexLabel.setText("Sex");
@@ -1860,45 +1616,25 @@ private void adjustAttributesByCharacterAge() {
         HPField.setEditable(false);
         HPField.setColumns(2);
         HPField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        HPField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HPFieldActionPerformed(evt);
-            }
-        });
 
         sanityField.setEditable(false);
         sanityField.setColumns(2);
         sanityField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        sanityField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sanityFieldActionPerformed(evt);
-            }
-        });
 
         MPField.setEditable(false);
         MPField.setColumns(2);
         MPField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        MPField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MPFieldActionPerformed(evt);
-            }
-        });
 
         luckField.setEditable(false);
         luckField.setColumns(2);
         luckField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        luckField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                luckFieldActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(professionLabel)
                     .addComponent(nameLabel)
@@ -1912,7 +1648,7 @@ private void adjustAttributesByCharacterAge() {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lastNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))
+                        .addComponent(lastNameField))
                     .addComponent(professionField)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1935,7 +1671,7 @@ private void adjustAttributesByCharacterAge() {
                                 .addComponent(luckLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(luckField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 61, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -1981,11 +1717,11 @@ private void adjustAttributesByCharacterAge() {
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(21, 21, 21))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1997,325 +1733,56 @@ private void adjustAttributesByCharacterAge() {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
+
         logArea.setColumns(20);
         logArea.setRows(5);
         jScrollPane1.setViewportView(logArea);
 
-        jButton1.setFont(new java.awt.Font("Droid Serif", 1, 12)); // NOI18N
-        jButton1.setText("Open DB Manager");
-        jButton1.setToolTipText("");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 250, 240, 530));
+
+        jPanel9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        OpenDBMButton.setFont(new java.awt.Font("Droid Serif", 1, 12)); // NOI18N
+        OpenDBMButton.setText("Open DB Manager");
+        OpenDBMButton.setToolTipText("");
+        OpenDBMButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                OpenDBMButtonActionPerformed(evt);
             }
         });
 
         skillPointsField.setFont(new java.awt.Font("Droid Serif", 1, 18)); // NOI18N
         skillPointsField.setText("Skill points available: 0");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(OpenDBMButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(41, 41, 41))
+            .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(generateNewButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(476, 476, 476))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(344, 344, 344)
                 .addComponent(skillPointsField)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(generateNewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(skillPointsField)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addComponent(OpenDBMButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                .addComponent(skillPointsField)
+                .addContainerGap())
         );
+
+        getContentPane().add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 7, -1, 210));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void firstNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_firstNameFieldActionPerformed
-
-    private void handgunFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_handgunFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_handgunFieldActionPerformed
-
-    private void rifleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rifleFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rifleFieldActionPerformed
-
-    private void electricalRepairFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_electricalRepairFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_electricalRepairFieldActionPerformed
-
-    private void historyFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historyFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_historyFieldActionPerformed
-
-    private void ridingFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ridingFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ridingFieldActionPerformed
-
-    private void languageOtherFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_languageOtherFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_languageOtherFieldActionPerformed
-
-    private void libraryUseFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_libraryUseFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_libraryUseFieldActionPerformed
-
-    private void languageOwnFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_languageOwnFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_languageOwnFieldActionPerformed
-
-    private void medicineFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medicineFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_medicineFieldActionPerformed
-
-    private void listenFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listenFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_listenFieldActionPerformed
-
-    private void scienceFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scienceFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_scienceFieldActionPerformed
-
-    private void navigateFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navigateFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_navigateFieldActionPerformed
-
-    private void accountingFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountingFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_accountingFieldActionPerformed
-
-    private void occultFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_occultFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_occultFieldActionPerformed
-
-    private void mechanicalRepairFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mechanicalRepairFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mechanicalRepairFieldActionPerformed
-
-    private void naturalWorldFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_naturalWorldFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_naturalWorldFieldActionPerformed
-
-    private void firstAidFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstAidFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_firstAidFieldActionPerformed
-
-    private void pilotFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pilotFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pilotFieldActionPerformed
-
-    private void swimFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_swimFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_swimFieldActionPerformed
-
-    private void stealthFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stealthFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stealthFieldActionPerformed
-
-    private void lawFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lawFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lawFieldActionPerformed
-
-    private void psychologyFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_psychologyFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_psychologyFieldActionPerformed
-
-    private void driveFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_driveFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_driveFieldActionPerformed
-
-    private void survivalFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_survivalFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_survivalFieldActionPerformed
-
-    private void throwFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_throwFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_throwFieldActionPerformed
-
-    private void locksmithingFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locksmithingFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_locksmithingFieldActionPerformed
-
-    private void persuadeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_persuadeFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_persuadeFieldActionPerformed
-
-    private void dodgeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dodgeFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dodgeFieldActionPerformed
-
-    private void generateNewButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_generateNewButtonMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_generateNewButtonMouseClicked
-
-    private void anthropologyFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anthropologyFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_anthropologyFieldActionPerformed
-
-    private void appraiseFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appraiseFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_appraiseFieldActionPerformed
-
-    private void archeologyFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_archeologyFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_archeologyFieldActionPerformed
-
-    private void craftFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_craftFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_craftFieldActionPerformed
-
-    private void charmFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_charmFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_charmFieldActionPerformed
-
-    private void climbFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_climbFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_climbFieldActionPerformed
-
-    private void disguiseFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disguiseFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_disguiseFieldActionPerformed
-
-    private void fastTalkFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fastTalkFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fastTalkFieldActionPerformed
-
-    private void fightingFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fightingFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fightingFieldActionPerformed
-
-    private void intimidateFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_intimidateFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_intimidateFieldActionPerformed
-
-    private void jumpFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumpFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jumpFieldActionPerformed
-
-    private void opHvMachineFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opHvMachineFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_opHvMachineFieldActionPerformed
-
-    private void psychoanalysisFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_psychoanalysisFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_psychoanalysisFieldActionPerformed
-
-    private void sleightOfHandFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sleightOfHandFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sleightOfHandFieldActionPerformed
-
-    private void spotHiddenFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spotHiddenFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_spotHiddenFieldActionPerformed
-
-    private void trackFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_trackFieldActionPerformed
-
-    private void craft2ndFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_craft2ndFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_craft2ndFieldActionPerformed
-
-    private void craft3rdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_craft3rdFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_craft3rdFieldActionPerformed
-
-    private void creditRatingFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditRatingFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_creditRatingFieldActionPerformed
-
-    private void cthulhuMythosFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cthulhuMythosFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cthulhuMythosFieldActionPerformed
-
-    private void fighting2ndFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fighting2ndFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fighting2ndFieldActionPerformed
-
-    private void fighting3rdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fighting3rdFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fighting3rdFieldActionPerformed
-
-    private void rifle2ndFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rifle2ndFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rifle2ndFieldActionPerformed
-
-    private void languageOther2ndFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_languageOther2ndFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_languageOther2ndFieldActionPerformed
-
-    private void languageOther3rdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_languageOther3rdFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_languageOther3rdFieldActionPerformed
-
-    private void science2ndFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_science2ndFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_science2ndFieldActionPerformed
-
-    private void science3rdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_science3rdFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_science3rdFieldActionPerformed
-
-    private void other1stFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_other1stFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_other1stFieldActionPerformed
-
-    private void other2ndFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_other2ndFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_other2ndFieldActionPerformed
-
-    private void other3rdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_other3rdFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_other3rdFieldActionPerformed
-
-    private void other4thFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_other4thFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_other4thFieldActionPerformed
-
-    private void other5thFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_other5thFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_other5thFieldActionPerformed
-
-    private void sexFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sexFieldActionPerformed
-
-    private void powerFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_powerFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_powerFieldActionPerformed
-
-    private void moveRateFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveRateFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_moveRateFieldActionPerformed
 
     private void generateNewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateNewButtonActionPerformed
         innitializeStartingConditions();
@@ -2324,6 +1791,11 @@ private void adjustAttributesByCharacterAge() {
         adjustAttributesByCharacterAge();
         SkillChar.setDefaultValues(skillFields, educationField, dexterityField);
         SkillChar.setSkillPoints();
+        rollFirstNameButton.setEnabled(true);
+        rollLastNameButton.setEnabled(true);
+        rollProfessionButton.setEnabled(true);
+        rollAttributesButton.setEnabled(true);
+        manageSPButton.setEnabled(true);
     }//GEN-LAST:event_generateNewButtonActionPerformed
 
     private void innitializeStartingConditions() {
@@ -2438,25 +1910,27 @@ private void adjustAttributesByCharacterAge() {
         characterFields.add(luckField);
     }
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void OpenDBMButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpenDBMButtonActionPerformed
         DBManagementUI.start();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_OpenDBMButtonActionPerformed
 
-    private void HPFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HPFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_HPFieldActionPerformed
+    private void rollFirstNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollFirstNameButtonActionPerformed
+        randomFirstName();
+    }//GEN-LAST:event_rollFirstNameButtonActionPerformed
 
-    private void sanityFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sanityFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sanityFieldActionPerformed
+    private void rollLastNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollLastNameButtonActionPerformed
+        randomLastName();
+    }//GEN-LAST:event_rollLastNameButtonActionPerformed
 
-    private void MPFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MPFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MPFieldActionPerformed
+    private void rollProfessionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollProfessionButtonActionPerformed
+        randomProfession();
+    }//GEN-LAST:event_rollProfessionButtonActionPerformed
 
-    private void luckFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_luckFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_luckFieldActionPerformed
+    private void rollAttributesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollAttributesButtonActionPerformed
+        randomAttributes(); 
+        adjustAttributesByCharacterAge();
+        SkillChar.setSkillPoints();
+    }//GEN-LAST:event_rollAttributesButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2499,6 +1973,7 @@ private void adjustAttributesByCharacterAge() {
     private javax.swing.JLabel HPLabel;
     private javax.swing.JTextField MPField;
     private javax.swing.JLabel MPLabel;
+    private javax.swing.JButton OpenDBMButton;
     private javax.swing.JTextField accountingField;
     private javax.swing.JLabel accountingLabel;
     private javax.swing.JTextField ageField;
@@ -2559,8 +2034,8 @@ private void adjustAttributesByCharacterAge() {
     private javax.swing.JLabel intelligenceLabel;
     private javax.swing.JTextField intimidateField;
     private javax.swing.JLabel intimidateLabel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -2568,6 +2043,7 @@ private void adjustAttributesByCharacterAge() {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jumpField;
     private javax.swing.JLabel jumpLabel;
@@ -2591,6 +2067,7 @@ private void adjustAttributesByCharacterAge() {
     private javax.swing.JTextArea logArea;
     private javax.swing.JTextField luckField;
     private javax.swing.JLabel luckLabel;
+    private javax.swing.JButton manageSPButton;
     private javax.swing.JTextField mechanicalRepairField;
     private javax.swing.JLabel mechanicalRepairLabel;
     private javax.swing.JTextField medicineField;
@@ -2634,6 +2111,10 @@ private void adjustAttributesByCharacterAge() {
     private javax.swing.JLabel rifle2ndLabel;
     private javax.swing.JTextField rifleField;
     private javax.swing.JLabel rifleLabel;
+    private javax.swing.JButton rollAttributesButton;
+    private javax.swing.JButton rollFirstNameButton;
+    private javax.swing.JButton rollLastNameButton;
+    private javax.swing.JButton rollProfessionButton;
     private javax.swing.JTextField sanityField;
     private javax.swing.JLabel sanityLabel;
     private javax.swing.JTextField science2ndField;
