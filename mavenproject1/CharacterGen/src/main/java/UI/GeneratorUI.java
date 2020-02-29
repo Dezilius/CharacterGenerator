@@ -7,8 +7,12 @@ package UI;
 
 
 //import java.awt.List;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
 import util.Tools;
 import util.AttrChar;
 import util.InfoChar;
@@ -150,6 +154,15 @@ private void adjustAttributesByCharacterAge() {
     moveRateField.setText(Integer.toString(movementRate));
     AttrChar.appendLog(message);
 }
+  
+int delay = 300; 
+ActionListener refreshSkillFields = new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent evt) {
+          SkillChar.fieldsProperCheck();
+          SkillChar.availableSkillPoints();
+    }
+};
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -291,7 +304,6 @@ private void adjustAttributesByCharacterAge() {
         rollLastNameButton = new javax.swing.JButton();
         rollProfessionButton = new javax.swing.JButton();
         rollAttributesButton = new javax.swing.JButton();
-        manageSPButton = new javax.swing.JButton();
         allocateSPButton = new javax.swing.JToggleButton();
         jPanel8 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -1313,10 +1325,6 @@ private void adjustAttributesByCharacterAge() {
             }
         });
 
-        manageSPButton.setFont(new java.awt.Font("Droid Serif", 1, 12)); // NOI18N
-        manageSPButton.setText("Manage SP");
-        manageSPButton.setEnabled(false);
-
         allocateSPButton.setText("Allocate SP");
         allocateSPButton.setEnabled(false);
         allocateSPButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1342,7 +1350,6 @@ private void adjustAttributesByCharacterAge() {
                         .addComponent(generateNewButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(allocateSPButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(manageSPButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(rollAttributesButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(rollProfessionButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
                         .addComponent(rollLastNameButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -1360,8 +1367,6 @@ private void adjustAttributesByCharacterAge() {
                 .addComponent(rollProfessionButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rollAttributesButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(manageSPButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(allocateSPButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -1801,6 +1806,7 @@ private void adjustAttributesByCharacterAge() {
         rollProfessionButton.setEnabled(true);
         rollAttributesButton.setEnabled(true);
         allocateSPButton.setEnabled(true);
+        new Timer(delay, refreshSkillFields).start();
     }//GEN-LAST:event_generateNewButtonActionPerformed
 
     private void innitializeStartingConditions() {
@@ -1936,14 +1942,28 @@ private void adjustAttributesByCharacterAge() {
         adjustAttributesByCharacterAge();
         SkillChar.setSkillPoints();
     }//GEN-LAST:event_rollAttributesButtonActionPerformed
-
+    
     private void allocateSPButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_allocateSPButtonMouseClicked
+        
         if (allocateSPButton.isSelected()) {
             SkillChar.setEditableOnSkillFields();
+            generateNewButton.setEnabled(false);
+            rollFirstNameButton.setEnabled(false);
+            rollLastNameButton.setEnabled(false);
+            rollProfessionButton.setEnabled(false);
+            rollAttributesButton.setEnabled(false);
+        }
+        else if (!SkillChar.isSkillPointAvailable()){
+            SkillChar.setEditableOffSkillFields();
+            generateNewButton.setEnabled(true);
+            rollFirstNameButton.setEnabled(true);
+            rollLastNameButton.setEnabled(true);
+            rollProfessionButton.setEnabled(true);
+            rollAttributesButton.setEnabled(true);
         }
         else {
-            SkillChar.setEditableOffSkillFields();
-            SkillChar.fieldsCheck();
+            allocateSPButton.setSelected(true);
+            JOptionPane.showMessageDialog(null, "Too many points allocated.", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_allocateSPButtonMouseClicked
 
@@ -2087,7 +2107,6 @@ private void adjustAttributesByCharacterAge() {
     private javax.swing.JTextArea logArea;
     private javax.swing.JTextField luckField;
     private javax.swing.JLabel luckLabel;
-    private javax.swing.JButton manageSPButton;
     private javax.swing.JTextField mechanicalRepairField;
     private javax.swing.JLabel mechanicalRepairLabel;
     private javax.swing.JTextField medicineField;

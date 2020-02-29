@@ -1828,7 +1828,6 @@
                           </Group>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                               <Component id="allocateSPButton" alignment="0" max="32767" attributes="0"/>
-                              <Component id="manageSPButton" alignment="0" max="32767" attributes="0"/>
                               <Component id="rollAttributesButton" alignment="0" max="32767" attributes="0"/>
                               <Component id="rollProfessionButton" alignment="0" pref="146" max="32767" attributes="0"/>
                               <Component id="rollLastNameButton" alignment="0" max="32767" attributes="0"/>
@@ -1850,8 +1849,6 @@
                       <Component id="rollProfessionButton" linkSize="2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="rollAttributesButton" linkSize="2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="manageSPButton" min="-2" pref="48" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="allocateSPButton" min="-2" pref="47" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -1918,15 +1915,6 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rollAttributesButtonActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="manageSPButton">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Droid Serif" size="12" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Manage SP"/>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JToggleButton" name="allocateSPButton">
               <Properties>

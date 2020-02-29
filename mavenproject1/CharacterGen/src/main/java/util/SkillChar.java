@@ -96,11 +96,23 @@ public class SkillChar {
             skillFields.get(58).setText("10");
             skillFields.get(59).setText("10");
             
+            calculateDefaultSkillPoints();
+    }
+    
+    private static void calculateDefaultSkillPoints() {
+        int[] values = new int[60];
+        defaultSkillPoints = 0;
+        for (int i = 0; i < 60; i++) {
+            values[i] = Integer.parseInt(skillFields.get(i).getText());
+        }
+        for (int i = 0; i < 60; i++) {
+            defaultSkillPoints += values[i];
+        }
     }
     
     public static void setSkillPoints() {
         int skillPoints = calculateSkillPoints();
-        String skillPointsText = "Skill points available: " + skillPoints;
+        String skillPointsText = "Available skill points: " + skillPoints;
         skillPointsField.setText(skillPointsText);
     }
     
@@ -113,7 +125,7 @@ public class SkillChar {
             skillPointsField.setText("Available skill points: " + skillPoints);
     }
     
-    private static boolean isSkillPointAvailable() {
+    public static boolean isSkillPointAvailable() {
         int currentMaxSkillPoints = calculateSkillPoints() + defaultSkillPoints;
         return (currentMaxSkillPoints < calculateCurrentSkillPoints());
     }
@@ -140,10 +152,16 @@ public class SkillChar {
         }
     }
     
-    public static void fieldsCheck() {
+    public static void fieldsProperCheck() {
         for (javax.swing.JTextField iter : skillFields) {
             if (!isInteger(iter.getText())) {
-                iter.setText("");
+                iter.setText("0");
+            }
+            if (Integer.parseInt(iter.getText()) > 99) {
+                iter.setText("99");
+            }
+            if (Integer.parseInt(iter.getText()) < 0) {
+                iter.setText("0");
             }
         }
     }
