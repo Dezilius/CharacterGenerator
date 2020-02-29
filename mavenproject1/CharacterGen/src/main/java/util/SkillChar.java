@@ -14,27 +14,26 @@ import java.util.ArrayList;
  */
 public class SkillChar {
     
-    private static javax.swing.JLabel skillPointsField;
+    private static javax.swing.JLabel skillPointsLabel;
     private static javax.swing.JTextField intelligenceField;
     private static ArrayList<javax.swing.JTextField> skillFields;
-    private static int defaultSkillPoints;
+    private static int defaultSkillPointsSum;
     
-    public static void initSkillChar(javax.swing.JLabel skillPoints, javax.swing.JTextField intelligence, ArrayList<javax.swing.JTextField> skillFieldsInit) {
-        skillPointsField = skillPoints;
+    public static void initSkillChar(javax.swing.JLabel skillPointsLabelInit, javax.swing.JTextField intelligence, ArrayList<javax.swing.JTextField> skillFieldsInit) {
+        skillPointsLabel = skillPointsLabelInit;
         intelligenceField = intelligence;
-        
         skillFields = new ArrayList<>();
         
         for (javax.swing.JTextField iter : skillFieldsInit) {
             skillFields.add(iter);
         }
-        
     }
     
     public static void setDefaultValues(ArrayList<javax.swing.JTextField> skillFields, javax.swing.JTextField education, javax.swing.JTextField dexterity) {
             
             String edu = education.getText();
             String dodge = Integer.toString(Integer.parseInt(dexterity.getText())/2);
+            int creditRating = randomCreditRating();
             
             skillFields.get(0).setText("5");
             skillFields.get(1).setText("1");
@@ -45,7 +44,7 @@ public class SkillChar {
             skillFields.get(6).setText("0");
             skillFields.get(7).setText("15");
             skillFields.get(8).setText("20");
-            skillFields.get(9).setText("0");
+            skillFields.get(9).setText(Integer.toString(creditRating));
             skillFields.get(10).setText("0");
             skillFields.get(11).setText("5");
             skillFields.get(12).setText(dodge);
@@ -100,21 +99,25 @@ public class SkillChar {
             calculateDefaultSkillPoints();
     }
     
-    private static void calculateDefaultSkillPoints() {
-        int[] values = new int[60];
-        defaultSkillPoints = 0;
-        for (int i = 0; i < 60; i++) {
-            values[i] = Integer.parseInt(skillFields.get(i).getText());
+    private static int randomCreditRating() {
+        int value = 0;
+        for (int i = 0; i < 3; i++) {
+            value += Tools.roll(1,5);
         }
+        return value;
+    }
+    
+    private static void calculateDefaultSkillPoints() {
+        defaultSkillPointsSum = 0;
         for (int i = 0; i < 60; i++) {
-            defaultSkillPoints += values[i];
+            defaultSkillPointsSum += Integer.parseInt(skillFields.get(i).getText());
         }
     }
     
     public static void setSkillPoints() {
         int skillPoints = calculateSkillPoints();
         String skillPointsText = "Available skill points: " + skillPoints;
-        skillPointsField.setText(skillPointsText);
+        skillPointsLabel.setText(skillPointsText);
     }
     
     private static int calculateSkillPoints() {
@@ -122,34 +125,45 @@ public class SkillChar {
     }
     
     public static void availableSkillPoints() {
-            int skillPoints = defaultSkillPoints + calculateSkillPoints() - calculateCurrentSkillPoints();
-            skillPointsField.setText("Available skill points: " + skillPoints);
+            int skillPointsToDistribute = defaultSkillPointsSum + calculateSkillPoints() - calculateCurrentSkillPointsSum();
+            skillPointsLabel.setText("Available skill points: " + skillPointsToDistribute);
     }
     
     public static boolean isSkillPointAvailable() {
-        int currentMaxSkillPoints = calculateSkillPoints() + defaultSkillPoints;
-        return (currentMaxSkillPoints < calculateCurrentSkillPoints());
+        int currentMaxSkillPoints = calculateSkillPoints() + defaultSkillPointsSum;
+        return (currentMaxSkillPoints < calculateCurrentSkillPointsSum());
     }
     
-    private static int calculateCurrentSkillPoints() {
-        int currentMaxSkillPoints = 0;
-                
+    private static int calculateCurrentSkillPointsSum() {
+        int currentSkillPointsSum = 0;    
         for (javax.swing.JTextField iter : skillFields) {
-            currentMaxSkillPoints += Integer.parseInt(iter.getText());
+            currentSkillPointsSum += Integer.parseInt(iter.getText());
         }
-        
-        return currentMaxSkillPoints;
+        return currentSkillPointsSum;
     }
     
     public static void setEditableOnSkillFields() {
         for (javax.swing.JTextField iter : skillFields) {
             iter.setEditable(true);
         }
+        setColorGreen();
+    }
+    private static void setColorGreen() {
+        for (javax.swing.JTextField iter : skillFields) {
+            
+            iter.setBackground(Color.green);
+        }
     }
     
     public static void setEditableOffSkillFields() {
         for (javax.swing.JTextField iter : skillFields) {
             iter.setEditable(false);
+        }
+        setColorWhite();
+    }
+    private static void setColorWhite() {
+        for (javax.swing.JTextField iter : skillFields) {
+            iter.setBackground(Color.white);
         }
     }
     
@@ -199,17 +213,5 @@ public class SkillChar {
             return true;
         }
         return false;
-    }
-    
-    public static void setColorGreen() {
-        for (javax.swing.JTextField iter : skillFields) {
-            iter.setBackground(Color.green);
-        }
-    }
-    
-    public static void setColorWhite() {
-        for (javax.swing.JTextField iter : skillFields) {
-            iter.setBackground(Color.white);
-        }
     }
 }
