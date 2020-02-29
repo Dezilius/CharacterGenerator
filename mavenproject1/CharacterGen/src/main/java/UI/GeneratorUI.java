@@ -346,7 +346,7 @@ ActionListener refreshSkillFields = new ActionListener() {
         jScrollPane1 = new javax.swing.JScrollPane();
         logArea = new javax.swing.JTextArea();
         jPanel9 = new javax.swing.JPanel();
-        OpenDBMButton = new javax.swing.JButton();
+        openDBMButton = new javax.swing.JButton();
         skillPointsField = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1325,6 +1325,7 @@ ActionListener refreshSkillFields = new ActionListener() {
             }
         });
 
+        allocateSPButton.setFont(new java.awt.Font("Droid Serif", 1, 12)); // NOI18N
         allocateSPButton.setText("Allocate SP");
         allocateSPButton.setEnabled(false);
         allocateSPButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1724,12 +1725,12 @@ ActionListener refreshSkillFields = new ActionListener() {
 
         jPanel9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        OpenDBMButton.setFont(new java.awt.Font("Droid Serif", 1, 12)); // NOI18N
-        OpenDBMButton.setText("Open DB Manager");
-        OpenDBMButton.setToolTipText("");
-        OpenDBMButton.addActionListener(new java.awt.event.ActionListener() {
+        openDBMButton.setFont(new java.awt.Font("Droid Serif", 1, 12)); // NOI18N
+        openDBMButton.setText("Open DB Manager");
+        openDBMButton.setToolTipText("");
+        openDBMButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OpenDBMButtonActionPerformed(evt);
+                openDBMButtonActionPerformed(evt);
             }
         });
 
@@ -1739,14 +1740,14 @@ ActionListener refreshSkillFields = new ActionListener() {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(OpenDBMButton, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                .addComponent(openDBMButton, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(OpenDBMButton)
+                .addComponent(openDBMButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1921,9 +1922,9 @@ ActionListener refreshSkillFields = new ActionListener() {
         characterFields.add(luckField);
     }
     
-    private void OpenDBMButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpenDBMButtonActionPerformed
+    private void openDBMButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openDBMButtonActionPerformed
         DBManagementUI.start();
-    }//GEN-LAST:event_OpenDBMButtonActionPerformed
+    }//GEN-LAST:event_openDBMButtonActionPerformed
 
     private void rollFirstNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollFirstNameButtonActionPerformed
         randomFirstName();
@@ -1952,6 +1953,8 @@ ActionListener refreshSkillFields = new ActionListener() {
             rollLastNameButton.setEnabled(false);
             rollProfessionButton.setEnabled(false);
             rollAttributesButton.setEnabled(false);
+            openDBMButton.setEnabled(false);
+            allocateSPButton.setText("Save");
         }
         else if (!SkillChar.isSkillPointAvailable()){
             SkillChar.setEditableOffSkillFields();
@@ -1960,6 +1963,8 @@ ActionListener refreshSkillFields = new ActionListener() {
             rollLastNameButton.setEnabled(true);
             rollProfessionButton.setEnabled(true);
             rollAttributesButton.setEnabled(true);
+            openDBMButton.setEnabled(true);
+            allocateSPButton.setText("Allocate SP");
         }
         else {
             allocateSPButton.setSelected(true);
@@ -2012,7 +2017,6 @@ ActionListener refreshSkillFields = new ActionListener() {
     private javax.swing.JLabel HPLabel;
     private javax.swing.JTextField MPField;
     private javax.swing.JLabel MPLabel;
-    private javax.swing.JButton OpenDBMButton;
     private javax.swing.JTextField accountingField;
     private javax.swing.JLabel accountingLabel;
     private javax.swing.JTextField ageField;
@@ -2122,6 +2126,7 @@ ActionListener refreshSkillFields = new ActionListener() {
     private javax.swing.JLabel occultLabel;
     private javax.swing.JTextField opHvMachineField;
     private javax.swing.JLabel opHvMachineLabel;
+    private javax.swing.JButton openDBMButton;
     private javax.swing.JTextField other1stField;
     private javax.swing.JLabel other1stLabel;
     private javax.swing.JTextField other2ndField;

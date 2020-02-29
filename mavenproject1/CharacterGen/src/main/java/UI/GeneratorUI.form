@@ -1918,6 +1918,9 @@
             </Component>
             <Component class="javax.swing.JToggleButton" name="allocateSPButton">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Allocate SP"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
@@ -2524,7 +2527,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                  <Component id="OpenDBMButton" pref="259" max="32767" attributes="0"/>
+                  <Component id="openDBMButton" pref="259" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -2533,14 +2536,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="OpenDBMButton" min="-2" max="-2" attributes="0"/>
+                  <Component id="openDBMButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="OpenDBMButton">
+        <Component class="javax.swing.JButton" name="openDBMButton">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Droid Serif" size="12" style="1"/>
@@ -2549,7 +2552,7 @@
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OpenDBMButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="openDBMButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
