@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UI;
 
-
-//import java.awt.List;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
 import util.Tools;
 import util.AttrChar;
 import util.InfoChar;
@@ -21,136 +18,10 @@ import util.SkillChar;
  */
 public class GeneratorUI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GeneratorUI
-     */
     public GeneratorUI() {
         initComponents();
     }
-        
-private static final String QUERY_NUMBER_OF_ROWS_FIRST_NAME="from FirstName where id = (select count(*) from FirstName)";
-private static final String QUERY_NUMBER_OF_ROWS_LAST_NAME="from LastName where id = (select count(*) from LastName)";
-private static final String QUERY_NUMBER_OF_ROWS_PROFESSION="from Profession where id = (select count(*) from Profession)";
     
-private void randomAll() {
-    randomFirstName();
-    randomLastName();
-    randomProfession();
-}
-private void randomFirstName() {
-    List result = QuerryUtil.executeHQLQueryNumberOfFirstName(QUERY_NUMBER_OF_ROWS_FIRST_NAME);
-    InfoChar.displayResultFirstName(result);
-}
-private void randomLastName() {
-    List result = QuerryUtil.executeHQLQueryNumberOfLastName(QUERY_NUMBER_OF_ROWS_LAST_NAME);
-    InfoChar.displayResultLastName(result);
-}
-private void randomProfession() {
-    List result = QuerryUtil.executeHQLQueryNumberOfProfession(QUERY_NUMBER_OF_ROWS_PROFESSION);
-    InfoChar.displayResultProfession(result);
-}
-private void randomAttributes() {
-    for (javax.swing.JTextField iter : attributesFields) {
-        int value = 0;
-        
-        if (iter.equals(sizeField) || 
-            iter.equals(intelligenceField) ||
-            iter.equals(educationField)) {
-            for (int i = 0; i < 2; i++) {
-                value += util.Tools.roll(1,6);
-            }
-            value += util.Tools.roll(6,6);
-        }
-        else {
-            for (int i = 0; i < 3; i++) {
-                value += util.Tools.roll(1,6);
-            }
-        }
-        value *= 5;     
-        iter.setText(Integer.toString(value));
-    }
-    setMoveRate();
-    InfoChar.setMagicPoints();
-    InfoChar.setLuck();
-    InfoChar.setHP();
-    InfoChar.setSanity();
-} 
-
-private void setMoveRate() {
-    short moveRate = 0;
-    short dex = (short) Integer.parseInt(dexterityField.getText());
-    short str = (short) Integer.parseInt(strengthField.getText());
-    short siz = (short) Integer.parseInt(sizeField.getText());
-    
-    if ((dex < siz) && (str < siz)) {
-        moveRate = 7;
-    }
-    else if ((dex > siz) && (str > siz)) {
-        moveRate = 9;
-    }
-    else if ((dex >= siz) || (str >= siz)) {
-        moveRate = 8;
-    }
-    moveRateField.setText(Short.toString(moveRate));
-}
-private void adjustAttributesByCharacterAge() {
-    short age = Short.parseShort(ageField.getText());
-    int movementRate = Integer.parseInt(moveRateField.getText());
-    String message = "";
-    
-    if (age >= 15 && age < 20) {
-        AttrChar.remove2Attr(5);
-        Tools.removePoint(educationField, 5);
-        message = "5 point(s) removed from education";
-    }
-    
-    else if (age >= 20 && age < 40) {
-        AttrChar.improvementValue(1);
-    }
-    
-    else if (age >= 40 && age < 50) {
-        AttrChar.improvementValue(2);
-        AttrChar.remove3Attr(5);
-        Tools.removePoint(appearanceField, 5);
-        movementRate -= 1;
-        message = "5 point(s) removed from appearance\n 1 point(s) removed from movement rate";
-    }
-    
-    else if (age >= 50 && age < 60) {
-        AttrChar.improvementValue(3);
-        AttrChar.remove3Attr(10);
-        Tools.removePoint(appearanceField, 10);
-        movementRate -= 2;
-        message = "10 point(s) removed from appearance\n 2 point(s) removed from movement rate";
-    }
-    
-    else if (age >= 60 && age < 70) {
-        AttrChar.improvementValue(4);
-        AttrChar.remove3Attr(20);
-        Tools.removePoint(appearanceField, 15);
-        movementRate -= 3;
-        message = "15 point(s) removed from appearance\n 3 point(s) removed from movement rate";
-    }
-    
-    else if (age >= 70 && age < 80) {
-        AttrChar.improvementValue(4);
-        AttrChar.remove3Attr(40);
-        Tools.removePoint(appearanceField, 20);
-        movementRate -= 4;
-        message = "20 point(s) removed from appearance\n 4 point(s) removed from movement rate";
-    }
-    
-    else if (age >= 80 && age < 90) {
-        AttrChar.improvementValue(4);
-        AttrChar.remove3Attr(80);
-        Tools.removePoint(appearanceField, 25);
-        movementRate -= 5;
-        message = "25 point(s) removed from appearance\n 5 point(s) removed from movement rate";
-    }
-    moveRateField.setText(Integer.toString(movementRate));
-    AttrChar.appendLog(message);
-}
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -285,7 +156,13 @@ private void adjustAttributesByCharacterAge() {
         other4thField = new javax.swing.JTextField();
         other5thField = new javax.swing.JTextField();
         other5thLabel = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
         generateNewButton = new javax.swing.JButton();
+        rollFirstNameButton = new javax.swing.JButton();
+        rollLastNameButton = new javax.swing.JButton();
+        rollProfessionButton = new javax.swing.JButton();
+        rollAttributesButton = new javax.swing.JButton();
+        allocateSPButton = new javax.swing.JToggleButton();
         jPanel8 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         appearanceLabel = new javax.swing.JLabel();
@@ -326,15 +203,15 @@ private void adjustAttributesByCharacterAge() {
         luckField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         logArea = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
+        openDBMButton = new javax.swing.JButton();
         skillPointsField = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Character Generator");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setFocusableWindowState(false);
-        setLocation(new java.awt.Point(500, 500));
-        setPreferredSize(new java.awt.Dimension(1200, 855));
+        setLocation(new java.awt.Point(0, 0));
+        setMinimumSize(new java.awt.Dimension(1220, 780));
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -346,11 +223,6 @@ private void adjustAttributesByCharacterAge() {
         anthropologyField.setEditable(false);
         anthropologyField.setColumns(2);
         anthropologyField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        anthropologyField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                anthropologyFieldActionPerformed(evt);
-            }
-        });
 
         anthropologyLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         anthropologyLabel.setText("Anthropology");
@@ -361,11 +233,6 @@ private void adjustAttributesByCharacterAge() {
         appraiseField.setEditable(false);
         appraiseField.setColumns(2);
         appraiseField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        appraiseField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                appraiseFieldActionPerformed(evt);
-            }
-        });
 
         archeologyLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         archeologyLabel.setText("Archeology");
@@ -373,11 +240,6 @@ private void adjustAttributesByCharacterAge() {
         archeologyField.setEditable(false);
         archeologyField.setColumns(2);
         archeologyField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        archeologyField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                archeologyFieldActionPerformed(evt);
-            }
-        });
 
         craftLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         craftLabel.setText("Craft");
@@ -385,11 +247,6 @@ private void adjustAttributesByCharacterAge() {
         craftField.setEditable(false);
         craftField.setColumns(2);
         craftField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        craftField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                craftFieldActionPerformed(evt);
-            }
-        });
 
         charmLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         charmLabel.setText("Charm");
@@ -397,11 +254,6 @@ private void adjustAttributesByCharacterAge() {
         charmField.setEditable(false);
         charmField.setColumns(2);
         charmField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        charmField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                charmFieldActionPerformed(evt);
-            }
-        });
 
         climbLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         climbLabel.setText("Climb");
@@ -409,11 +261,6 @@ private void adjustAttributesByCharacterAge() {
         climbField.setEditable(false);
         climbField.setColumns(2);
         climbField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        climbField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                climbFieldActionPerformed(evt);
-            }
-        });
 
         disguiseLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         disguiseLabel.setText("Disguise");
@@ -421,11 +268,6 @@ private void adjustAttributesByCharacterAge() {
         disguiseField.setEditable(false);
         disguiseField.setColumns(2);
         disguiseField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        disguiseField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                disguiseFieldActionPerformed(evt);
-            }
-        });
 
         electricalRepairLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         electricalRepairLabel.setText("Electrical Repair");
@@ -433,20 +275,10 @@ private void adjustAttributesByCharacterAge() {
         electricalRepairField.setEditable(false);
         electricalRepairField.setColumns(2);
         electricalRepairField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        electricalRepairField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                electricalRepairFieldActionPerformed(evt);
-            }
-        });
 
         accountingField.setEditable(false);
         accountingField.setColumns(2);
         accountingField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        accountingField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                accountingFieldActionPerformed(evt);
-            }
-        });
 
         accountingLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         accountingLabel.setText("Accounting");
@@ -457,33 +289,18 @@ private void adjustAttributesByCharacterAge() {
         dodgeField.setEditable(false);
         dodgeField.setColumns(2);
         dodgeField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        dodgeField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dodgeFieldActionPerformed(evt);
-            }
-        });
 
         craft2ndLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         craft2ndField.setEditable(false);
         craft2ndField.setColumns(2);
         craft2ndField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        craft2ndField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                craft2ndFieldActionPerformed(evt);
-            }
-        });
 
         craft3rdLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         craft3rdField.setEditable(false);
         craft3rdField.setColumns(2);
         craft3rdField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        craft3rdField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                craft3rdFieldActionPerformed(evt);
-            }
-        });
 
         creditRatingLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         creditRatingLabel.setText("Credit Rating");
@@ -491,11 +308,6 @@ private void adjustAttributesByCharacterAge() {
         creditRatingField.setEditable(false);
         creditRatingField.setColumns(2);
         creditRatingField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        creditRatingField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                creditRatingFieldActionPerformed(evt);
-            }
-        });
 
         cthulhuMythosLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         cthulhuMythosLabel.setText("Cthulhu Mythos");
@@ -503,11 +315,6 @@ private void adjustAttributesByCharacterAge() {
         cthulhuMythosField.setEditable(false);
         cthulhuMythosField.setColumns(2);
         cthulhuMythosField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        cthulhuMythosField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cthulhuMythosFieldActionPerformed(evt);
-            }
-        });
 
         driveLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         driveLabel.setText("Drive");
@@ -515,11 +322,6 @@ private void adjustAttributesByCharacterAge() {
         driveField.setEditable(false);
         driveField.setColumns(2);
         driveField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        driveField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                driveFieldActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -527,97 +329,75 @@ private void adjustAttributesByCharacterAge() {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addComponent(cthulhuMythosLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(cthulhuMythosField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addComponent(creditRatingLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(creditRatingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addComponent(craft3rdLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(craft3rdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addComponent(craft2ndLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(craft2ndField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(accountingLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(accountingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(anthropologyLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(anthropologyField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(appraiseLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(appraiseField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(archeologyLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(archeologyField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(craftLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(craftField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(65, 65, 65)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(charmLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(charmField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(climbLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(climbField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(electricalRepairLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(electricalRepairField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(disguiseLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(disguiseField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(dodgeLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(dodgeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(driveLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(driveField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(20, Short.MAX_VALUE))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                        .addComponent(charmLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(craft3rdLabel)
+                                        .addGap(6, 6, 6))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                        .addComponent(craft2ndLabel)
+                                        .addGap(6, 6, 6))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(craftLabel)
+                                            .addComponent(archeologyLabel))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(creditRatingLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(climbLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(cthulhuMythosLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(disguiseLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(dodgeLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(driveLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(electricalRepairLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(accountingLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(anthropologyLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(accountingField)
+                            .addComponent(anthropologyField)
+                            .addComponent(archeologyField)
+                            .addComponent(craftField)
+                            .addComponent(craft2ndField)
+                            .addComponent(craft3rdField)
+                            .addComponent(climbField)
+                            .addComponent(creditRatingField)
+                            .addComponent(cthulhuMythosField)
+                            .addComponent(disguiseField)
+                            .addComponent(dodgeField)
+                            .addComponent(driveField)
+                            .addComponent(electricalRepairField)
+                            .addComponent(charmField)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(appraiseLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(appraiseField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(accountingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(accountingLabel))
-                        .addGap(33, 33, 33))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(anthropologyField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(anthropologyLabel)))
-                .addGap(6, 6, 6)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(accountingLabel)
+                    .addComponent(accountingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(anthropologyField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(anthropologyLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(appraiseField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(appraiseLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(7, 7, 7)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(archeologyField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(archeologyLabel))
@@ -626,45 +406,47 @@ private void adjustAttributesByCharacterAge() {
                     .addComponent(craftField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(craftLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(craft2ndField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(craft2ndLabel))
+                .addComponent(craft2ndField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(craft3rdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(craft3rdLabel))
+                .addComponent(craft3rdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(charmField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(charmLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(climbField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(climbLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(creditRatingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(creditRatingLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cthulhuMythosField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cthulhuMythosLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(disguiseField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(disguiseLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dodgeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dodgeLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(driveField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(driveLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(electricalRepairField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(electricalRepairLabel))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(craft2ndLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(craft3rdLabel))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(charmField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(charmLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(climbField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(climbLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(creditRatingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(creditRatingLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cthulhuMythosField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cthulhuMythosLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(disguiseField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(disguiseLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(dodgeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dodgeLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(driveField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(driveLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(electricalRepairField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(electricalRepairLabel))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -676,11 +458,6 @@ private void adjustAttributesByCharacterAge() {
         rifleField.setEditable(false);
         rifleField.setColumns(2);
         rifleField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        rifleField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rifleFieldActionPerformed(evt);
-            }
-        });
 
         rifleLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         rifleLabel.setText("Rifle");
@@ -688,11 +465,6 @@ private void adjustAttributesByCharacterAge() {
         historyField.setEditable(false);
         historyField.setColumns(2);
         historyField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        historyField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                historyFieldActionPerformed(evt);
-            }
-        });
 
         historyLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         historyLabel.setText("History");
@@ -700,11 +472,6 @@ private void adjustAttributesByCharacterAge() {
         intimidateField.setEditable(false);
         intimidateField.setColumns(2);
         intimidateField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        intimidateField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                intimidateFieldActionPerformed(evt);
-            }
-        });
 
         intimidateLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         intimidateLabel.setText("Intimidate");
@@ -715,20 +482,10 @@ private void adjustAttributesByCharacterAge() {
         jumpField.setEditable(false);
         jumpField.setColumns(2);
         jumpField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        jumpField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jumpFieldActionPerformed(evt);
-            }
-        });
 
         languageOtherField.setEditable(false);
         languageOtherField.setColumns(2);
         languageOtherField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        languageOtherField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                languageOtherFieldActionPerformed(evt);
-            }
-        });
 
         languageOtherLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         languageOtherLabel.setText("Language (Other)");
@@ -736,11 +493,6 @@ private void adjustAttributesByCharacterAge() {
         languageOwnField.setEditable(false);
         languageOwnField.setColumns(2);
         languageOwnField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        languageOwnField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                languageOwnFieldActionPerformed(evt);
-            }
-        });
 
         languageOwn.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         languageOwn.setText("Language (Own)(EDU)");
@@ -748,11 +500,6 @@ private void adjustAttributesByCharacterAge() {
         firstAidField.setEditable(false);
         firstAidField.setColumns(2);
         firstAidField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        firstAidField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                firstAidFieldActionPerformed(evt);
-            }
-        });
 
         firstAidLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         firstAidLabel.setText("First Aid");
@@ -763,11 +510,6 @@ private void adjustAttributesByCharacterAge() {
         fastTalkField.setEditable(false);
         fastTalkField.setColumns(2);
         fastTalkField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        fastTalkField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fastTalkFieldActionPerformed(evt);
-            }
-        });
 
         fightingLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         fightingLabel.setText("Fighting (Brawl)");
@@ -775,62 +517,32 @@ private void adjustAttributesByCharacterAge() {
         fightingField.setEditable(false);
         fightingField.setColumns(2);
         fightingField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        fightingField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fightingFieldActionPerformed(evt);
-            }
-        });
 
         handgunField.setEditable(false);
         handgunField.setColumns(2);
         handgunField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        handgunField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                handgunFieldActionPerformed(evt);
-            }
-        });
 
         fightinh2ndLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         fighting2ndField.setEditable(false);
         fighting2ndField.setColumns(2);
         fighting2ndField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        fighting2ndField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fighting2ndFieldActionPerformed(evt);
-            }
-        });
 
         fighting3rdField.setEditable(false);
         fighting3rdField.setColumns(2);
         fighting3rdField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        fighting3rdField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fighting3rdFieldActionPerformed(evt);
-            }
-        });
 
         fighting3rdLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         rifle2ndField.setEditable(false);
         rifle2ndField.setColumns(2);
         rifle2ndField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        rifle2ndField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rifle2ndFieldActionPerformed(evt);
-            }
-        });
 
         rifle2ndLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         languageOther2ndField.setEditable(false);
         languageOther2ndField.setColumns(2);
         languageOther2ndField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        languageOther2ndField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                languageOther2ndFieldActionPerformed(evt);
-            }
-        });
 
         languageOther2ndLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
@@ -839,85 +551,82 @@ private void adjustAttributesByCharacterAge() {
         languageOther3rdField.setEditable(false);
         languageOther3rdField.setColumns(2);
         languageOther3rdField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        languageOther3rdField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                languageOther3rdFieldActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(fastTalkLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(fastTalkField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(rifleLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rifleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(fastTalkLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fastTalkField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(fightingLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fightingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(fighting2ndField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fighting3rdField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(handgunLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(handgunField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(languageOther2ndField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(languageOther3rdField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fightinh2ndLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(fighting3rdLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rifle2ndField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(languageOther3rdLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(languageOther2ndLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(rifle2ndLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(46, 46, 46))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(languageOtherLabel)
+                                    .addComponent(jumpLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jumpField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(languageOtherField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(fightingLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(fightingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(handgunLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(handgunField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(rifleLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(rifleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(firstAidLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(firstAidField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(historyLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(historyField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(intimidateLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(intimidateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(jumpLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jumpField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(languageOtherLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(languageOtherField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(languageOwn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(languageOwnField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(fightinh2ndLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(fighting2ndField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(fighting3rdLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(fighting3rdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(rifle2ndLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(rifle2ndField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(languageOther2ndLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(languageOther2ndField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(languageOther3rdLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(languageOther3rdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 20, 20))
+                        .addGap(0, 18, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(intimidateLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(intimidateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(firstAidLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(firstAidField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(historyLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(historyField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(languageOwn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(languageOwnField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fastTalkField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fastTalkLabel))
@@ -926,13 +635,9 @@ private void adjustAttributesByCharacterAge() {
                     .addComponent(fightingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fightingLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fighting2ndField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fightinh2ndLabel))
+                .addComponent(fighting2ndField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fighting3rdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fighting3rdLabel))
+                .addComponent(fighting3rdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(handgunField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -941,14 +646,20 @@ private void adjustAttributesByCharacterAge() {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rifleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rifleLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rifle2ndField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rifle2ndLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(firstAidField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(firstAidLabel))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(fightinh2ndLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rifle2ndField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fighting3rdLabel)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(firstAidField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(firstAidLabel)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(historyField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -958,26 +669,30 @@ private void adjustAttributesByCharacterAge() {
                     .addComponent(intimidateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(intimidateLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jumpField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jumpLabel))
+                .addComponent(rifle2ndLabel)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jumpField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jumpLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(languageOtherField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(languageOtherLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(languageOther2ndField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(languageOther3rdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(languageOwnField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(languageOwn))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(languageOtherField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(languageOtherLabel))
+                .addComponent(languageOther2ndLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(languageOther2ndField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(languageOther2ndLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(languageOther3rdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(languageOther3rdLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(languageOwnField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(languageOwn))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(languageOther3rdLabel))
         );
 
         jPanel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -985,11 +700,6 @@ private void adjustAttributesByCharacterAge() {
         lawField.setEditable(false);
         lawField.setColumns(2);
         lawField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        lawField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lawFieldActionPerformed(evt);
-            }
-        });
 
         lawLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         lawLabel.setText("Law");
@@ -997,11 +707,6 @@ private void adjustAttributesByCharacterAge() {
         libraryUseField.setEditable(false);
         libraryUseField.setColumns(2);
         libraryUseField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        libraryUseField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                libraryUseFieldActionPerformed(evt);
-            }
-        });
 
         libraryUseLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         libraryUseLabel.setText("Library use");
@@ -1009,11 +714,6 @@ private void adjustAttributesByCharacterAge() {
         listenField.setEditable(false);
         listenField.setColumns(2);
         listenField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        listenField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listenFieldActionPerformed(evt);
-            }
-        });
 
         listenLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         listenLabel.setText("Listen");
@@ -1024,11 +724,6 @@ private void adjustAttributesByCharacterAge() {
         locksmithingField.setEditable(false);
         locksmithingField.setColumns(2);
         locksmithingField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        locksmithingField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                locksmithingFieldActionPerformed(evt);
-            }
-        });
 
         mechanicalRepairLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         mechanicalRepairLabel.setText("Mechanical Repair");
@@ -1036,11 +731,6 @@ private void adjustAttributesByCharacterAge() {
         mechanicalRepairField.setEditable(false);
         mechanicalRepairField.setColumns(2);
         mechanicalRepairField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        mechanicalRepairField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mechanicalRepairFieldActionPerformed(evt);
-            }
-        });
 
         medicineLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         medicineLabel.setText("Medicine");
@@ -1048,11 +738,6 @@ private void adjustAttributesByCharacterAge() {
         medicineField.setEditable(false);
         medicineField.setColumns(2);
         medicineField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        medicineField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                medicineFieldActionPerformed(evt);
-            }
-        });
 
         persuadeLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         persuadeLabel.setText("Persuade");
@@ -1060,11 +745,6 @@ private void adjustAttributesByCharacterAge() {
         persuadeField.setEditable(false);
         persuadeField.setColumns(2);
         persuadeField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        persuadeField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                persuadeFieldActionPerformed(evt);
-            }
-        });
 
         pilotLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         pilotLabel.setText("Pilot");
@@ -1072,11 +752,6 @@ private void adjustAttributesByCharacterAge() {
         pilotField.setEditable(false);
         pilotField.setColumns(2);
         pilotField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        pilotField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pilotFieldActionPerformed(evt);
-            }
-        });
 
         opHvMachineLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         opHvMachineLabel.setText("Op.Hv.Machine");
@@ -1084,20 +759,10 @@ private void adjustAttributesByCharacterAge() {
         opHvMachineField.setEditable(false);
         opHvMachineField.setColumns(2);
         opHvMachineField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        opHvMachineField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opHvMachineFieldActionPerformed(evt);
-            }
-        });
 
         psychoanalysisField.setEditable(false);
         psychoanalysisField.setColumns(2);
         psychoanalysisField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        psychoanalysisField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                psychoanalysisFieldActionPerformed(evt);
-            }
-        });
 
         psychoanalysisLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         psychoanalysisLabel.setText("Psychoanalysis");
@@ -1105,11 +770,6 @@ private void adjustAttributesByCharacterAge() {
         ridingField.setEditable(false);
         ridingField.setColumns(2);
         ridingField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        ridingField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ridingFieldActionPerformed(evt);
-            }
-        });
 
         ridingLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         ridingLabel.setText("Riding");
@@ -1117,11 +777,6 @@ private void adjustAttributesByCharacterAge() {
         occultField.setEditable(false);
         occultField.setColumns(2);
         occultField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        occultField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                occultFieldActionPerformed(evt);
-            }
-        });
 
         occultLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         occultLabel.setText("Occult");
@@ -1132,20 +787,10 @@ private void adjustAttributesByCharacterAge() {
         naturalWorldField.setEditable(false);
         naturalWorldField.setColumns(2);
         naturalWorldField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        naturalWorldField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                naturalWorldFieldActionPerformed(evt);
-            }
-        });
 
         navigateField.setEditable(false);
         navigateField.setColumns(2);
         navigateField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        navigateField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                navigateFieldActionPerformed(evt);
-            }
-        });
 
         navigateLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         navigateLabel.setText("Navigate");
@@ -1156,85 +801,67 @@ private void adjustAttributesByCharacterAge() {
         psychologyField.setEditable(false);
         psychologyField.setColumns(2);
         psychologyField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        psychologyField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                psychologyFieldActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(ridingLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ridingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGap(55, 55, 55)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lawLabel)
+                                    .addComponent(libraryUseLabel)
+                                    .addComponent(listenLabel))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(pilotLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(psychologyLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(persuadeLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(opHvMachineLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(occultLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(navigateLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(naturalWorldLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(medicineLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(mechanicalRepairLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(locksmithingLabel, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(psychologyField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pilotField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(naturalWorldField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(navigateField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(occultField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(opHvMachineField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(persuadeField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(medicineField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lawField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(libraryUseField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(listenField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(locksmithingField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(mechanicalRepairField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(psychologyLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(psychologyField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(pilotLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pilotField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(naturalWorldLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(naturalWorldField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(navigateLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(navigateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(occultLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(occultField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(opHvMachineLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(opHvMachineField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(persuadeLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(persuadeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(psychoanalysisLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(psychoanalysisField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(medicineLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(medicineField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(lawLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lawField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(libraryUseLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(libraryUseField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(listenLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(listenField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(locksmithingLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(locksmithingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(mechanicalRepairLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(mechanicalRepairField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(ridingLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ridingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(psychoanalysisLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(psychoanalysisField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lawField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lawLabel))
@@ -1302,11 +929,6 @@ private void adjustAttributesByCharacterAge() {
         scienceField.setEditable(false);
         scienceField.setColumns(2);
         scienceField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        scienceField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scienceFieldActionPerformed(evt);
-            }
-        });
 
         scienceLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         scienceLabel.setText("Science");
@@ -1314,22 +936,12 @@ private void adjustAttributesByCharacterAge() {
         science2ndField.setEditable(false);
         science2ndField.setColumns(2);
         science2ndField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        science2ndField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                science2ndFieldActionPerformed(evt);
-            }
-        });
 
         science2ndLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         science3rdField.setEditable(false);
         science3rdField.setColumns(2);
         science3rdField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        science3rdField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                science3rdFieldActionPerformed(evt);
-            }
-        });
 
         science3rdLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
@@ -1339,11 +951,6 @@ private void adjustAttributesByCharacterAge() {
         sleightOfHandField.setEditable(false);
         sleightOfHandField.setColumns(2);
         sleightOfHandField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        sleightOfHandField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sleightOfHandFieldActionPerformed(evt);
-            }
-        });
 
         spotHiddenLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         spotHiddenLabel.setText("Spot Hidden");
@@ -1351,20 +958,10 @@ private void adjustAttributesByCharacterAge() {
         spotHiddenField.setEditable(false);
         spotHiddenField.setColumns(2);
         spotHiddenField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        spotHiddenField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                spotHiddenFieldActionPerformed(evt);
-            }
-        });
 
         stealthField.setEditable(false);
         stealthField.setColumns(2);
         stealthField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        stealthField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stealthFieldActionPerformed(evt);
-            }
-        });
 
         stealthLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         stealthLabel.setText("Stealth");
@@ -1375,11 +972,6 @@ private void adjustAttributesByCharacterAge() {
         survivalField.setEditable(false);
         survivalField.setColumns(2);
         survivalField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        survivalField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                survivalFieldActionPerformed(evt);
-            }
-        });
 
         swimLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         swimLabel.setText("Swim");
@@ -1387,11 +979,6 @@ private void adjustAttributesByCharacterAge() {
         swimField.setEditable(false);
         swimField.setColumns(2);
         swimField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        swimField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                swimFieldActionPerformed(evt);
-            }
-        });
 
         throwLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         throwLabel.setText("Throw");
@@ -1399,11 +986,6 @@ private void adjustAttributesByCharacterAge() {
         throwField.setEditable(false);
         throwField.setColumns(2);
         throwField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        throwField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                throwFieldActionPerformed(evt);
-            }
-        });
 
         trackLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         trackLabel.setText("Track");
@@ -1411,64 +993,34 @@ private void adjustAttributesByCharacterAge() {
         trackField.setEditable(false);
         trackField.setColumns(2);
         trackField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        trackField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                trackFieldActionPerformed(evt);
-            }
-        });
 
         other1stLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         other1stField.setEditable(false);
         other1stField.setColumns(2);
         other1stField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        other1stField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                other1stFieldActionPerformed(evt);
-            }
-        });
 
         other2ndLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         other2ndField.setEditable(false);
         other2ndField.setColumns(2);
         other2ndField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        other2ndField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                other2ndFieldActionPerformed(evt);
-            }
-        });
 
         other3rdLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         other3rdField.setEditable(false);
         other3rdField.setColumns(2);
         other3rdField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        other3rdField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                other3rdFieldActionPerformed(evt);
-            }
-        });
 
         other4thLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
         other4thField.setEditable(false);
         other4thField.setColumns(2);
         other4thField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        other4thField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                other4thFieldActionPerformed(evt);
-            }
-        });
 
         other5thField.setEditable(false);
         other5thField.setColumns(2);
         other5thField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        other5thField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                other5thFieldActionPerformed(evt);
-            }
-        });
 
         other5thLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
 
@@ -1480,172 +1032,238 @@ private void adjustAttributesByCharacterAge() {
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(science3rdLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(science3rdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(science2ndLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(science2ndField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(scienceLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(scienceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(other5thLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(other5thField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(other3rdLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(other3rdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(other2ndLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(other2ndField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(other1stLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(other1stField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(swimLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(swimField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(trackLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(trackField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(survivalLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(survivalField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(stealthLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(stealthField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(sleightOfHandLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(sleightOfHandField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(spotHiddenLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(spotHiddenField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(throwLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(throwField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(other4thLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(other4thField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(science3rdLabel)
+                            .addComponent(science2ndLabel)
+                            .addComponent(other3rdLabel)
+                            .addComponent(other2ndLabel)
+                            .addComponent(other1stLabel)
+                            .addComponent(other4thLabel)
+                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(sleightOfHandLabel)
+                                .addComponent(scienceLabel))
+                            .addComponent(spotHiddenLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(stealthLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(survivalLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(swimLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(throwLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(trackLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(science3rdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(science2ndField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(scienceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(other5thField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(other3rdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(other2ndField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(other1stField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(swimField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(trackField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(survivalField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(stealthField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sleightOfHandField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spotHiddenField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(throwField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(other4thField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(scienceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(scienceLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(science2ndField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(science2ndLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(science3rdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(science3rdLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sleightOfHandField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sleightOfHandLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(spotHiddenField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(spotHiddenLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(stealthField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(stealthLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(survivalField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(survivalLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(swimField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(swimLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(throwField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(throwLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(trackField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(trackLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(other1stField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(other1stLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(other2ndField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(other2ndLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(other3rdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(other3rdLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(other4thField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(other4thLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(other5thField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(other5thLabel))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(science2ndLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(science3rdLabel)
+                        .addGap(153, 153, 153)
+                        .addComponent(other1stLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(other2ndLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(other3rdLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(other4thLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(scienceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(scienceLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(science2ndField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(science3rdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(sleightOfHandField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sleightOfHandLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(spotHiddenField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spotHiddenLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(stealthField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(stealthLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(survivalField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(survivalLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(swimField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(swimLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(throwField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(throwLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(trackField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(trackLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(other1stField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(other2ndField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(other3rdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(other4thField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(other5thField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, Short.MAX_VALUE)))
+                .addComponent(other5thLabel))
+        );
+
+        generateNewButton.setFont(new java.awt.Font("Droid Serif", 1, 12)); // NOI18N
+        generateNewButton.setText("Generate NEW!");
+        generateNewButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generateNewButtonActionPerformed(evt);
+            }
+        });
+
+        rollFirstNameButton.setFont(new java.awt.Font("Droid Serif", 1, 12)); // NOI18N
+        rollFirstNameButton.setText("New First Name");
+        rollFirstNameButton.setEnabled(false);
+        rollFirstNameButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rollFirstNameButtonActionPerformed(evt);
+            }
+        });
+
+        rollLastNameButton.setFont(new java.awt.Font("Droid Serif", 1, 12)); // NOI18N
+        rollLastNameButton.setText("New Last Name");
+        rollLastNameButton.setEnabled(false);
+        rollLastNameButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rollLastNameButtonActionPerformed(evt);
+            }
+        });
+
+        rollProfessionButton.setFont(new java.awt.Font("Droid Serif", 1, 12)); // NOI18N
+        rollProfessionButton.setText("New Profession");
+        rollProfessionButton.setEnabled(false);
+        rollProfessionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rollProfessionButtonActionPerformed(evt);
+            }
+        });
+
+        rollAttributesButton.setFont(new java.awt.Font("Droid Serif", 1, 12)); // NOI18N
+        rollAttributesButton.setText("Roll Attributes");
+        rollAttributesButton.setEnabled(false);
+        rollAttributesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rollAttributesButtonActionPerformed(evt);
+            }
+        });
+
+        allocateSPButton.setFont(new java.awt.Font("Droid Serif", 1, 12)); // NOI18N
+        allocateSPButton.setText("Allocate SP");
+        allocateSPButton.setEnabled(false);
+        allocateSPButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                allocateSPButtonMouseClicked(evt);
+            }
+        });
+        allocateSPButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                allocateSPButtonKeyPressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(rollFirstNameButton, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                        .addComponent(generateNewButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(allocateSPButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rollAttributesButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rollProfessionButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                        .addComponent(rollLastNameButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addComponent(generateNewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rollFirstNameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rollLastNameButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rollProfessionButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rollAttributesButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(allocateSPButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jPanel10Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {generateNewButton, rollAttributesButton, rollLastNameButton, rollProfessionButton});
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-
-        generateNewButton.setFont(new java.awt.Font("Droid Serif", 1, 12)); // NOI18N
-        generateNewButton.setText("Generate NEW!");
-        generateNewButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                generateNewButtonMouseClicked(evt);
-            }
-        });
-        generateNewButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                generateNewButtonActionPerformed(evt);
-            }
-        });
 
         jPanel8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -1690,11 +1308,6 @@ private void adjustAttributesByCharacterAge() {
         powerField.setEditable(false);
         powerField.setColumns(5);
         powerField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        powerField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                powerFieldActionPerformed(evt);
-            }
-        });
 
         sizeField.setEditable(false);
         sizeField.setColumns(5);
@@ -1707,11 +1320,6 @@ private void adjustAttributesByCharacterAge() {
         moveRateField.setEditable(false);
         moveRateField.setColumns(5);
         moveRateField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        moveRateField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                moveRateFieldActionPerformed(evt);
-            }
-        });
 
         dexterityLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         dexterityLabel.setText("DEX");
@@ -1730,7 +1338,7 @@ private void adjustAttributesByCharacterAge() {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(strengthLabel)
                     .addComponent(conditionLabel)
@@ -1763,13 +1371,13 @@ private void adjustAttributesByCharacterAge() {
                                 .addComponent(powerLabel))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(educationField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(moveRateLabel)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(moveRateField)
                             .addComponent(powerField))))
-                .addGap(30, 30, 30))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1802,15 +1410,11 @@ private void adjustAttributesByCharacterAge() {
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.setFocusTraversalPolicyProvider(true);
 
         firstNameField.setEditable(false);
         firstNameField.setColumns(8);
         firstNameField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        firstNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                firstNameFieldActionPerformed(evt);
-            }
-        });
 
         lastNameField.setEditable(false);
         lastNameField.setColumns(8);
@@ -1827,11 +1431,6 @@ private void adjustAttributesByCharacterAge() {
         sexField.setEditable(false);
         sexField.setColumns(5);
         sexField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        sexField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sexFieldActionPerformed(evt);
-            }
-        });
 
         sexLabel.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         sexLabel.setText("Sex");
@@ -1860,45 +1459,25 @@ private void adjustAttributesByCharacterAge() {
         HPField.setEditable(false);
         HPField.setColumns(2);
         HPField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        HPField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HPFieldActionPerformed(evt);
-            }
-        });
 
         sanityField.setEditable(false);
         sanityField.setColumns(2);
         sanityField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        sanityField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sanityFieldActionPerformed(evt);
-            }
-        });
 
         MPField.setEditable(false);
         MPField.setColumns(2);
         MPField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        MPField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MPFieldActionPerformed(evt);
-            }
-        });
 
         luckField.setEditable(false);
         luckField.setColumns(2);
         luckField.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        luckField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                luckFieldActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(professionLabel)
                     .addComponent(nameLabel)
@@ -1912,7 +1491,7 @@ private void adjustAttributesByCharacterAge() {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lastNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))
+                        .addComponent(lastNameField))
                     .addComponent(professionField)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1935,7 +1514,7 @@ private void adjustAttributesByCharacterAge() {
                                 .addComponent(luckLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(luckField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 61, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -1966,10 +1545,11 @@ private void adjustAttributesByCharacterAge() {
                     .addComponent(sanityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(MPField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(luckField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         firstNameField.getAccessibleContext().setAccessibleName("firstNameField");
+        firstNameField.getAccessibleContext().setAccessibleParent(this);
         lastNameField.getAccessibleContext().setAccessibleName("LastNameField");
         professionField.getAccessibleContext().setAccessibleName("professionField");
         professionField.getAccessibleContext().setAccessibleDescription("");
@@ -1981,11 +1561,11 @@ private void adjustAttributesByCharacterAge() {
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(21, 21, 21))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2001,14 +1581,33 @@ private void adjustAttributesByCharacterAge() {
         logArea.setRows(5);
         jScrollPane1.setViewportView(logArea);
 
-        jButton1.setFont(new java.awt.Font("Droid Serif", 1, 12)); // NOI18N
-        jButton1.setText("Open DB Manager");
-        jButton1.setToolTipText("");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jPanel9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        openDBMButton.setFont(new java.awt.Font("Droid Serif", 1, 12)); // NOI18N
+        openDBMButton.setText("Open DB Manager");
+        openDBMButton.setToolTipText("");
+        openDBMButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                openDBMButtonActionPerformed(evt);
             }
         });
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(openDBMButton, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(openDBMButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         skillPointsField.setFont(new java.awt.Font("Droid Serif", 1, 18)); // NOI18N
         skillPointsField.setText("Skill points available: 0");
@@ -2018,324 +1617,202 @@ private void adjustAttributesByCharacterAge() {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(generateNewButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(476, 476, 476))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 34, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(344, 344, 344)
-                .addComponent(skillPointsField)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(496, 496, 496)
+                        .addComponent(skillPointsField)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(generateNewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(skillPointsField)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(skillPointsField)
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void firstNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_firstNameFieldActionPerformed
-
-    private void handgunFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_handgunFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_handgunFieldActionPerformed
-
-    private void rifleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rifleFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rifleFieldActionPerformed
-
-    private void electricalRepairFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_electricalRepairFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_electricalRepairFieldActionPerformed
-
-    private void historyFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historyFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_historyFieldActionPerformed
-
-    private void ridingFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ridingFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ridingFieldActionPerformed
-
-    private void languageOtherFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_languageOtherFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_languageOtherFieldActionPerformed
-
-    private void libraryUseFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_libraryUseFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_libraryUseFieldActionPerformed
-
-    private void languageOwnFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_languageOwnFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_languageOwnFieldActionPerformed
-
-    private void medicineFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medicineFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_medicineFieldActionPerformed
-
-    private void listenFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listenFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_listenFieldActionPerformed
-
-    private void scienceFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scienceFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_scienceFieldActionPerformed
-
-    private void navigateFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navigateFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_navigateFieldActionPerformed
-
-    private void accountingFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountingFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_accountingFieldActionPerformed
-
-    private void occultFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_occultFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_occultFieldActionPerformed
-
-    private void mechanicalRepairFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mechanicalRepairFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mechanicalRepairFieldActionPerformed
-
-    private void naturalWorldFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_naturalWorldFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_naturalWorldFieldActionPerformed
-
-    private void firstAidFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstAidFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_firstAidFieldActionPerformed
-
-    private void pilotFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pilotFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pilotFieldActionPerformed
-
-    private void swimFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_swimFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_swimFieldActionPerformed
-
-    private void stealthFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stealthFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stealthFieldActionPerformed
-
-    private void lawFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lawFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lawFieldActionPerformed
-
-    private void psychologyFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_psychologyFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_psychologyFieldActionPerformed
-
-    private void driveFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_driveFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_driveFieldActionPerformed
-
-    private void survivalFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_survivalFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_survivalFieldActionPerformed
-
-    private void throwFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_throwFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_throwFieldActionPerformed
-
-    private void locksmithingFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locksmithingFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_locksmithingFieldActionPerformed
-
-    private void persuadeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_persuadeFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_persuadeFieldActionPerformed
-
-    private void dodgeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dodgeFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dodgeFieldActionPerformed
-
-    private void generateNewButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_generateNewButtonMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_generateNewButtonMouseClicked
-
-    private void anthropologyFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anthropologyFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_anthropologyFieldActionPerformed
-
-    private void appraiseFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appraiseFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_appraiseFieldActionPerformed
-
-    private void archeologyFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_archeologyFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_archeologyFieldActionPerformed
-
-    private void craftFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_craftFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_craftFieldActionPerformed
-
-    private void charmFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_charmFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_charmFieldActionPerformed
-
-    private void climbFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_climbFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_climbFieldActionPerformed
-
-    private void disguiseFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disguiseFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_disguiseFieldActionPerformed
-
-    private void fastTalkFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fastTalkFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fastTalkFieldActionPerformed
-
-    private void fightingFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fightingFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fightingFieldActionPerformed
-
-    private void intimidateFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_intimidateFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_intimidateFieldActionPerformed
-
-    private void jumpFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumpFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jumpFieldActionPerformed
-
-    private void opHvMachineFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opHvMachineFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_opHvMachineFieldActionPerformed
-
-    private void psychoanalysisFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_psychoanalysisFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_psychoanalysisFieldActionPerformed
-
-    private void sleightOfHandFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sleightOfHandFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sleightOfHandFieldActionPerformed
-
-    private void spotHiddenFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spotHiddenFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_spotHiddenFieldActionPerformed
-
-    private void trackFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_trackFieldActionPerformed
-
-    private void craft2ndFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_craft2ndFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_craft2ndFieldActionPerformed
-
-    private void craft3rdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_craft3rdFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_craft3rdFieldActionPerformed
-
-    private void creditRatingFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditRatingFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_creditRatingFieldActionPerformed
-
-    private void cthulhuMythosFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cthulhuMythosFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cthulhuMythosFieldActionPerformed
-
-    private void fighting2ndFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fighting2ndFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fighting2ndFieldActionPerformed
-
-    private void fighting3rdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fighting3rdFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fighting3rdFieldActionPerformed
-
-    private void rifle2ndFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rifle2ndFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rifle2ndFieldActionPerformed
-
-    private void languageOther2ndFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_languageOther2ndFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_languageOther2ndFieldActionPerformed
-
-    private void languageOther3rdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_languageOther3rdFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_languageOther3rdFieldActionPerformed
-
-    private void science2ndFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_science2ndFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_science2ndFieldActionPerformed
-
-    private void science3rdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_science3rdFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_science3rdFieldActionPerformed
-
-    private void other1stFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_other1stFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_other1stFieldActionPerformed
-
-    private void other2ndFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_other2ndFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_other2ndFieldActionPerformed
-
-    private void other3rdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_other3rdFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_other3rdFieldActionPerformed
-
-    private void other4thFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_other4thFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_other4thFieldActionPerformed
-
-    private void other5thFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_other5thFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_other5thFieldActionPerformed
-
-    private void sexFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sexFieldActionPerformed
-
-    private void powerFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_powerFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_powerFieldActionPerformed
-
-    private void moveRateFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveRateFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_moveRateFieldActionPerformed
 
     private void generateNewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateNewButtonActionPerformed
         innitializeStartingConditions();
         randomAll();
         randomAttributes(); 
+        setMoveRate();
+        setValuesDependantOnAttr();
         adjustAttributesByCharacterAge();
         SkillChar.setDefaultValues(skillFields, educationField, dexterityField);
         SkillChar.setSkillPoints();
+        rollFirstNameButton.setEnabled(true);
+        rollLastNameButton.setEnabled(true);
+        rollProfessionButton.setEnabled(true);
+        rollAttributesButton.setEnabled(true);
+        allocateSPButton.setEnabled(true);
+        new Timer(delay, refreshSkillFields).start();
     }//GEN-LAST:event_generateNewButtonActionPerformed
 
     private void innitializeStartingConditions() {
         logArea.setText("");
-        aggregateCharacterFields();
+        aggregateCharacterInfoFields();
         aggregateAttrCharFields();
         aggregateAttributesFields();
         aggregateSkillFields();
         AttrChar.initAttrChar(attrCharFields, logArea);
         InfoChar.initInfoChar(characterFields, conditionField, sizeField, powerField);
-        SkillChar.initSkillChar(skillPointsField, intelligenceField);
+        SkillChar.initSkillChar(skillPointsField, intelligenceField, skillFields);
     }
+    
+    private static final String QUERY_NUMBER_OF_ROWS_FIRST_NAME="from FirstName where id = (select count(*) from FirstName)";
+    private static final String QUERY_NUMBER_OF_ROWS_LAST_NAME="from LastName where id = (select count(*) from LastName)";
+    private static final String QUERY_NUMBER_OF_ROWS_PROFESSION="from Profession where id = (select count(*) from Profession)";
+
+    private void randomAll() {
+        randomFirstName();
+        randomLastName();
+        randomProfession();
+    }
+    private void randomFirstName() {
+        List result = QuerryUtil.executeHQLQueryNumberOfFirstName(QUERY_NUMBER_OF_ROWS_FIRST_NAME);
+        InfoChar.displayResultFirstName(result);
+    }
+    private void randomLastName() {
+        List result = QuerryUtil.executeHQLQueryNumberOfLastName(QUERY_NUMBER_OF_ROWS_LAST_NAME);
+        InfoChar.displayResultLastName(result);
+    }
+    private void randomProfession() {
+        List result = QuerryUtil.executeHQLQueryNumberOfProfession(QUERY_NUMBER_OF_ROWS_PROFESSION);
+        InfoChar.displayResultProfession(result);
+    }
+    
+    private void randomAttributes() {
+        for (javax.swing.JTextField iter : attributesFields) {
+            int value = 0;
+
+            if (iter.equals(sizeField) || 
+                iter.equals(intelligenceField) ||
+                iter.equals(educationField)) {
+                for (int i = 0; i < 2; i++) {
+                    value += util.Tools.roll(1,6);
+                }
+                value += 6;
+            }
+            else {
+                for (int i = 0; i < 3; i++) {
+                    value += util.Tools.roll(1,6);
+                }
+            }
+            value *= 5;     
+            iter.setText(Integer.toString(value));
+        }
+    } 
+    private void setMoveRate() {
+        short moveRate = 0;
+        short dex = (short) Integer.parseInt(dexterityField.getText());
+        short str = (short) Integer.parseInt(strengthField.getText());
+        short siz = (short) Integer.parseInt(sizeField.getText());
+
+        if ((dex < siz) && (str < siz)) {
+            moveRate = 7;
+        }
+        else if ((dex > siz) && (str > siz)) {
+            moveRate = 9;
+        }
+        else if ((dex >= siz) || (str >= siz)) {
+            moveRate = 8;
+        }
+        moveRateField.setText(Short.toString(moveRate));
+    }
+    private void setValuesDependantOnAttr() {
+        InfoChar.setMagicPoints();
+        InfoChar.setLuck();
+        InfoChar.setHP();
+        InfoChar.setSanity();
+    }
+    private void adjustAttributesByCharacterAge() {
+        short age = Short.parseShort(ageField.getText());
+        short movementRate = Short.parseShort(moveRateField.getText());
+        String logMessage = "";
+
+        if (age >= 15 && age < 20) {
+            AttrChar.reduceStrSiz(5);
+            Tools.removePoint(educationField, 5);
+            logMessage = "5 point(s) removed from education";
+        }
+
+        else if (age >= 20 && age < 40) {
+            AttrChar.improvementCheckForEdu(1);
+        }
+
+        else if (age >= 40 && age < 50) {
+            AttrChar.improvementCheckForEdu(2);
+            AttrChar.removeStrConDex(5);
+            Tools.removePoint(appearanceField, 5);
+            movementRate -= 1;
+            logMessage = "5 point(s) removed from appearance\n1 point(s) removed from movement rate";
+        }
+
+        else if (age >= 50 && age < 60) {
+            AttrChar.improvementCheckForEdu(3);
+            AttrChar.removeStrConDex(10);
+            Tools.removePoint(appearanceField, 10);
+            movementRate -= 2;
+            logMessage = "10 point(s) removed from appearance\n2 point(s) removed from movement rate";
+        }
+
+        else if (age >= 60 && age < 70) {
+            AttrChar.improvementCheckForEdu(4);
+            AttrChar.removeStrConDex(20);
+            Tools.removePoint(appearanceField, 15);
+            movementRate -= 3;
+            logMessage = "15 point(s) removed from appearance\n3 point(s) removed from movement rate";
+        }
+
+        else if (age >= 70 && age < 80) {
+            AttrChar.improvementCheckForEdu(4);
+            AttrChar.removeStrConDex(40);
+            Tools.removePoint(appearanceField, 20);
+            movementRate -= 4;
+            logMessage = "20 point(s) removed from appearance\n4 point(s) removed from movement rate";
+        }
+
+        else if (age >= 80 && age < 90) {
+            AttrChar.improvementCheckForEdu(4);
+            AttrChar.removeStrConDex(80);
+            Tools.removePoint(appearanceField, 25);
+            movementRate -= 5;
+            logMessage = "25 point(s) removed from appearance\n5 point(s) removed from movement rate";
+        }
+        moveRateField.setText(Integer.toString(movementRate));
+        AttrChar.appendLog(logMessage);
+    }
+
+    int delay = 100; 
+    ActionListener refreshSkillFields = new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent evt) {
+          SkillChar.fieldsProperCheck();
+          SkillChar.availableSkillPoints();
+    }
+};
     
     private ArrayList<javax.swing.JTextField> characterFields;
     private ArrayList<javax.swing.JTextField> skillFields;
@@ -2425,7 +1902,7 @@ private void adjustAttributesByCharacterAge() {
         skillFields.add(other4thField);
         skillFields.add(other5thField);
     }
-    private void aggregateCharacterFields() {
+    private void aggregateCharacterInfoFields() {
         characterFields = new ArrayList<>();
         characterFields.add(firstNameField);
         characterFields.add(lastNameField);
@@ -2438,25 +1915,67 @@ private void adjustAttributesByCharacterAge() {
         characterFields.add(luckField);
     }
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void openDBMButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openDBMButtonActionPerformed
         DBManagementUI.start();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_openDBMButtonActionPerformed
 
-    private void HPFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HPFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_HPFieldActionPerformed
+    private void rollFirstNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollFirstNameButtonActionPerformed
+        randomFirstName();
+    }//GEN-LAST:event_rollFirstNameButtonActionPerformed
 
-    private void sanityFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sanityFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sanityFieldActionPerformed
+    private void rollLastNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollLastNameButtonActionPerformed
+        randomLastName();
+    }//GEN-LAST:event_rollLastNameButtonActionPerformed
 
-    private void MPFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MPFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MPFieldActionPerformed
+    private void rollProfessionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollProfessionButtonActionPerformed
+        randomProfession();
+    }//GEN-LAST:event_rollProfessionButtonActionPerformed
 
-    private void luckFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_luckFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_luckFieldActionPerformed
+    private void rollAttributesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollAttributesButtonActionPerformed
+        randomAttributes(); 
+        setMoveRate();
+        setValuesDependantOnAttr();
+        adjustAttributesByCharacterAge();
+        SkillChar.setSkillPoints();
+    }//GEN-LAST:event_rollAttributesButtonActionPerformed
+    
+    private void allocateSPButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_allocateSPButtonMouseClicked
+        if (allocateSPButton.isSelected()) {
+            SkillChar.setEditableOnSkillFields();
+            blockOtherButtons();
+            allocateSPButton.setText("Save");
+        }
+        else if (!SkillChar.isSkillPointAvailable()){
+            SkillChar.setEditableOffSkillFields();
+            unblockOtherButtons();
+            allocateSPButton.setText("Allocate SP");
+        }
+        else {
+            allocateSPButton.setSelected(true);
+            JOptionPane.showMessageDialog(null, "Too many points allocated.", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_allocateSPButtonMouseClicked
+    
+    private void blockOtherButtons() {
+        generateNewButton.setEnabled(false);
+        rollFirstNameButton.setEnabled(false);
+        rollLastNameButton.setEnabled(false);
+        rollProfessionButton.setEnabled(false);
+        rollAttributesButton.setEnabled(false);
+        openDBMButton.setEnabled(false);
+    }
+    private void unblockOtherButtons() {
+        generateNewButton.setEnabled(true);
+        rollFirstNameButton.setEnabled(true);
+        rollLastNameButton.setEnabled(true);
+        rollProfessionButton.setEnabled(true);
+        rollAttributesButton.setEnabled(true);
+        openDBMButton.setEnabled(true);
+    }
+    
+    private void allocateSPButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_allocateSPButtonKeyPressed
+        
+    }//GEN-LAST:event_allocateSPButtonKeyPressed
 
     /**
      * @param args the command line arguments
@@ -2503,6 +2022,7 @@ private void adjustAttributesByCharacterAge() {
     private javax.swing.JLabel accountingLabel;
     private javax.swing.JTextField ageField;
     private javax.swing.JLabel ageLabel;
+    private javax.swing.JToggleButton allocateSPButton;
     private javax.swing.JTextField anthropologyField;
     private javax.swing.JLabel anthropologyLabel;
     private javax.swing.JTextField appearanceField;
@@ -2559,8 +2079,8 @@ private void adjustAttributesByCharacterAge() {
     private javax.swing.JLabel intelligenceLabel;
     private javax.swing.JTextField intimidateField;
     private javax.swing.JLabel intimidateLabel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -2568,6 +2088,7 @@ private void adjustAttributesByCharacterAge() {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jumpField;
     private javax.swing.JLabel jumpLabel;
@@ -2606,6 +2127,7 @@ private void adjustAttributesByCharacterAge() {
     private javax.swing.JLabel occultLabel;
     private javax.swing.JTextField opHvMachineField;
     private javax.swing.JLabel opHvMachineLabel;
+    private javax.swing.JButton openDBMButton;
     private javax.swing.JTextField other1stField;
     private javax.swing.JLabel other1stLabel;
     private javax.swing.JTextField other2ndField;
@@ -2634,6 +2156,10 @@ private void adjustAttributesByCharacterAge() {
     private javax.swing.JLabel rifle2ndLabel;
     private javax.swing.JTextField rifleField;
     private javax.swing.JLabel rifleLabel;
+    private javax.swing.JButton rollAttributesButton;
+    private javax.swing.JButton rollFirstNameButton;
+    private javax.swing.JButton rollLastNameButton;
+    private javax.swing.JButton rollProfessionButton;
     private javax.swing.JTextField sanityField;
     private javax.swing.JLabel sanityLabel;
     private javax.swing.JTextField science2ndField;
