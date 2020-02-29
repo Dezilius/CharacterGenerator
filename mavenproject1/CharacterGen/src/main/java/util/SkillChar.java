@@ -5,6 +5,7 @@
  */
 package util;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 /**
@@ -154,7 +155,7 @@ public class SkillChar {
     
     public static void fieldsProperCheck() {
         for (javax.swing.JTextField iter : skillFields) {
-            if (!isInteger(iter.getText())) {
+            if (!isProperInteger(iter.getText())) {
                 iter.setText("0");
             }
             if (Integer.parseInt(iter.getText()) > 99) {
@@ -166,9 +167,16 @@ public class SkillChar {
         }
     }
     
-    private static boolean isInteger(String text) {
+    private static boolean isProperInteger(String text) {
         char[] charArr = text.toCharArray();
+        boolean firstChecked = false;
+        
         for (char iter: charArr) {
+            if (!firstChecked && isFirstChar0(iter) && charArr.length > 1) {
+                firstChecked = true;
+                return false;
+            } else firstChecked = true;
+            
             if (!isNumber(iter)) {
                 return false;
             }
@@ -184,5 +192,24 @@ public class SkillChar {
             return true;
         }
         return false;
+    }
+    
+    private static boolean isFirstChar0(char c) {
+        if (c == '0') {
+            return true;
+        }
+        return false;
+    }
+    
+    public static void setColorGreen() {
+        for (javax.swing.JTextField iter : skillFields) {
+            iter.setBackground(Color.green);
+        }
+    }
+    
+    public static void setColorWhite() {
+        for (javax.swing.JTextField iter : skillFields) {
+            iter.setBackground(Color.white);
+        }
     }
 }

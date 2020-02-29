@@ -155,7 +155,7 @@ private void adjustAttributesByCharacterAge() {
     AttrChar.appendLog(message);
 }
   
-int delay = 300; 
+int delay = 100; 
 ActionListener refreshSkillFields = new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent evt) {
@@ -1955,6 +1955,7 @@ ActionListener refreshSkillFields = new ActionListener() {
             rollAttributesButton.setEnabled(false);
             openDBMButton.setEnabled(false);
             allocateSPButton.setText("Save");
+            SkillChar.setColorGreen();
         }
         else if (!SkillChar.isSkillPointAvailable()){
             SkillChar.setEditableOffSkillFields();
@@ -1965,6 +1966,7 @@ ActionListener refreshSkillFields = new ActionListener() {
             rollAttributesButton.setEnabled(true);
             openDBMButton.setEnabled(true);
             allocateSPButton.setText("Allocate SP");
+            SkillChar.setColorWhite();
         }
         else {
             allocateSPButton.setSelected(true);
