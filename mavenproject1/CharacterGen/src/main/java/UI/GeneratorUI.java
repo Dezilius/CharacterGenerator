@@ -1,5 +1,12 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package UI;
 
+
+//import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -18,10 +25,145 @@ import util.SkillChar;
  */
 public class GeneratorUI extends javax.swing.JFrame {
 
+    /**
+     * Creates new form GeneratorUI
+     */
     public GeneratorUI() {
         initComponents();
     }
+
+private static final String QUERY_NUMBER_OF_ROWS_FIRST_NAME="from FirstName where id = (select count(*) from FirstName)";
+private static final String QUERY_NUMBER_OF_ROWS_LAST_NAME="from LastName where id = (select count(*) from LastName)";
+private static final String QUERY_NUMBER_OF_ROWS_PROFESSION="from Profession where id = (select count(*) from Profession)";
     
+private void randomAll() {
+    randomFirstName();
+    randomLastName();
+    randomProfession();
+}
+private void randomFirstName() {
+    List result = QuerryUtil.executeHQLQueryNumberOfFirstName(QUERY_NUMBER_OF_ROWS_FIRST_NAME);
+    InfoChar.displayResultFirstName(result);
+}
+private void randomLastName() {
+    List result = QuerryUtil.executeHQLQueryNumberOfLastName(QUERY_NUMBER_OF_ROWS_LAST_NAME);
+    InfoChar.displayResultLastName(result);
+}
+private void randomProfession() {
+    List result = QuerryUtil.executeHQLQueryNumberOfProfession(QUERY_NUMBER_OF_ROWS_PROFESSION);
+    InfoChar.displayResultProfession(result);
+}
+private void randomAttributes() {
+    for (javax.swing.JTextField iter : attributesFields) {
+        int value = 0;
+        
+        if (iter.equals(sizeField) || 
+            iter.equals(intelligenceField) ||
+            iter.equals(educationField)) {
+            for (int i = 0; i < 2; i++) {
+                value += util.Tools.roll(1,6);
+            }
+            value += util.Tools.roll(6,6);
+        }
+        else {
+            for (int i = 0; i < 3; i++) {
+                value += util.Tools.roll(1,6);
+            }
+        }
+        value *= 5;     
+        iter.setText(Integer.toString(value));
+    }
+    setMoveRate();
+    InfoChar.setMagicPoints();
+    InfoChar.setLuck();
+    InfoChar.setHP();
+    InfoChar.setSanity();
+} 
+
+private void setMoveRate() {
+    short moveRate = 0;
+    short dex = (short) Integer.parseInt(dexterityField.getText());
+    short str = (short) Integer.parseInt(strengthField.getText());
+    short siz = (short) Integer.parseInt(sizeField.getText());
+    
+    if ((dex < siz) && (str < siz)) {
+        moveRate = 7;
+    }
+    else if ((dex > siz) && (str > siz)) {
+        moveRate = 9;
+    }
+    else if ((dex >= siz) || (str >= siz)) {
+        moveRate = 8;
+    }
+    moveRateField.setText(Short.toString(moveRate));
+}
+private void adjustAttributesByCharacterAge() {
+    short age = Short.parseShort(ageField.getText());
+    int movementRate = Integer.parseInt(moveRateField.getText());
+    String message = "";
+    
+    if (age >= 15 && age < 20) {
+        AttrChar.remove2Attr(5);
+        Tools.removePoint(educationField, 5);
+        message = "5 point(s) removed from education";
+    }
+    
+    else if (age >= 20 && age < 40) {
+        AttrChar.improvementValue(1);
+    }
+    
+    else if (age >= 40 && age < 50) {
+        AttrChar.improvementValue(2);
+        AttrChar.remove3Attr(5);
+        Tools.removePoint(appearanceField, 5);
+        movementRate -= 1;
+        message = "5 point(s) removed from appearance\n 1 point(s) removed from movement rate";
+    }
+    
+    else if (age >= 50 && age < 60) {
+        AttrChar.improvementValue(3);
+        AttrChar.remove3Attr(10);
+        Tools.removePoint(appearanceField, 10);
+        movementRate -= 2;
+        message = "10 point(s) removed from appearance\n 2 point(s) removed from movement rate";
+    }
+    
+    else if (age >= 60 && age < 70) {
+        AttrChar.improvementValue(4);
+        AttrChar.remove3Attr(20);
+        Tools.removePoint(appearanceField, 15);
+        movementRate -= 3;
+        message = "15 point(s) removed from appearance\n 3 point(s) removed from movement rate";
+    }
+    
+    else if (age >= 70 && age < 80) {
+        AttrChar.improvementValue(4);
+        AttrChar.remove3Attr(40);
+        Tools.removePoint(appearanceField, 20);
+        movementRate -= 4;
+        message = "20 point(s) removed from appearance\n 4 point(s) removed from movement rate";
+    }
+    
+    else if (age >= 80 && age < 90) {
+        AttrChar.improvementValue(4);
+        AttrChar.remove3Attr(80);
+        Tools.removePoint(appearanceField, 25);
+        movementRate -= 5;
+        message = "25 point(s) removed from appearance\n 5 point(s) removed from movement rate";
+    }
+    moveRateField.setText(Integer.toString(movementRate));
+    AttrChar.appendLog(message);
+}
+  
+int delay = 100; 
+ActionListener refreshSkillFields = new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent evt) {
+          SkillChar.fieldsProperCheck();
+          SkillChar.availableSkillPoints();
+    }
+};
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1657,8 +1799,6 @@ public class GeneratorUI extends javax.swing.JFrame {
         innitializeStartingConditions();
         randomAll();
         randomAttributes(); 
-        setMoveRate();
-        setValuesDependantOnAttr();
         adjustAttributesByCharacterAge();
         SkillChar.setDefaultValues(skillFields, educationField, dexterityField);
         SkillChar.setSkillPoints();
@@ -1672,7 +1812,7 @@ public class GeneratorUI extends javax.swing.JFrame {
 
     private void innitializeStartingConditions() {
         logArea.setText("");
-        aggregateCharacterInfoFields();
+        aggregateCharacterFields();
         aggregateAttrCharFields();
         aggregateAttributesFields();
         aggregateSkillFields();
@@ -1680,139 +1820,6 @@ public class GeneratorUI extends javax.swing.JFrame {
         InfoChar.initInfoChar(characterFields, conditionField, sizeField, powerField);
         SkillChar.initSkillChar(skillPointsField, intelligenceField, skillFields);
     }
-    
-    private static final String QUERY_NUMBER_OF_ROWS_FIRST_NAME="from FirstName where id = (select count(*) from FirstName)";
-    private static final String QUERY_NUMBER_OF_ROWS_LAST_NAME="from LastName where id = (select count(*) from LastName)";
-    private static final String QUERY_NUMBER_OF_ROWS_PROFESSION="from Profession where id = (select count(*) from Profession)";
-
-    private void randomAll() {
-        randomFirstName();
-        randomLastName();
-        randomProfession();
-    }
-    private void randomFirstName() {
-        List result = QuerryUtil.executeHQLQueryNumberOfFirstName(QUERY_NUMBER_OF_ROWS_FIRST_NAME);
-        InfoChar.displayResultFirstName(result);
-    }
-    private void randomLastName() {
-        List result = QuerryUtil.executeHQLQueryNumberOfLastName(QUERY_NUMBER_OF_ROWS_LAST_NAME);
-        InfoChar.displayResultLastName(result);
-    }
-    private void randomProfession() {
-        List result = QuerryUtil.executeHQLQueryNumberOfProfession(QUERY_NUMBER_OF_ROWS_PROFESSION);
-        InfoChar.displayResultProfession(result);
-    }
-    
-    private void randomAttributes() {
-        for (javax.swing.JTextField iter : attributesFields) {
-            int value = 0;
-
-            if (iter.equals(sizeField) || 
-                iter.equals(intelligenceField) ||
-                iter.equals(educationField)) {
-                for (int i = 0; i < 2; i++) {
-                    value += util.Tools.roll(1,6);
-                }
-                value += 6;
-            }
-            else {
-                for (int i = 0; i < 3; i++) {
-                    value += util.Tools.roll(1,6);
-                }
-            }
-            value *= 5;     
-            iter.setText(Integer.toString(value));
-        }
-    } 
-    private void setMoveRate() {
-        short moveRate = 0;
-        short dex = (short) Integer.parseInt(dexterityField.getText());
-        short str = (short) Integer.parseInt(strengthField.getText());
-        short siz = (short) Integer.parseInt(sizeField.getText());
-
-        if ((dex < siz) && (str < siz)) {
-            moveRate = 7;
-        }
-        else if ((dex > siz) && (str > siz)) {
-            moveRate = 9;
-        }
-        else if ((dex >= siz) || (str >= siz)) {
-            moveRate = 8;
-        }
-        moveRateField.setText(Short.toString(moveRate));
-    }
-    private void setValuesDependantOnAttr() {
-        InfoChar.setMagicPoints();
-        InfoChar.setLuck();
-        InfoChar.setHP();
-        InfoChar.setSanity();
-    }
-    private void adjustAttributesByCharacterAge() {
-        short age = Short.parseShort(ageField.getText());
-        short movementRate = Short.parseShort(moveRateField.getText());
-        String logMessage = "";
-
-        if (age >= 15 && age < 20) {
-            AttrChar.reduceStrSiz(5);
-            Tools.removePoint(educationField, 5);
-            logMessage = "5 point(s) removed from education";
-        }
-
-        else if (age >= 20 && age < 40) {
-            AttrChar.improvementCheckForEdu(1);
-        }
-
-        else if (age >= 40 && age < 50) {
-            AttrChar.improvementCheckForEdu(2);
-            AttrChar.removeStrConDex(5);
-            Tools.removePoint(appearanceField, 5);
-            movementRate -= 1;
-            logMessage = "5 point(s) removed from appearance\n1 point(s) removed from movement rate";
-        }
-
-        else if (age >= 50 && age < 60) {
-            AttrChar.improvementCheckForEdu(3);
-            AttrChar.removeStrConDex(10);
-            Tools.removePoint(appearanceField, 10);
-            movementRate -= 2;
-            logMessage = "10 point(s) removed from appearance\n2 point(s) removed from movement rate";
-        }
-
-        else if (age >= 60 && age < 70) {
-            AttrChar.improvementCheckForEdu(4);
-            AttrChar.removeStrConDex(20);
-            Tools.removePoint(appearanceField, 15);
-            movementRate -= 3;
-            logMessage = "15 point(s) removed from appearance\n3 point(s) removed from movement rate";
-        }
-
-        else if (age >= 70 && age < 80) {
-            AttrChar.improvementCheckForEdu(4);
-            AttrChar.removeStrConDex(40);
-            Tools.removePoint(appearanceField, 20);
-            movementRate -= 4;
-            logMessage = "20 point(s) removed from appearance\n4 point(s) removed from movement rate";
-        }
-
-        else if (age >= 80 && age < 90) {
-            AttrChar.improvementCheckForEdu(4);
-            AttrChar.removeStrConDex(80);
-            Tools.removePoint(appearanceField, 25);
-            movementRate -= 5;
-            logMessage = "25 point(s) removed from appearance\n5 point(s) removed from movement rate";
-        }
-        moveRateField.setText(Integer.toString(movementRate));
-        AttrChar.appendLog(logMessage);
-    }
-
-    int delay = 100; 
-    ActionListener refreshSkillFields = new ActionListener() {
-    @Override
-    public void actionPerformed(ActionEvent evt) {
-          SkillChar.fieldsProperCheck();
-          SkillChar.availableSkillPoints();
-    }
-};
     
     private ArrayList<javax.swing.JTextField> characterFields;
     private ArrayList<javax.swing.JTextField> skillFields;
@@ -1902,7 +1909,7 @@ public class GeneratorUI extends javax.swing.JFrame {
         skillFields.add(other4thField);
         skillFields.add(other5thField);
     }
-    private void aggregateCharacterInfoFields() {
+    private void aggregateCharacterFields() {
         characterFields = new ArrayList<>();
         characterFields.add(firstNameField);
         characterFields.add(lastNameField);
@@ -1933,46 +1940,40 @@ public class GeneratorUI extends javax.swing.JFrame {
 
     private void rollAttributesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollAttributesButtonActionPerformed
         randomAttributes(); 
-        setMoveRate();
-        setValuesDependantOnAttr();
         adjustAttributesByCharacterAge();
         SkillChar.setSkillPoints();
     }//GEN-LAST:event_rollAttributesButtonActionPerformed
     
     private void allocateSPButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_allocateSPButtonMouseClicked
+        
         if (allocateSPButton.isSelected()) {
             SkillChar.setEditableOnSkillFields();
-            blockOtherButtons();
+            generateNewButton.setEnabled(false);
+            rollFirstNameButton.setEnabled(false);
+            rollLastNameButton.setEnabled(false);
+            rollProfessionButton.setEnabled(false);
+            rollAttributesButton.setEnabled(false);
+            openDBMButton.setEnabled(false);
             allocateSPButton.setText("Save");
+            SkillChar.setColorGreen();
         }
         else if (!SkillChar.isSkillPointAvailable()){
             SkillChar.setEditableOffSkillFields();
-            unblockOtherButtons();
+            generateNewButton.setEnabled(true);
+            rollFirstNameButton.setEnabled(true);
+            rollLastNameButton.setEnabled(true);
+            rollProfessionButton.setEnabled(true);
+            rollAttributesButton.setEnabled(true);
+            openDBMButton.setEnabled(true);
             allocateSPButton.setText("Allocate SP");
+            SkillChar.setColorWhite();
         }
         else {
             allocateSPButton.setSelected(true);
             JOptionPane.showMessageDialog(null, "Too many points allocated.", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_allocateSPButtonMouseClicked
-    
-    private void blockOtherButtons() {
-        generateNewButton.setEnabled(false);
-        rollFirstNameButton.setEnabled(false);
-        rollLastNameButton.setEnabled(false);
-        rollProfessionButton.setEnabled(false);
-        rollAttributesButton.setEnabled(false);
-        openDBMButton.setEnabled(false);
-    }
-    private void unblockOtherButtons() {
-        generateNewButton.setEnabled(true);
-        rollFirstNameButton.setEnabled(true);
-        rollLastNameButton.setEnabled(true);
-        rollProfessionButton.setEnabled(true);
-        rollAttributesButton.setEnabled(true);
-        openDBMButton.setEnabled(true);
-    }
-    
+
     private void allocateSPButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_allocateSPButtonKeyPressed
         
     }//GEN-LAST:event_allocateSPButtonKeyPressed
