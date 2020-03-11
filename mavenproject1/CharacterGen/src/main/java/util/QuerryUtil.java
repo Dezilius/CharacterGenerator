@@ -36,6 +36,7 @@ private static final String QUERY_PROFESSION="from Profession where id =";
         return null;
     }
     private static List readNumberOfFirstName(List result) {
+
         for (Object o : result) {
             callofcthulhuDB.entity.FirstName name = (callofcthulhuDB.entity.FirstName) o;
             List ans = randomFirstName(name.getId());
@@ -77,6 +78,7 @@ private static final String QUERY_PROFESSION="from Profession where id =";
         return null;
     }
     private static List readNumberOfLastName(List result) {
+
         for (Object o : result) {
             callofcthulhuDB.entity.LastName name = (callofcthulhuDB.entity.LastName) o;
             List ans = randomLastName(name.getId());
@@ -118,6 +120,7 @@ private static final String QUERY_PROFESSION="from Profession where id =";
         return null;
     }
     private static List readNumberOfProfession(List result) {
+
         for (Object o : result) {
             callofcthulhuDB.entity.Profession profession = (callofcthulhuDB.entity.Profession) o;
             List ans = randomProfession(profession.getId());

@@ -42,6 +42,15 @@ public class InfoChar {
         powerField = powerFieldInit;
     }
     
+    private static int randomAge(callofcthulhuDB.entity.Profession profession) {
+        int ageMin = profession.getMinAge();
+        int ageMax = profession.getMaxAge();
+        if (ageMin < 15 || ageMin > 90) ageMin = 15;
+        if (ageMax < 15 || ageMax > 90) ageMax = 90;
+        if (ageMin > ageMax) ageMax = 90;
+        return util.Tools.roll(ageMin, ageMax);
+    }
+    
     public static void setHP() {
         int con = Integer.parseInt(conditionField.getText());
         int siz = Integer.parseInt(sizeField.getText());
@@ -93,12 +102,4 @@ public class InfoChar {
         }
     }
 
-    private static int randomAge(callofcthulhuDB.entity.Profession profession) {
-        int ageMin = profession.getMinAge();
-        int ageMax = profession.getMaxAge();
-        if (ageMin < 15 || ageMin > 90) ageMin = 15;
-        if (ageMax < 15 || ageMax > 90) ageMax = 90;
-        if (ageMin > ageMax) ageMax = 90;
-        return util.Tools.roll(ageMin, ageMax);
-    }      
 }

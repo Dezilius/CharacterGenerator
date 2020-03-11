@@ -35,7 +35,7 @@ public class AttrChar {
         log.append(message + "\n");
     }
     
-    public static void reduceStrSiz(int times) {
+    public static void remove2Attr(int times) {
         short totalStrRemoved = 0;
         short totalSizRemoved = 0;
         String logMessage = "";
@@ -57,54 +57,61 @@ public class AttrChar {
         appendLog(logMessage);
     }
     
-    public static void removeStrConDex(int times) {
+    public static void remove3Attr(int times) {
         short totalStrRemoved = 0;
         short totalConRemoved = 0;
         short totalDexRemoved = 0;
         String logMessage = "";
+        short noProgress = 0;
         for (int i = 0; i < times;) {
             int flag = roll(1,3);
             if (flag == 1 && (Integer.parseInt(strengthField.getText())) > 10) {
                 removePoint(strengthField);
                 totalStrRemoved++;
                 i++;
+                noProgress = 0;
             }
             else if (flag == 2 && (Integer.parseInt(conditionField.getText())) > 10) {
                 removePoint(conditionField);
                 totalConRemoved++;
                 i++;
+                noProgress = 0;
             }
             else if (flag == 3 && (Integer.parseInt(dexterityField.getText())) > 10) {
                 removePoint(dexterityField);
                 totalDexRemoved++;
                 i++;
+                noProgress = 0;
             }
+            noProgress++;
+            if (noProgress == 5) break;
         }
-        logMessage = totalStrRemoved + " point(s) removed from strength.";
+        logMessage = "" + totalStrRemoved + " point(s) removed from strength.";
         appendLog(logMessage);
         
-        logMessage = totalConRemoved + " point(s) removed from condition";
+        logMessage = "" + totalConRemoved + " point(s) removed from condition";
         appendLog(logMessage);
         
-        logMessage = totalDexRemoved + " point(s) removed from dexterity";
+        logMessage = "" + totalDexRemoved + " point(s) removed from dexterity";
         appendLog(logMessage);
     }
     
-    public static void improvementCheckForEdu(int times) {
-        short currentEdu = (short) Short.parseShort(educationField.getText());
+    public static javax.swing.JTextField improvementValue(int times) {
+        short fieldValue = (short) Short.parseShort(educationField.getText());
         short rollValue = 0;
         String message = "";
-        if (checkIfPassed(currentEdu)) {
+        if (checkIfPassed(fieldValue)) {
             rollValue += roll(1,10);
-            currentEdu += rollValue;
+            fieldValue += rollValue;
             message = rollValue + " point(s) added to education!";
             appendLog(message);
-            
-            if (currentEdu > 99) {
-                currentEdu = 99;
+            if (fieldValue > 99) {
+                fieldValue = 99;
             }
-            educationField.setText(Short.toString(currentEdu));
+            
+            educationField.setText(Short.toString(fieldValue));
         }
+        return educationField;
     }
     
     private static boolean checkIfPassed(short value) {
