@@ -23,6 +23,13 @@ public class AttrChar {
     private static javax.swing.JTextField educationField;
     
     public static void initAttrChar(ArrayList<javax.swing.JTextField> attrCharFields, javax.swing.JTextArea logInit) {
+        
+        try {
+            if (attrCharFields.size() != 5) {
+                throw new invalidAttrCharFields("Number of TextFields different than 5");
+            }
+        } catch (invalidAttrCharFields e) {}
+        
         log = logInit;
         strengthField = attrCharFields.get(0);
         sizeField = attrCharFields.get(1);
@@ -36,6 +43,13 @@ public class AttrChar {
     }
     
     public static void remove2Attr(int times) {
+        
+        try {
+            if (times <= 0) {
+                throw new numberLessOrEqualZero("Number less or equal 0");
+            }
+        } catch (numberLessOrEqualZero e) {}
+        
         short totalStrRemoved = 0;
         short totalSizRemoved = 0;
         String logMessage = "";
@@ -58,6 +72,13 @@ public class AttrChar {
     }
     
     public static void remove3Attr(int times) {
+        
+        try {
+            if (times <= 0) {
+                throw new numberLessOrEqualZero("Number less or equal 0");
+            }
+        } catch (numberLessOrEqualZero e) {}
+        
         short totalStrRemoved = 0;
         short totalConRemoved = 0;
         short totalDexRemoved = 0;
@@ -97,6 +118,13 @@ public class AttrChar {
     }
     
     public static javax.swing.JTextField improvementValue(int times) {
+        
+        try {
+            if (times <= 0) {
+                throw new numberLessOrEqualZero("Number less or equal 0");
+            }
+        } catch (numberLessOrEqualZero e) {}
+        
         short fieldValue = (short) Short.parseShort(educationField.getText());
         short rollValue = 0;
         String message = "";
@@ -116,5 +144,16 @@ public class AttrChar {
     
     private static boolean checkIfPassed(short value) {
         return roll(1,100) > value;
+    }
+    
+    static class invalidAttrCharFields extends Exception {
+        invalidAttrCharFields(String message) {
+            super(message);
+        }
+    }
+    static class numberLessOrEqualZero extends Exception {
+        numberLessOrEqualZero(String message) {
+            super(message);
+        }
     }
 }

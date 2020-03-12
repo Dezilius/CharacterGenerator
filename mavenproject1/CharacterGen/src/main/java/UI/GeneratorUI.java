@@ -1333,11 +1333,6 @@ ActionListener refreshSkillFields = new ActionListener() {
                 allocateSPButtonMouseClicked(evt);
             }
         });
-        allocateSPButton.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                allocateSPButtonKeyPressed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -1761,8 +1756,8 @@ ActionListener refreshSkillFields = new ActionListener() {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 34, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -1773,7 +1768,7 @@ ActionListener refreshSkillFields = new ActionListener() {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(496, 496, 496)
                         .addComponent(skillPointsField)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1790,6 +1785,8 @@ ActionListener refreshSkillFields = new ActionListener() {
                     .addComponent(jScrollPane1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        getAccessibleContext().setAccessibleName("CharacterGenerator");
 
         pack();
         setLocationRelativeTo(null);
@@ -1925,7 +1922,7 @@ ActionListener refreshSkillFields = new ActionListener() {
     private void openDBMButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openDBMButtonActionPerformed
         DBManagementUI.start();
     }//GEN-LAST:event_openDBMButtonActionPerformed
-
+    
     private void rollFirstNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollFirstNameButtonActionPerformed
         randomFirstName();
     }//GEN-LAST:event_rollFirstNameButtonActionPerformed
@@ -1970,13 +1967,10 @@ ActionListener refreshSkillFields = new ActionListener() {
         }
         else {
             allocateSPButton.setSelected(true);
-            JOptionPane.showMessageDialog(null, "Too many points allocated.", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Too many points allocated.", 
+                    "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_allocateSPButtonMouseClicked
-
-    private void allocateSPButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_allocateSPButtonKeyPressed
-        
-    }//GEN-LAST:event_allocateSPButtonKeyPressed
 
     /**
      * @param args the command line arguments
@@ -2012,7 +2006,7 @@ ActionListener refreshSkillFields = new ActionListener() {
                 new GeneratorUI().setVisible(true);
             }
         });
-    }    
+    } 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField HPField;
