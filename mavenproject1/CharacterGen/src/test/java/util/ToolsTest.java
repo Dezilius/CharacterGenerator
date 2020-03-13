@@ -46,32 +46,52 @@ public class ToolsTest {
 
     /**
      * Test of removePoint method, of class Tools.
-     *
+     */
     @Test
     public void testRemovePoint_JTextField() {
         System.out.println("removePoint");
-        JTextField field = null;
-        JTextField expResult = null;
+        JTextField field = new JTextField();
+        field.setText("50");
+        JTextField expResult = new JTextField();
+        expResult.setText("49");
         JTextField result = Tools.removePoint(field);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expResult.getText(), result.getText());
+        
+        field.setText("0");
+        expResult.setText("0");
+        result = Tools.removePoint(field);
+        assertEquals(expResult.getText(), result.getText());
     }
 
     /**
      * Test of removePoint method, of class Tools.
-     *
+     */
     @Test
     public void testRemovePoint_JTextField_int() {
-        System.out.println("removePoint");
-        JTextField field = null;
-        int value = 0;
-        JTextField expResult = null;
-        JTextField result = Tools.removePoint(field, value);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        System.out.println("removePointTimes");
+        JTextField field = new JTextField();
+        field.setText("50");
+        int times = 5;
+        JTextField expResult = new JTextField();
+        expResult.setText("45");
+        JTextField result = Tools.removePoint(field, times);
+        assertEquals(expResult.getText(), result.getText());
+        
+        field.setText("0");
+        expResult.setText("0");
+        result = Tools.removePoint(field, times);
+        assertEquals(expResult.getText(), result.getText());
+        
+        field.setText("3");
+        expResult.setText("3");
+        result = Tools.removePoint(field, times);
+        assertEquals(expResult.getText(), result.getText());
+        
+        field.setText("2");
+        expResult.setText("1");
+        times = 1;
+        result = Tools.removePoint(field, times);
+        assertEquals(expResult.getText(), result.getText());
     }
-    */
     
 }

@@ -26,9 +26,9 @@ public class AttrChar {
         
         try {
             if (attrCharFields.size() != 5) {
-                throw new invalidAttrCharFields("Number of TextFields different than 5");
+                throw new invalidAttrCharFieldsException("Number of TextFields different than 5");
             }
-        } catch (invalidAttrCharFields e) {}
+        } catch (invalidAttrCharFieldsException e) {}
         
         log = logInit;
         strengthField = attrCharFields.get(0);
@@ -46,9 +46,9 @@ public class AttrChar {
         
         try {
             if (times <= 0) {
-                throw new numberLessOrEqualZero("Number less or equal 0");
+                throw new numberLessOrEqualZeroException("Number less or equal 0");
             }
-        } catch (numberLessOrEqualZero e) {}
+        } catch (numberLessOrEqualZeroException e) {}
         
         short totalStrRemoved = 0;
         short totalSizRemoved = 0;
@@ -75,9 +75,9 @@ public class AttrChar {
         
         try {
             if (times <= 0) {
-                throw new numberLessOrEqualZero("Number less or equal 0");
+                throw new numberLessOrEqualZeroException("Number less or equal 0");
             }
-        } catch (numberLessOrEqualZero e) {}
+        } catch (numberLessOrEqualZeroException e) {}
         
         short totalStrRemoved = 0;
         short totalConRemoved = 0;
@@ -121,9 +121,9 @@ public class AttrChar {
         
         try {
             if (times <= 0) {
-                throw new numberLessOrEqualZero("Number less or equal 0");
+                throw new numberLessOrEqualZeroException("Number less or equal 0");
             }
-        } catch (numberLessOrEqualZero e) {}
+        } catch (numberLessOrEqualZeroException e) {}
         
         short fieldValue = (short) Short.parseShort(educationField.getText());
         short rollValue = 0;
@@ -146,13 +146,13 @@ public class AttrChar {
         return roll(1,100) > value;
     }
     
-    static class invalidAttrCharFields extends Exception {
-        invalidAttrCharFields(String message) {
+    static class invalidAttrCharFieldsException extends Exception {
+        invalidAttrCharFieldsException(String message) {
             super(message);
         }
     }
-    static class numberLessOrEqualZero extends Exception {
-        numberLessOrEqualZero(String message) {
+    static class numberLessOrEqualZeroException extends Exception {
+        numberLessOrEqualZeroException(String message) {
             super(message);
         }
     }

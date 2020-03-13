@@ -51,16 +51,12 @@ private void executeHQLQueryFirstName(String hql) {
 private void displayResultFirstName(List resultList) {
     Vector<String> tableHeaders = new Vector<String>();
     Vector tableData = new Vector();
-    tableHeaders.add("FirstNameId"); 
-    tableHeaders.add("FirstName");
-    tableHeaders.add("sex");
+    tableHeaders = DBManagerUtil.mapTableFirstName(tableHeaders);
 
     for(Object o : resultList) {
         callofcthulhuDB.entity.FirstName name = (callofcthulhuDB.entity.FirstName)o;
         Vector<Object> oneRow = new Vector<Object>();
-        oneRow.add(name.getId());
-        oneRow.add(name.getFirstName());
-        oneRow.add(name.getSex());
+        DBManagerUtil.fillRowFirstName(oneRow, name);
         tableData.add(oneRow);
     }
     DbTable.setModel(new DefaultTableModel(tableData, tableHeaders));
@@ -85,14 +81,12 @@ private void executeHQLQueryLastName(String hql) {
 private void displayResultLastName(List resultList) {
     Vector<String> tableHeaders = new Vector<String>();
     Vector tableData = new Vector();
-    tableHeaders.add("LastNameId"); 
-    tableHeaders.add("LastName");
+    tableHeaders = DBManagerUtil.mapTableLastName(tableHeaders);
 
     for(Object o : resultList) {
         callofcthulhuDB.entity.LastName name = (callofcthulhuDB.entity.LastName)o;
         Vector<Object> oneRow = new Vector<Object>();
-        oneRow.add(name.getId());
-        oneRow.add(name.getLastName());
+        DBManagerUtil.fillRowLastName(oneRow, name);
         tableData.add(oneRow);
     }
     DbTable.setModel(new DefaultTableModel(tableData, tableHeaders));
@@ -117,12 +111,12 @@ private void executeHQLQueryProfession(String hql) {
 private void displayResultProfession(List resultList) {
     Vector<String> tableHeaders = new Vector<String>();
     Vector tableData = new Vector();
-    tableHeaders = DBManagerUtil.mapTable(tableHeaders);
+    tableHeaders = DBManagerUtil.mapTableProfession(tableHeaders);
 
     for(Object o : resultList) {
         callofcthulhuDB.entity.Profession name = (callofcthulhuDB.entity.Profession)o;
         Vector<Object> oneRow = new Vector<Object>();
-        DBManagerUtil.fillRow(oneRow, name);
+        DBManagerUtil.fillRowProfession(oneRow, name);
         tableData.add(oneRow);
     }
     DbTable.setModel(new DefaultTableModel(tableData, tableHeaders));
