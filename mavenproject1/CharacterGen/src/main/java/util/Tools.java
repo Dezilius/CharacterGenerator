@@ -15,21 +15,41 @@ public final class Tools {
         return (short) ((short) (Math.random() * ((to - from) + 1)) + from);
     }
     
-    public static javax.swing.JTextField removePoint(javax.swing.JTextField field) {
+    public static javax.swing.JTextField removePoint(javax.swing.JTextField field) {     
         short currentValue = Short.parseShort(field.getText());
-        currentValue -= 1;
+
+        try {
+            currentValue -= 1;
+            if (currentValue <= 0) {
+                throw new fieldValueLessOrEqualZero("Field value less or equal zero");
+            }
+        } catch (fieldValueLessOrEqualZero e) {
+            return field;
+        }        
         field.setText(Short.toString(currentValue));
         return field;
     }
     
     public static javax.swing.JTextField removePoint(javax.swing.JTextField field, int value) {
         short currentValue = Short.parseShort(field.getText());
-        currentValue -= value;
+        
+        try {
+            currentValue -= value;
+            if (currentValue <= 0) {
+                throw new fieldValueLessOrEqualZero("Field value less or equal zero");
+            }
+        } catch (fieldValueLessOrEqualZero e) {
+            return field;
+        } 
         field.setText(Short.toString(currentValue));
         return field;
     }
     
-    
+    static class fieldValueLessOrEqualZero extends Exception {
+        fieldValueLessOrEqualZero(String message) {
+            super(message);
+        }
+    }
     
 
     
