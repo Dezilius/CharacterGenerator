@@ -2,7 +2,7 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="Character Generator"/>
     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
       <Color id="Default Cursor"/>
@@ -37,26 +37,30 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="260" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                      <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="496" max="-2" attributes="0"/>
-                      <Component id="skillPointsField" min="-2" max="-2" attributes="0"/>
+                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" pref="244" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                              <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="426" max="-2" attributes="0"/>
+                              <Component id="skillPointsField" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="88" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -68,9 +72,9 @@
                   <Component id="jPanel8" max="32767" attributes="0"/>
                   <Component id="jPanel9" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="skillPointsField" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+              <Component id="skillPointsField" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jPanel1" max="32767" attributes="0"/>
                   <Component id="jScrollPane1" max="32767" attributes="0"/>
@@ -106,7 +110,7 @@
                   <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -150,31 +154,16 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="charmLabel" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="craft3rdLabel" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="craft2ndLabel" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Component id="craftLabel" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="archeologyLabel" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                          </Group>
+                                      <EmptySpace min="0" pref="46" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="craftLabel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="archeologyLabel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="craft2ndLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="creditRatingLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                                           <Component id="climbLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                                           <Component id="cthulhuMythosLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                                           <Component id="disguiseLabel" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -183,10 +172,15 @@
                                           <Component id="electricalRepairLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                                           <Component id="accountingLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                                           <Component id="anthropologyLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                              <Component id="craft3rdLabel" min="-2" max="-2" attributes="0"/>
+                                              <Component id="creditRatingLabel" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="charmLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="accountingField" alignment="0" max="32767" attributes="0"/>
                                   <Component id="anthropologyField" alignment="0" max="32767" attributes="0"/>
@@ -218,7 +212,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="accountingLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="accountingField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -244,57 +238,54 @@
                           <Component id="craftLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="craft2ndField" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="craft2ndField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="craft2ndLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="craft3rdField" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="craft3rdField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="craft3rdLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="craft2ndLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="craft3rdLabel" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="charmField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="charmLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="climbField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="climbLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="creditRatingField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="creditRatingLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="cthulhuMythosField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cthulhuMythosLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="disguiseField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="disguiseLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="dodgeField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="dodgeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="driveField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="driveLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="electricalRepairField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="electricalRepairLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="charmField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="charmLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="climbField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="climbLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="creditRatingField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="creditRatingLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cthulhuMythosField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cthulhuMythosLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="disguiseField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="disguiseLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="dodgeField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="dodgeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="driveField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="driveLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="electricalRepairField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="electricalRepairLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -477,6 +468,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Droid Serif" size="12" style="0"/>
                 </Property>
+                <Property name="text" type="java.lang.String" value="Craft 2nd Skil"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="craft2ndField">
@@ -493,6 +485,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Droid Serif" size="12" style="0"/>
                 </Property>
+                <Property name="text" type="java.lang.String" value="Craft 3rd Skill"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="craft3rdField">
@@ -570,9 +563,15 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="languageOwn" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="7" max="32767" attributes="0"/>
+                              <Component id="languageOwnField" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="rifleLabel" min="-2" max="-2" attributes="0"/>
@@ -589,49 +588,31 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="fightingField" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="fighting2ndField" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="fighting3rdField" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="fightinh2ndLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="fighting2ndField" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="fighting3rdLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="fighting3rdField" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="handgunLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" max="-2" attributes="0"/>
                                       <Component id="handgunField" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                      <Component id="languageOther2ndField" min="-2" max="-2" attributes="0"/>
-                                      <Component id="languageOther3rdField" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="fightinh2ndLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="fighting3rdLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="rifle2ndLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="rifle2ndField" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="languageOther3rdLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="languageOther2ndLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="rifle2ndLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="46" pref="46" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="languageOtherLabel" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jumpLabel" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="languageOtherLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jumpField" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="languageOtherField" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="languageOtherField" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="18" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="intimidateLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -648,9 +629,20 @@
                                       <Component id="historyField" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="languageOwn" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jumpLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="languageOwnField" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jumpField" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="languageOther2ndLabel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="languageOther3rdLabel" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="languageOther2ndField" min="-2" max="-2" attributes="0"/>
+                                          <Component id="languageOther3rdField" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
@@ -673,9 +665,15 @@
                           <Component id="fightingLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="fighting2ndField" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="fighting2ndField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="fightinh2ndLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="fighting3rdField" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="fighting3rdField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="fighting3rdLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="handgunField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -686,24 +684,15 @@
                           <Component id="rifleField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="rifleLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="fightinh2ndLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="rifle2ndField" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="rifle2ndField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rifle2ndLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="fighting3rdLabel" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="firstAidField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="firstAidLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="firstAidField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="firstAidLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -716,36 +705,31 @@
                           <Component id="intimidateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="rifle2ndLabel" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jumpField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jumpLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="languageOtherField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="languageOtherLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="languageOther2ndField" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="languageOther3rdField" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="languageOwnField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="languageOwn" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jumpField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jumpLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="languageOther2ndLabel" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="languageOtherField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="languageOtherLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="languageOther3rdLabel" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="languageOther2ndField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="languageOther2ndLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="languageOther3rdField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="languageOther3rdLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="languageOwnField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="languageOwn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -926,6 +910,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Droid Serif" size="12" style="0"/>
                 </Property>
+                <Property name="text" type="java.lang.String" value="Fighting 2nd Skill"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="fighting2ndField">
@@ -951,6 +936,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Droid Serif" size="12" style="0"/>
                 </Property>
+                <Property name="text" type="java.lang.String" value="Fighting 3rd Skill"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="rifle2ndField">
@@ -967,6 +953,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Droid Serif" size="12" style="0"/>
                 </Property>
+                <Property name="text" type="java.lang.String" value="Rifle 2nd Skill"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="languageOther2ndField">
@@ -983,6 +970,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Droid Serif" size="12" style="0"/>
                 </Property>
+                <Property name="text" type="java.lang.String" value="Language(Other) 2nd"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="languageOther3rdLabel">
@@ -990,6 +978,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Droid Serif" size="12" style="0"/>
                 </Property>
+                <Property name="text" type="java.lang.String" value="Language(Other) 3rd"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="languageOther3rdField">
@@ -1435,50 +1424,50 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="other5thLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace pref="18" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="science3rdLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="science2ndLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="other3rdLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="other2ndLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="other1stLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="other4thLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                      <Component id="sleightOfHandLabel" min="-2" max="-2" attributes="0"/>
-                                      <Component id="scienceLabel" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="science2ndLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="science3rdLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="scienceLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="other1stLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="other2ndLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="other3rdLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="other4thLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="other5thLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="sleightOfHandLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="spotHiddenLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="stealthLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="survivalLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="stealthLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="swimLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="throwLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="trackLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="18" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="science3rdField" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="science2ndField" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="scienceField" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="other5thField" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="other3rdField" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="other2ndField" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="other1stField" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="swimField" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="trackField" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="survivalField" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="stealthField" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="sleightOfHandField" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="spotHiddenField" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="throwField" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="other4thField" alignment="1" min="-2" max="-2" attributes="0"/>
-                              </Group>
                           </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="science3rdField" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="science2ndField" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="scienceField" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="other5thField" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="other3rdField" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="other2ndField" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="other1stField" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="swimField" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="trackField" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="survivalField" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="stealthField" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="sleightOfHandField" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="spotHiddenField" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="throwField" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="other4thField" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -1487,81 +1476,82 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="science2ndLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="science3rdLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
-                              <Component id="other1stLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="other2ndLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="other3rdLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="other4thLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="scienceField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="scienceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="science2ndField" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="science3rdField" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="sleightOfHandField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="sleightOfHandLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="spotHiddenField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="spotHiddenLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="stealthField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="stealthLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="survivalField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="survivalLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="swimField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="swimLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="throwField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="throwLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="trackField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="trackLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="other1stField" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="other2ndField" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="other3rdField" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="other4thField" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="other5thField" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="32767" attributes="0"/>
-                          </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="scienceField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="scienceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="other5thLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="science2ndField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="science2ndLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="science3rdField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="science3rdLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="sleightOfHandField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="sleightOfHandLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="spotHiddenField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="spotHiddenLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="stealthField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="stealthLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="survivalField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="survivalLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="swimField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="swimLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="throwField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="throwLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="trackField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="trackLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="other1stField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="other1stLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="other2ndField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="other2ndLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="other3rdField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="other3rdLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="other4thField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="other4thLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="other5thField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="other5thLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1598,6 +1588,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Droid Serif" size="12" style="0"/>
                 </Property>
+                <Property name="text" type="java.lang.String" value="Science 2nd Skill"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="science3rdField">
@@ -1614,6 +1605,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Droid Serif" size="12" style="0"/>
                 </Property>
+                <Property name="text" type="java.lang.String" value="Science 3rd Skill"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="sleightOfHandLabel">
@@ -1740,6 +1732,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Droid Serif" size="12" style="0"/>
                 </Property>
+                <Property name="text" type="java.lang.String" value="Other Skill 1"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="other1stField">
@@ -1756,6 +1749,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Droid Serif" size="12" style="0"/>
                 </Property>
+                <Property name="text" type="java.lang.String" value="Other Skill 2"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="other2ndField">
@@ -1772,6 +1766,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Droid Serif" size="12" style="0"/>
                 </Property>
+                <Property name="text" type="java.lang.String" value="Other Skill 3"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="other3rdField">
@@ -1788,6 +1783,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Droid Serif" size="12" style="0"/>
                 </Property>
+                <Property name="text" type="java.lang.String" value="Other Skill 4"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="other4thField">
@@ -1813,6 +1809,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Droid Serif" size="12" style="0"/>
                 </Property>
+                <Property name="text" type="java.lang.String" value="Other Skill 5"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -1985,68 +1982,94 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="strengthLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="conditionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="sizeLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="conditionField" min="-2" max="-2" attributes="0"/>
-                          <Component id="strengthField" min="-2" max="-2" attributes="0"/>
-                          <Component id="sizeField" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Component id="dexterityLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="dexterityField" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="intelligenceLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="intelligenceField" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="appearanceLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="educationLabel" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="strengthLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="conditionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="sizeLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="appearanceField" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="powerLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="conditionField" min="-2" max="-2" attributes="0"/>
+                                  <Component id="strengthField" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="sizeField" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="appearanceLabel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="educationLabel" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="appearanceField" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="powerLabel" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="educationField" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="moveRateLabel" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="moveRateField" max="32767" attributes="0"/>
+                                          <Component id="powerField" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <Group type="102" attributes="0">
-                                      <Component id="educationField" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                      <Component id="dexterityLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="dexterityField" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="moveRateLabel" min="-2" max="-2" attributes="0"/>
+                                      <Component id="intelligenceLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="intelligenceField" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="moveRateField" max="32767" attributes="0"/>
-                                  <Component id="powerField" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="mainAttributeOne" min="-2" pref="69" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="mainAttributeTwo" min="-2" pref="69" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="dexterityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="strengthLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="intelligenceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="intelligenceField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="dexterityField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="strengthField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="intelligenceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="intelligenceField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="strengthLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="strengthField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                              <Component id="dexterityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="dexterityField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -2057,16 +2080,22 @@
                           <Component id="conditionField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="conditionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="moveRateField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="moveRateLabel" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
                           <Component id="sizeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="sizeField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="educationField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="educationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="sizeField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="16" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mainAttributeOne" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mainAttributeTwo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2226,6 +2255,54 @@
                 <Property name="text" type="java.lang.String" value="CON"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Choose Main Attributes:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="mainAttributeOne">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="6">
+                    <StringItem index="0" value=""/>
+                    <StringItem index="1" value="STR"/>
+                    <StringItem index="2" value="DEX"/>
+                    <StringItem index="3" value="INT"/>
+                    <StringItem index="4" value="CON"/>
+                    <StringItem index="5" value="APP"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="mainAttributeTwo">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Droid Serif" size="12" style="0"/>
+                </Property>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="6">
+                    <StringItem index="0" value=""/>
+                    <StringItem index="1" value="STR"/>
+                    <StringItem index="2" value="DEX"/>
+                    <StringItem index="3" value="INT"/>
+                    <StringItem index="4" value="CON"/>
+                    <StringItem index="5" value="APP"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel2">
@@ -2242,16 +2319,12 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="professionLabel" min="-2" max="-2" attributes="0"/>
                           <Component id="nameLabel" min="-2" max="-2" attributes="0"/>
                           <Component id="ageLabel" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="HPLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="HPField" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="HPLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -2261,33 +2334,32 @@
                               <Component id="lastNameField" max="32767" attributes="0"/>
                           </Group>
                           <Component id="professionField" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="ageField" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="sexLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="sexField" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="sanityLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="sanityField" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="sexField" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
+                                      <Component id="HPField" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="sanityLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="sanityField" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="MPLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="MPField" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="luckLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="luckField" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="61" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="4" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -2510,6 +2582,9 @@
         <Component class="javax.swing.JTextArea" name="logArea">
           <Properties>
             <Property name="columns" type="int" value="20"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Droid Serif" size="10" style="0"/>
+            </Property>
             <Property name="rows" type="int" value="5"/>
           </Properties>
         </Component>
@@ -2528,9 +2603,9 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                  <Component id="openDBMButton" pref="259" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
+                  <Component id="openDBMButton" pref="171" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
