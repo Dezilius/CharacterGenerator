@@ -30,7 +30,6 @@ public class DBManagementUI extends javax.swing.JFrame {
     private static final String QUERY_READ_ALL_FIRST_NAME="from FirstName";
     private static final String QUERY_READ_ALL_LAST_NAME="from LastName";
     private static final String QUERY_READ_ALL_PROFESSION="from Profession";
-    private static final String QUERY_UPDATE_FIRST_NAME="UPDATE FirstName SET firstName:=name, sex:=mf where id=";
     private static boolean isWindowOpen = false;
     
 private void runQueryBasedOnFirstName() {
@@ -336,6 +335,7 @@ private void executeHQLQueryDeleteProfession() {
             }
         });
 
+        DbTable.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         DbTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -350,8 +350,14 @@ private void executeHQLQueryDeleteProfession() {
         DbTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         DbTable.setCellSelectionEnabled(true);
         DbTable.setDragEnabled(true);
+        DbTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DbTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(DbTable);
 
+        chooseBox.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         chooseBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "FirstName", "LastName", "Profession" }));
         chooseBox.setMinimumSize(new java.awt.Dimension(100, 25));
         chooseBox.setName(""); // NOI18N
@@ -361,13 +367,16 @@ private void executeHQLQueryDeleteProfession() {
             }
         });
 
+        readButton.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         readButton.setText("Read");
+        readButton.setEnabled(false);
         readButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 readButtonActionPerformed(evt);
             }
         });
 
+        createButton.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         createButton.setText("Create");
         createButton.setToolTipText("");
         createButton.setEnabled(false);
@@ -377,6 +386,7 @@ private void executeHQLQueryDeleteProfession() {
             }
         });
 
+        updateButton.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         updateButton.setText("Update");
         updateButton.setToolTipText("");
         updateButton.setEnabled(false);
@@ -386,6 +396,7 @@ private void executeHQLQueryDeleteProfession() {
             }
         });
 
+        deleteButton.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         deleteButton.setText("Delete");
         deleteButton.setToolTipText("");
         deleteButton.setEnabled(false);
@@ -395,19 +406,25 @@ private void executeHQLQueryDeleteProfession() {
             }
         });
 
-        textField3.setColumns(6);
+        textField3.setColumns(10);
+        textField3.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         textField3.setEnabled(false);
 
-        textField1.setColumns(6);
+        textField1.setColumns(10);
+        textField1.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         textField1.setEnabled(false);
 
-        textField2.setColumns(6);
+        textField2.setColumns(10);
+        textField2.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         textField2.setEnabled(false);
 
+        label1.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         label1.setText(" ");
 
+        label2.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         label2.setText(" ");
 
+        label3.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
         label3.setText(" ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -440,7 +457,7 @@ private void executeHQLQueryDeleteProfession() {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(textField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label3))))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -486,23 +503,29 @@ private void executeHQLQueryDeleteProfession() {
 
     private void chooseBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseBoxActionPerformed
         if (chooseBox.getSelectedItem().equals("FirstName")) {
-            initFieldsFirstName();
-            initLabelsFirstName();
+            disableComponents();
+            readButton.setEnabled(true);
         }
         else if (chooseBox.getSelectedItem().equals("LastName")) {
-            initFieldsLastName();
-            initLabelsLastName();
+            disableComponents();
+            readButton.setEnabled(true);
         }
         else if (chooseBox.getSelectedItem().equals("Profession")) {
-            initFieldsProfession();
-            initLabelsProfession();
+            disableComponents();
+            readButton.setEnabled(true);
         }
         else {
-            initFieldsDefault();
-            initLabelsDefault();
+            disableComponents();
+            readButton.setEnabled(false);
         }
     }//GEN-LAST:event_chooseBoxActionPerformed
-
+    
+    private void disableComponents() {
+        initButtonsOff();
+        initFieldsDefault();
+        initLabelsDefault();  
+    }
+    
     private void createButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createButtonMouseClicked
         if (chooseBox.getSelectedItem().equals("FirstName")) {
             executeHQLQueryCreateFirstName();
@@ -543,6 +566,51 @@ private void executeHQLQueryDeleteProfession() {
         isWindowOpen = false;
     }//GEN-LAST:event_formWindowClosing
 
+    private void DbTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DbTableMouseClicked
+        if (chooseBox.getSelectedItem().equals("FirstName")) {
+            String firstNameFromSelectedRow = (String) DbTable.getModel().getValueAt(DbTable.getSelectedRow(), 1);
+            textField1.setText(firstNameFromSelectedRow);
+            
+            String sexFromSelectedRow = (String) DbTable.getModel().getValueAt(DbTable.getSelectedRow(), 2);
+            textField2.setText(sexFromSelectedRow);
+            
+            enableComponenetsFirstName();
+        }
+        else if (chooseBox.getSelectedItem().equals("LastName")) {
+            String lastNameFromSelectedRow = (String) DbTable.getModel().getValueAt(DbTable.getSelectedRow(), 1);
+            textField1.setText(lastNameFromSelectedRow);
+            
+            enableComponenetsLastName();
+        }
+        else if (chooseBox.getSelectedItem().equals("Profession")) {
+            String ProfessionFromSelectedRow = (String) DbTable.getModel().getValueAt(DbTable.getSelectedRow(), 1);
+            textField1.setText(ProfessionFromSelectedRow);
+            
+            String minAgeFromSelectedRow = (String) DbTable.getModel().getValueAt(DbTable.getSelectedRow(), 2);
+            textField2.setText(minAgeFromSelectedRow);
+            
+            String maxAgeFromSelectedRow = (String) DbTable.getModel().getValueAt(DbTable.getSelectedRow(), 3);
+            textField3.setText(maxAgeFromSelectedRow);
+            
+            enableComponenetsProfession();
+        }
+        else {
+            clearTextFields();            
+            disableComponents();
+        }
+    }//GEN-LAST:event_DbTableMouseClicked
+    
+    private void clearTextFields() {
+        textField1.setText("");
+        textField2.setText("");
+        textField3.setText("");
+    }
+    
+    private void enableComponenetsFirstName() {
+        initFieldsFirstName();
+        initLabelsFirstName();
+        initButtonsOn();
+    }
     private void initFieldsFirstName() {
         textField1.setEnabled(true);
         textField2.setEnabled(true);
@@ -555,6 +623,11 @@ private void executeHQLQueryDeleteProfession() {
         label3.setText("");
     }
     
+    private void enableComponenetsLastName() {
+        initFieldsLastName();
+        initLabelsLastName();
+        initButtonsOn();
+    }
     private void initFieldsLastName() {
         textField1.setEnabled(true);
         textField2.setEnabled(false);
@@ -567,6 +640,11 @@ private void executeHQLQueryDeleteProfession() {
         label3.setText("");
     }
     
+    private void enableComponenetsProfession() {
+        initFieldsProfession();
+        initLabelsProfession();
+        initButtonsOn();
+    }
     private void initFieldsProfession() {
         textField1.setEnabled(true);
         textField2.setEnabled(true);

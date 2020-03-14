@@ -19,19 +19,19 @@ public class SkillChar {
     private static ArrayList<javax.swing.JTextField> skillFields;
     private static int defaultSkillPoints;
     
-    public static void initSkillChar(javax.swing.JLabel skillPoints, javax.swing.JTextField intelligence, ArrayList<javax.swing.JTextField> skillFieldsInit) {
+    public static void initSkillChar(javax.swing.JLabel skillPoints, javax.swing.JTextField intelligence, 
+            ArrayList<javax.swing.JTextField> skillFieldsInit) {
         skillPointsField = skillPoints;
         intelligenceField = intelligence;
         
         skillFields = new ArrayList<>();
-        
         for (javax.swing.JTextField iter : skillFieldsInit) {
             skillFields.add(iter);
         }
         
     }
-    
-    public static void setDefaultValues(ArrayList<javax.swing.JTextField> skillFields, javax.swing.JTextField education, javax.swing.JTextField dexterity) {
+    public static void setDefaultValues(ArrayList<javax.swing.JTextField> skillFields, 
+            javax.swing.JTextField education, javax.swing.JTextField dexterity) {
             
             String edu = education.getText();
             String dodge = Integer.toString(Integer.parseInt(dexterity.getText())/2);
@@ -99,7 +99,6 @@ public class SkillChar {
             
             calculateDefaultSkillPoints();
     }
-    
     private static void calculateDefaultSkillPoints() {
         int[] values = new int[60];
         defaultSkillPoints = 0;
@@ -115,22 +114,20 @@ public class SkillChar {
         int skillPoints = calculateSkillPoints();
         String skillPointsText = "Available skill points: " + skillPoints;
         skillPointsField.setText(skillPointsText);
+    }    
+    public static void availableSkillPoints(int skillPointsMainOne, int skillPointsMainTwo) {
+        int skillPoints = defaultSkillPoints + calculateSkillPoints() - calculateCurrentSkillPoints()
+                + skillPointsMainOne + skillPointsMainTwo;
+        skillPointsField.setText("Available skill points: " + skillPoints);
     }
-    
-    private static int calculateSkillPoints() {
-        return Integer.parseInt(intelligenceField.getText()) * 2;
-    }
-    
-    public static void availableSkillPoints() {
-            int skillPoints = defaultSkillPoints + calculateSkillPoints() - calculateCurrentSkillPoints();
-            skillPointsField.setText("Available skill points: " + skillPoints);
-    }
-    
-    public static boolean isSkillPointAvailable() {
-        int currentMaxSkillPoints = calculateSkillPoints() + defaultSkillPoints;
+    public static boolean isSkillPointAvailable(int skillPointsMainOne, int skillPointsMainTwo) {
+        int currentMaxSkillPoints = calculateSkillPoints() + defaultSkillPoints + skillPointsMainOne
+                + skillPointsMainTwo;
         return (currentMaxSkillPoints < calculateCurrentSkillPoints());
     }
-    
+    private static int calculateSkillPoints() {
+        return Integer.parseInt(intelligenceField.getText()) * 3;
+    }
     private static int calculateCurrentSkillPoints() {
         int currentMaxSkillPoints = 0;
                 
@@ -146,7 +143,6 @@ public class SkillChar {
             iter.setEditable(true);
         }
     }
-    
     public static void setEditableOffSkillFields() {
         for (javax.swing.JTextField iter : skillFields) {
             iter.setEditable(false);
@@ -166,7 +162,6 @@ public class SkillChar {
             }
         }
     }
-    
     private static boolean isProperInteger(String text) {
         char[] charArr = text.toCharArray();
         boolean firstChecked = false;
@@ -183,7 +178,6 @@ public class SkillChar {
         }
         return true;
     }
-    
     private static boolean isNumber(char c) {
         if (c == '0' || c == '1' || c == '2' ||
             c == '3' || c == '4' || c == '5' ||
@@ -193,7 +187,6 @@ public class SkillChar {
         }
         return false;
     }
-    
     private static boolean isFirstChar0(char c) {
         if (c == '0') {
             return true;
@@ -201,12 +194,11 @@ public class SkillChar {
         return false;
     }
     
-    public static void setColorGreen() {
+    public static void setColorOrange() {
         for (javax.swing.JTextField iter : skillFields) {
-            iter.setBackground(Color.green);
+            iter.setBackground(Color.orange);
         }
     }
-    
     public static void setColorWhite() {
         for (javax.swing.JTextField iter : skillFields) {
             iter.setBackground(Color.white);

@@ -40,11 +40,22 @@ public class DBManagerUtilTest {
         Vector<Object> result = new Vector<>();
         FirstName firstName = new callofcthulhuDB.entity.FirstName("Mirek", "male");
         firstName.setId(1);
+        result = DBManagerUtil.fillRowFirstName(result, firstName);
         Vector<Object> expResult = new Vector<>();
         expResult.add("1");
         expResult.add("Mirek");
-        expResult.add("male");                
+        expResult.add("male"); 
+        
+        assertEquals(expResult, result);
+        
+        firstName = new callofcthulhuDB.entity.FirstName("Helga", "female");
+        firstName.setId(128);
+        result.clear();
         result = DBManagerUtil.fillRowFirstName(result, firstName);
+        expResult.clear();
+        expResult.add("128");
+        expResult.add("Helga");
+        expResult.add("female"); 
         
         assertEquals(expResult, result);
     }
@@ -74,10 +85,20 @@ public class DBManagerUtilTest {
         Vector<Object> result = new Vector<>();
         LastName lastName = new callofcthulhuDB.entity.LastName("Kowalski");
         lastName.setId(1);
+        result = DBManagerUtil.fillRowLastName(result, lastName);
         Vector<Object> expResult = new Vector<>();
         expResult.add("1");
-        expResult.add("Kowalski");                
+        expResult.add("Kowalski");  
+        
+        assertEquals(expResult, result);
+        
+        lastName = new callofcthulhuDB.entity.LastName("Smith");
+        lastName.setId(12586);
+        result.clear();
         result = DBManagerUtil.fillRowLastName(result, lastName);
+        expResult.clear();
+        expResult.add("12586");
+        expResult.add("Smith");  
         
         assertEquals(expResult, result);
     }
@@ -106,12 +127,24 @@ public class DBManagerUtilTest {
         Vector<Object> result = new Vector<>();
         Profession profession = new callofcthulhuDB.entity.Profession("Spawacz", 20, 50);
         profession.setId(1);
+        result = DBManagerUtil.fillRowProfession(result, profession);
         Vector<Object> expResult = new Vector<>();
         expResult.add("1");
         expResult.add("Spawacz");   
         expResult.add("20");     
         expResult.add("50");     
+        
+        assertEquals(expResult, result);
+        
+        profession = new callofcthulhuDB.entity.Profession("Firefighter", 18, 48);
+        profession.setId(185);
+        result.clear();
         result = DBManagerUtil.fillRowProfession(result, profession);
+        expResult.clear();
+        expResult.add("185");
+        expResult.add("Firefighter");   
+        expResult.add("18");     
+        expResult.add("48"); 
         
         assertEquals(expResult, result);
     }
