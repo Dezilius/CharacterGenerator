@@ -8,3 +8,6 @@ Changelog:
 22.02.2020 -> Prepared querries for reading FirstName, LastName and Profession tables
 25.02.2020 -> Refactored and cleaned code, methodes split and moved to appropriate classes
 29.02.2020 -> Finished basic functionality, cleaned some more code
+06.03.2020 -> Finished CRUD
+10.03.2020 -> Added JUnit tests
+13.03.2020 -> Overall improvementws, finished all functionality
