@@ -7,6 +7,8 @@ package util;
 
 import callofcthulhuDB.util.HibernateUtil;
 import java.util.List;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -20,6 +22,9 @@ public class QuerryUtil {
 private static final String QUERY_FIRST_NAME="from FirstName where id =";
 private static final String QUERY_LAST_NAME="from LastName where id =";
 private static final String QUERY_PROFESSION="from Profession where id =";
+private static final String QUERY_READ_ALL_FIRST_NAME="from FirstName";
+private static final String QUERY_READ_ALL_LAST_NAME="from LastName";
+private static final String QUERY_READ_ALL_PROFESSION="from Profession";
 
     public static List executeHQLQueryNumberOfFirstName(String hql) {
         try {
@@ -146,4 +151,94 @@ private static final String QUERY_PROFESSION="from Profession where id =";
         }
         return null;
 }
+    
+    public static void runQueryBasedOnReadAllFirstName(javax.swing.JTable DbTable) {
+        executeHQLQueryReadAllFirstName(QUERY_READ_ALL_FIRST_NAME, DbTable);
+    }
+    private static void executeHQLQueryReadAllFirstName(String hql, javax.swing.JTable DbTable) {
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            Query q = session.createQuery(hql);
+            List resultList = q.list();
+            displayResultReadAllFirstName(resultList, DbTable);
+            session.getTransaction().commit();
+        } catch (HibernateException he) {
+            he.printStackTrace();
+        }
+    }
+    private static void displayResultReadAllFirstName(List resultList, javax.swing.JTable DbTable) {
+    Vector<String> tableHeaders = new Vector<String>();
+    Vector tableData = new Vector();
+    tableHeaders = DBManagerUtil.mapTableFirstName(tableHeaders);
+
+    for(Object o : resultList) {
+        callofcthulhuDB.entity.FirstName name = (callofcthulhuDB.entity.FirstName)o;
+        Vector<Object> oneRow = new Vector<Object>();
+        DBManagerUtil.fillRowFirstName(oneRow, name);
+        tableData.add(oneRow);
+    }
+    DbTable.setModel(new DefaultTableModel(tableData, tableHeaders));
+    DbTable.setDefaultEditor(Object.class, null);
+    }
+    
+    public static void runQueryBasedOnReadAllLastName(javax.swing.JTable DbTable) {
+    executeHQLQueryReadAllLastName(QUERY_READ_ALL_LAST_NAME, DbTable);
+    }
+    private static void executeHQLQueryReadAllLastName(String hql, javax.swing.JTable DbTable) {
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            Query q = session.createQuery(hql);
+            List resultList = q.list();
+            displayResultReadAllLastName(resultList, DbTable);
+            session.getTransaction().commit();
+        } catch (HibernateException he) {
+            he.printStackTrace();
+        }
+    }
+    private static void displayResultReadAllLastName(List resultList, javax.swing.JTable DbTable) {
+        Vector<String> tableHeaders = new Vector<String>();
+        Vector tableData = new Vector();
+        tableHeaders = DBManagerUtil.mapTableLastName(tableHeaders);
+
+        for(Object o : resultList) {
+            callofcthulhuDB.entity.LastName name = (callofcthulhuDB.entity.LastName)o;
+            Vector<Object> oneRow = new Vector<Object>();
+            DBManagerUtil.fillRowLastName(oneRow, name);
+            tableData.add(oneRow);
+        }
+        DbTable.setModel(new DefaultTableModel(tableData, tableHeaders));
+        DbTable.setDefaultEditor(Object.class, null);
+    }
+    
+    public static void runQueryBasedOnReadAllProfession(javax.swing.JTable DbTable) {
+    executeHQLQueryReadAllProfession(QUERY_READ_ALL_PROFESSION, DbTable);
+    }
+    private static void executeHQLQueryReadAllProfession(String hql, javax.swing.JTable DbTable) {
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            Query q = session.createQuery(hql);
+            List resultList = q.list();
+            displayResultReadAllProfession(resultList, DbTable);
+            session.getTransaction().commit();
+        } catch (HibernateException he) {
+            he.printStackTrace();
+        }
+    }
+    private static void displayResultReadAllProfession(List resultList, javax.swing.JTable DbTable) {
+        Vector<String> tableHeaders = new Vector<String>();
+        Vector tableData = new Vector();
+        tableHeaders = DBManagerUtil.mapTableProfession(tableHeaders);
+
+        for(Object o : resultList) {
+            callofcthulhuDB.entity.Profession name = (callofcthulhuDB.entity.Profession)o;
+            Vector<Object> oneRow = new Vector<Object>();
+            DBManagerUtil.fillRowProfession(oneRow, name);
+            tableData.add(oneRow);
+        }
+        DbTable.setModel(new DefaultTableModel(tableData, tableHeaders));
+        DbTable.setDefaultEditor(Object.class, null);
+    }
 }

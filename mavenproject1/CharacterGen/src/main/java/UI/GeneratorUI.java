@@ -32,134 +32,134 @@ public class GeneratorUI extends javax.swing.JFrame {
         initComponents();
     }
 
-private static final String QUERY_NUMBER_OF_ROWS_FIRST_NAME="from FirstName where id = (select count(*) from FirstName)";
-private static final String QUERY_NUMBER_OF_ROWS_LAST_NAME="from LastName where id = (select count(*) from LastName)";
-private static final String QUERY_NUMBER_OF_ROWS_PROFESSION="from Profession where id = (select count(*) from Profession)";
+    private static final String QUERY_NUMBER_OF_ROWS_FIRST_NAME="from FirstName where id = (select count(*) from FirstName)";
+    private static final String QUERY_NUMBER_OF_ROWS_LAST_NAME="from LastName where id = (select count(*) from LastName)";
+    private static final String QUERY_NUMBER_OF_ROWS_PROFESSION="from Profession where id = (select count(*) from Profession)";
     
-// Code generating new entities
-private void randomAll() {
-    randomFirstName();
-    randomLastName();
-    randomProfession();
-}
-private void randomFirstName() {
-    List result = QuerryUtil.executeHQLQueryNumberOfFirstName(QUERY_NUMBER_OF_ROWS_FIRST_NAME);
-    InfoChar.displayResultFirstName(result);
-}
-private void randomLastName() {
-    List result = QuerryUtil.executeHQLQueryNumberOfLastName(QUERY_NUMBER_OF_ROWS_LAST_NAME);
-    InfoChar.displayResultLastName(result);
-}
-private void randomProfession() {
-    List result = QuerryUtil.executeHQLQueryNumberOfProfession(QUERY_NUMBER_OF_ROWS_PROFESSION);
-    InfoChar.displayResultProfession(result);
-}
-private void randomAttributes() {
-    for (javax.swing.JTextField iter : attributesFields) {
-        int value = 0;
-        
-        if (iter.equals(sizeField) || 
-            iter.equals(intelligenceField) ||
-            iter.equals(educationField)) {
-            for (int i = 0; i < 2; i++) {
-                value += util.Tools.roll(1,6);
-            }
-            value += util.Tools.roll(6,6);
-        }
-        else {
-            for (int i = 0; i < 3; i++) {
-                value += util.Tools.roll(1,6);
-            }
-        }
-        value *= 5;     
-        iter.setText(Integer.toString(value));
+    // Code generating new entities
+    private void randomAll() {
+        randomFirstName();
+        randomLastName();
+        randomProfession();
     }
-    setMoveRate();
-    InfoChar.setMagicPoints();
-    InfoChar.setLuck();
-    InfoChar.setHP();
-    InfoChar.setSanity();
-} 
+    private void randomFirstName() {
+        List result = QuerryUtil.executeHQLQueryNumberOfFirstName(QUERY_NUMBER_OF_ROWS_FIRST_NAME);
+        InfoChar.displayResultFirstName(result);
+    }
+    private void randomLastName() {
+        List result = QuerryUtil.executeHQLQueryNumberOfLastName(QUERY_NUMBER_OF_ROWS_LAST_NAME);
+        InfoChar.displayResultLastName(result);
+    }
+    private void randomProfession() {
+        List result = QuerryUtil.executeHQLQueryNumberOfProfession(QUERY_NUMBER_OF_ROWS_PROFESSION);
+        InfoChar.displayResultProfession(result);
+    }
+    private void randomAttributes() {
+        for (javax.swing.JTextField iter : attributesFields) {
+            int value = 0;
 
-// Adjusting entites that depend on each other
-private void setMoveRate() {
-    short moveRate = 0;
-    short dex = (short) Integer.parseInt(dexterityField.getText());
-    short str = (short) Integer.parseInt(strengthField.getText());
-    short siz = (short) Integer.parseInt(sizeField.getText());
-    
-    if ((dex < siz) && (str < siz)) {
-        moveRate = 7;
+            if (iter.equals(sizeField) || 
+                iter.equals(intelligenceField) ||
+                iter.equals(educationField)) {
+                for (int i = 0; i < 2; i++) {
+                    value += util.Tools.roll(1,6);
+                }
+                value += util.Tools.roll(6,6);
+            }
+            else {
+                for (int i = 0; i < 3; i++) {
+                    value += util.Tools.roll(1,6);
+                }
+            }
+            value *= 5;     
+            iter.setText(Integer.toString(value));
+        }
+        setMoveRate();
+        InfoChar.setMagicPoints();
+        InfoChar.setLuck();
+        InfoChar.setHP();
+        InfoChar.setSanity();
+    } 
+
+    // Adjusting entites that depend on each other
+    private void setMoveRate() {
+        short moveRate = 0;
+        short dex = (short) Integer.parseInt(dexterityField.getText());
+        short str = (short) Integer.parseInt(strengthField.getText());
+        short siz = (short) Integer.parseInt(sizeField.getText());
+
+        if ((dex < siz) && (str < siz)) {
+            moveRate = 7;
+        }
+        else if ((dex > siz) && (str > siz)) {
+            moveRate = 9;
+        }
+        else if ((dex >= siz) || (str >= siz)) {
+            moveRate = 8;
+        }
+        moveRateField.setText(Short.toString(moveRate));
     }
-    else if ((dex > siz) && (str > siz)) {
-        moveRate = 9;
+    private void adjustAttributesByCharacterAge() {
+        short age = Short.parseShort(ageField.getText());
+        int movementRate = Integer.parseInt(moveRateField.getText());
+        String message = "";
+
+        if (age >= 15 && age < 20) {
+            AttrChar.remove2Attr(5);
+            Tools.removePoint(educationField, 5);
+            message = "5 point(s) removed from education";
+        }
+
+        else if (age >= 20 && age < 40) {
+            AttrChar.improvementValue(1);
+        }
+
+        else if (age >= 40 && age < 50) {
+            AttrChar.improvementValue(2);
+            AttrChar.remove3Attr(5);
+            Tools.removePoint(appearanceField, 5);
+            movementRate -= 1;
+            message = "5 point(s) removed from appearance\n1 point(s) removed from movement rate";
+        }
+
+        else if (age >= 50 && age < 60) {
+            AttrChar.improvementValue(3);
+            AttrChar.remove3Attr(10);
+            Tools.removePoint(appearanceField, 10);
+            movementRate -= 2;
+            message = "10 point(s) removed from appearance\n2 point(s) removed from movement rate";
+        }
+
+        else if (age >= 60 && age < 70) {
+            AttrChar.improvementValue(4);
+            AttrChar.remove3Attr(20);
+            Tools.removePoint(appearanceField, 15);
+            movementRate -= 3;
+            message = "15 point(s) removed from appearance\n3 point(s) removed from movement rate";
+        }
+
+        else if (age >= 70 && age < 80) {
+            AttrChar.improvementValue(4);
+            AttrChar.remove3Attr(40);
+            Tools.removePoint(appearanceField, 20);
+            movementRate -= 4;
+            message = "20 point(s) removed from appearance\n4 point(s) removed from movement rate";
+        }
+
+        else if (age >= 80 && age < 90) {
+            AttrChar.improvementValue(4);
+            AttrChar.remove3Attr(80);
+            Tools.removePoint(appearanceField, 25);
+            movementRate -= 5;
+            message = "25 point(s) removed from appearance\n5 point(s) removed from movement rate";
+        }
+        moveRateField.setText(Integer.toString(movementRate));
+        AttrChar.appendLog(message);
     }
-    else if ((dex >= siz) || (str >= siz)) {
-        moveRate = 8;
-    }
-    moveRateField.setText(Short.toString(moveRate));
-}
-private void adjustAttributesByCharacterAge() {
-    short age = Short.parseShort(ageField.getText());
-    int movementRate = Integer.parseInt(moveRateField.getText());
-    String message = "";
-    
-    if (age >= 15 && age < 20) {
-        AttrChar.remove2Attr(5);
-        Tools.removePoint(educationField, 5);
-        message = "5 point(s) removed from education";
-    }
-    
-    else if (age >= 20 && age < 40) {
-        AttrChar.improvementValue(1);
-    }
-    
-    else if (age >= 40 && age < 50) {
-        AttrChar.improvementValue(2);
-        AttrChar.remove3Attr(5);
-        Tools.removePoint(appearanceField, 5);
-        movementRate -= 1;
-        message = "5 point(s) removed from appearance\n1 point(s) removed from movement rate";
-    }
-    
-    else if (age >= 50 && age < 60) {
-        AttrChar.improvementValue(3);
-        AttrChar.remove3Attr(10);
-        Tools.removePoint(appearanceField, 10);
-        movementRate -= 2;
-        message = "10 point(s) removed from appearance\n2 point(s) removed from movement rate";
-    }
-    
-    else if (age >= 60 && age < 70) {
-        AttrChar.improvementValue(4);
-        AttrChar.remove3Attr(20);
-        Tools.removePoint(appearanceField, 15);
-        movementRate -= 3;
-        message = "15 point(s) removed from appearance\n3 point(s) removed from movement rate";
-    }
-    
-    else if (age >= 70 && age < 80) {
-        AttrChar.improvementValue(4);
-        AttrChar.remove3Attr(40);
-        Tools.removePoint(appearanceField, 20);
-        movementRate -= 4;
-        message = "20 point(s) removed from appearance\n4 point(s) removed from movement rate";
-    }
-    
-    else if (age >= 80 && age < 90) {
-        AttrChar.improvementValue(4);
-        AttrChar.remove3Attr(80);
-        Tools.removePoint(appearanceField, 25);
-        movementRate -= 5;
-        message = "25 point(s) removed from appearance\n5 point(s) removed from movement rate";
-    }
-    moveRateField.setText(Integer.toString(movementRate));
-    AttrChar.appendLog(message);
-}
-  
-// ActionListener that checks validity of provided skill values
-int delay = 50; 
-ActionListener refreshSkillFields = new ActionListener() {
+
+    // ActionListener that checks validity of provided skill values
+    int delay = 50; 
+    ActionListener refreshSkillFields = new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent evt) {
           SkillChar.fieldsProperCheck();
