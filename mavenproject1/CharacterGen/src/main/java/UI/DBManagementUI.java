@@ -27,258 +27,175 @@ public class DBManagementUI extends javax.swing.JFrame {
         initComponents();
     }
 
-    private static final String QUERY_READ_ALL_FIRST_NAME="from FirstName";
-    private static final String QUERY_READ_ALL_LAST_NAME="from LastName";
-    private static final String QUERY_READ_ALL_PROFESSION="from Profession";
     private static boolean isWindowOpen = false;
-    
-private void runQueryBasedOnFirstName() {
-    executeHQLQueryFirstName(QUERY_READ_ALL_FIRST_NAME);
-}
-private void executeHQLQueryFirstName(String hql) {
-    try {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query q = session.createQuery(hql);
-        List resultList = q.list();
-        displayResultFirstName(resultList);
-        session.getTransaction().commit();
-    } catch (HibernateException he) {
-        he.printStackTrace();
+
+    private void readAllFirstNames() {
+        util.QuerryUtil.runQueryBasedOnReadAllFirstName(DbTable);
     }
-}
-private void displayResultFirstName(List resultList) {
-    Vector<String> tableHeaders = new Vector<String>();
-    Vector tableData = new Vector();
-    tableHeaders = DBManagerUtil.mapTableFirstName(tableHeaders);
-
-    for(Object o : resultList) {
-        callofcthulhuDB.entity.FirstName name = (callofcthulhuDB.entity.FirstName)o;
-        Vector<Object> oneRow = new Vector<Object>();
-        DBManagerUtil.fillRowFirstName(oneRow, name);
-        tableData.add(oneRow);
+    private void readAllLastNames() {
+        util.QuerryUtil.runQueryBasedOnReadAllLastName(DbTable);
     }
-    DbTable.setModel(new DefaultTableModel(tableData, tableHeaders));
-    DbTable.setDefaultEditor(Object.class, null);
-}
-
-private void runQueryBasedOnLastName() {
-    executeHQLQueryLastName(QUERY_READ_ALL_LAST_NAME);
-}
-private void executeHQLQueryLastName(String hql) {
-    try {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query q = session.createQuery(hql);
-        List resultList = q.list();
-        displayResultLastName(resultList);
-        session.getTransaction().commit();
-    } catch (HibernateException he) {
-        he.printStackTrace();
+    private void readAllProfession() {
+        util.QuerryUtil.runQueryBasedOnReadAllProfession(DbTable);
     }
-}
-private void displayResultLastName(List resultList) {
-    Vector<String> tableHeaders = new Vector<String>();
-    Vector tableData = new Vector();
-    tableHeaders = DBManagerUtil.mapTableLastName(tableHeaders);
 
-    for(Object o : resultList) {
-        callofcthulhuDB.entity.LastName name = (callofcthulhuDB.entity.LastName)o;
-        Vector<Object> oneRow = new Vector<Object>();
-        DBManagerUtil.fillRowLastName(oneRow, name);
-        tableData.add(oneRow);
-    }
-    DbTable.setModel(new DefaultTableModel(tableData, tableHeaders));
-    DbTable.setDefaultEditor(Object.class, null);
-}
-
-private void runQueryBasedOnProfession() {
-    executeHQLQueryProfession(QUERY_READ_ALL_PROFESSION);
-}
-private void executeHQLQueryProfession(String hql) {
-    try {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query q = session.createQuery(hql);
-        List resultList = q.list();
-        displayResultProfession(resultList);
-        session.getTransaction().commit();
-    } catch (HibernateException he) {
-        he.printStackTrace();
-    }
-}
-private void displayResultProfession(List resultList) {
-    Vector<String> tableHeaders = new Vector<String>();
-    Vector tableData = new Vector();
-    tableHeaders = DBManagerUtil.mapTableProfession(tableHeaders);
-
-    for(Object o : resultList) {
-        callofcthulhuDB.entity.Profession name = (callofcthulhuDB.entity.Profession)o;
-        Vector<Object> oneRow = new Vector<Object>();
-        DBManagerUtil.fillRowProfession(oneRow, name);
-        tableData.add(oneRow);
-    }
-    DbTable.setModel(new DefaultTableModel(tableData, tableHeaders));
-    DbTable.setDefaultEditor(Object.class, null);
-}
-
-private void executeHQLQueryCreateFirstName() {
-    callofcthulhuDB.entity.FirstName firstName = null;
-    try {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        firstName = new callofcthulhuDB.entity.FirstName();
-        firstName.setFirstName(textField1.getText());
-        firstName.setSex(textField2.getText());
-        session.save(firstName);
-        session.getTransaction().commit();
-        session.close();
-    } catch (HibernateException he) {
-        he.printStackTrace();
-    }    
-}
-private void executeHQLQueryCreateLastName() {
-    callofcthulhuDB.entity.LastName lastName = null;
-    try {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        lastName = new callofcthulhuDB.entity.LastName();
-        lastName.setLastName(textField1.getText());
-        session.save(lastName);
-        session.getTransaction().commit();
-        session.close();
-    } catch (HibernateException he) {
-        he.printStackTrace();
-    }    
-}
-private void executeHQLQueryCreateProfession() {
-    callofcthulhuDB.entity.Profession profession = null;
-    try {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        profession = new callofcthulhuDB.entity.Profession();
-        profession.setProfession(textField1.getText());
-        profession.setMinAge(Integer.parseInt(textField2.getText()));
-        profession.setMaxAge(Integer.parseInt(textField3.getText()));
-        session.save(profession);
-        session.getTransaction().commit();
-        session.close();
-    } catch (HibernateException he) {
-        he.printStackTrace();
-    }    
-}
-
-private void executeHQLQueryUpdateFirstName() {
-    Object[] choice = {"yes", "no"};
-    int decision = JOptionPane.showOptionDialog(null,"Are you sure tou want to update?", 
-            "Update", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choice, choice[0]);
-    if (decision == 0) {
+    private void executeHQLQueryCreateFirstName() {
+        callofcthulhuDB.entity.FirstName firstName = null;
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            Query q = session.createQuery("from FirstName where id=" + (DbTable.getSelectedRow() + 1));
-            List resultList = q.list();
-            callofcthulhuDB.entity.FirstName firstName = 
-                    (callofcthulhuDB.entity.FirstName) resultList.get(0);
+            firstName = new callofcthulhuDB.entity.FirstName();
             firstName.setFirstName(textField1.getText());
             firstName.setSex(textField2.getText());
-            session.update(firstName);
+            session.save(firstName);
             session.getTransaction().commit();
             session.close();
         } catch (HibernateException he) {
             he.printStackTrace();
-        }       
-    } 
-}
-private void executeHQLQueryUpdateLastName() {
-    Object[] choice = {"yes", "no"};
-    int decision = JOptionPane.showOptionDialog(null,"Are you sure tou want to update?", 
-            "Update", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choice, choice[0]);
-    if (decision == 0) {
-        try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            Query q = session.createQuery("from LastName where id=" + (DbTable.getSelectedRow() + 1));
-            List resultList = q.list();
-            callofcthulhuDB.entity.LastName lastName = 
-                    (callofcthulhuDB.entity.LastName) resultList.get(0);
-            lastName.setLastName(textField1.getText());
-            session.update(lastName);
-            session.getTransaction().commit();
-            session.close();
-        } catch (HibernateException he) {
-            he.printStackTrace();
-        }
+        }    
     }
-}
-private void executeHQLQueryUpdateProfession() {
-    Object[] choice = {"yes", "no"};
-    int decision = JOptionPane.showOptionDialog(null,"Are you sure tou want to update?", 
-            "Update", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choice, choice[0]);
-    if (decision == 0) {
+    private void executeHQLQueryCreateLastName() {
+        callofcthulhuDB.entity.LastName lastName = null;
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            Query q = session.createQuery("from Profession where id=" + (DbTable.getSelectedRow() + 1));
-            List resultList = q.list();
-            callofcthulhuDB.entity.Profession profession = 
-                    (callofcthulhuDB.entity.Profession) resultList.get(0);
+            lastName = new callofcthulhuDB.entity.LastName();
+            lastName.setLastName(textField1.getText());
+            session.save(lastName);
+            session.getTransaction().commit();
+            session.close();
+        } catch (HibernateException he) {
+            he.printStackTrace();
+        }    
+    }
+    private void executeHQLQueryCreateProfession() {
+        callofcthulhuDB.entity.Profession profession = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            profession = new callofcthulhuDB.entity.Profession();
             profession.setProfession(textField1.getText());
             profession.setMinAge(Integer.parseInt(textField2.getText()));
             profession.setMaxAge(Integer.parseInt(textField3.getText()));
-            session.update(profession);
+            session.save(profession);
             session.getTransaction().commit();
             session.close();
         } catch (HibernateException he) {
             he.printStackTrace();
-        }  
+        }    
     }
-}
 
-private void executeHQLQueryDeleteFirstName() {
-    Object[] choice = {"yes", "no"};
-    int decision = JOptionPane.showOptionDialog(null,"Are you sure tou want to delete?", 
-            "Delete", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choice, choice[0]);
-    if (decision == 0) {
-        try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            Query q = session.createQuery("from FirstName where id=" + (DbTable.getSelectedRow() + 1));
-            List resultList = q.list();
-            callofcthulhuDB.entity.FirstName firstName = 
-                    (callofcthulhuDB.entity.FirstName) resultList.get(0);
-            firstName.setFirstName("");
-            firstName.setSex("");
-            session.update(firstName);
-            session.getTransaction().commit();
-            session.close();
-        } catch (HibernateException he) {
-            he.printStackTrace();
+    private void executeHQLQueryUpdateFirstName() {
+        Object[] choice = {"yes", "no"};
+        int decision = JOptionPane.showOptionDialog(null,"Are you sure tou want to update?", 
+                "Update", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choice, choice[0]);
+        if (decision == 0) {
+            try {
+                Session session = HibernateUtil.getSessionFactory().openSession();
+                session.beginTransaction();
+                Query q = session.createQuery("from FirstName where id=" + (DbTable.getSelectedRow() + 1));
+                List resultList = q.list();
+                callofcthulhuDB.entity.FirstName firstName = 
+                        (callofcthulhuDB.entity.FirstName) resultList.get(0);
+                firstName.setFirstName(textField1.getText());
+                firstName.setSex(textField2.getText());
+                session.update(firstName);
+                session.getTransaction().commit();
+                session.close();
+            } catch (HibernateException he) {
+                he.printStackTrace();
+            }       
+        } 
+    }
+    private void executeHQLQueryUpdateLastName() {
+        Object[] choice = {"yes", "no"};
+        int decision = JOptionPane.showOptionDialog(null,"Are you sure tou want to update?", 
+                "Update", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choice, choice[0]);
+        if (decision == 0) {
+            try {
+                Session session = HibernateUtil.getSessionFactory().openSession();
+                session.beginTransaction();
+                Query q = session.createQuery("from LastName where id=" + (DbTable.getSelectedRow() + 1));
+                List resultList = q.list();
+                callofcthulhuDB.entity.LastName lastName = 
+                        (callofcthulhuDB.entity.LastName) resultList.get(0);
+                lastName.setLastName(textField1.getText());
+                session.update(lastName);
+                session.getTransaction().commit();
+                session.close();
+            } catch (HibernateException he) {
+                he.printStackTrace();
+            }
         }
     }
-}
-private void executeHQLQueryDeleteLastName() {
-    Object[] choice = {"yes", "no"};
-    int decision = JOptionPane.showOptionDialog(null,"Are you sure tou want to delete?", 
-            "Delete", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choice, choice[0]);
-    if (decision == 0) {
-        try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            Query q = session.createQuery("from LastName where id=" + (DbTable.getSelectedRow() + 1));
-            List resultList = q.list();
-            callofcthulhuDB.entity.LastName lastName = 
-                    (callofcthulhuDB.entity.LastName) resultList.get(0);
-            lastName.setLastName("");
-            session.update(lastName);
-            session.getTransaction().commit();
-            session.close();
-        } catch (HibernateException he) {
-            he.printStackTrace();
+    private void executeHQLQueryUpdateProfession() {
+        Object[] choice = {"yes", "no"};
+        int decision = JOptionPane.showOptionDialog(null,"Are you sure tou want to update?", 
+                "Update", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choice, choice[0]);
+        if (decision == 0) {
+            try {
+                Session session = HibernateUtil.getSessionFactory().openSession();
+                session.beginTransaction();
+                Query q = session.createQuery("from Profession where id=" + (DbTable.getSelectedRow() + 1));
+                List resultList = q.list();
+                callofcthulhuDB.entity.Profession profession = 
+                        (callofcthulhuDB.entity.Profession) resultList.get(0);
+                profession.setProfession(textField1.getText());
+                profession.setMinAge(Integer.parseInt(textField2.getText()));
+                profession.setMaxAge(Integer.parseInt(textField3.getText()));
+                session.update(profession);
+                session.getTransaction().commit();
+                session.close();
+            } catch (HibernateException he) {
+                he.printStackTrace();
+            }  
         }
     }
-}
-private void executeHQLQueryDeleteProfession() {
+
+    private void executeHQLQueryDeleteFirstName() {
+        Object[] choice = {"yes", "no"};
+        int decision = JOptionPane.showOptionDialog(null,"Are you sure tou want to delete?", 
+                "Delete", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choice, choice[0]);
+        if (decision == 0) {
+            try {
+                Session session = HibernateUtil.getSessionFactory().openSession();
+                session.beginTransaction();
+                Query q = session.createQuery("from FirstName where id=" + (DbTable.getSelectedRow() + 1));
+                List resultList = q.list();
+                callofcthulhuDB.entity.FirstName firstName = 
+                        (callofcthulhuDB.entity.FirstName) resultList.get(0);
+                firstName.setFirstName("");
+                firstName.setSex("");
+                session.update(firstName);
+                session.getTransaction().commit();
+                session.close();
+            } catch (HibernateException he) {
+                he.printStackTrace();
+            }
+        }
+    }
+    private void executeHQLQueryDeleteLastName() {
+        Object[] choice = {"yes", "no"};
+        int decision = JOptionPane.showOptionDialog(null,"Are you sure tou want to delete?", 
+                "Delete", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choice, choice[0]);
+        if (decision == 0) {
+            try {
+                Session session = HibernateUtil.getSessionFactory().openSession();
+                session.beginTransaction();
+                Query q = session.createQuery("from LastName where id=" + (DbTable.getSelectedRow() + 1));
+                List resultList = q.list();
+                callofcthulhuDB.entity.LastName lastName = 
+                        (callofcthulhuDB.entity.LastName) resultList.get(0);
+                lastName.setLastName("");
+                session.update(lastName);
+                session.getTransaction().commit();
+                session.close();
+            } catch (HibernateException he) {
+                he.printStackTrace();
+            }
+        }
+    }
+    private void executeHQLQueryDeleteProfession() {
     Object[] choice = {"yes", "no"};
     int decision = JOptionPane.showOptionDialog(null,"Are you sure tou want to delete?", 
             "Delete", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choice, choice[0]);
@@ -314,7 +231,6 @@ private void executeHQLQueryDeleteProfession() {
         jScrollPane1 = new javax.swing.JScrollPane();
         DbTable = new javax.swing.JTable();
         chooseBox = new javax.swing.JComboBox<>();
-        readButton = new javax.swing.JButton();
         createButton = new javax.swing.JButton();
         updateButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
@@ -364,15 +280,6 @@ private void executeHQLQueryDeleteProfession() {
         chooseBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chooseBoxActionPerformed(evt);
-            }
-        });
-
-        readButton.setFont(new java.awt.Font("Droid Serif", 0, 12)); // NOI18N
-        readButton.setText("Read");
-        readButton.setEnabled(false);
-        readButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                readButtonActionPerformed(evt);
             }
         });
 
@@ -435,21 +342,18 @@ private void executeHQLQueryDeleteProfession() {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label1)
+                    .addComponent(chooseBox, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(chooseBox, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(readButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(createButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(updateButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(deleteButton))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label2))
@@ -467,8 +371,7 @@ private void executeHQLQueryDeleteProfession() {
                     .addComponent(chooseBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(createButton)
                     .addComponent(updateButton)
-                    .addComponent(deleteButton)
-                    .addComponent(readButton))
+                    .addComponent(deleteButton))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label1)
@@ -489,34 +392,21 @@ private void executeHQLQueryDeleteProfession() {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void readButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_readButtonActionPerformed
-        if (chooseBox.getSelectedItem().equals("FirstName")) {
-            runQueryBasedOnFirstName();
-        }
-        else if (chooseBox.getSelectedItem().equals("LastName")) {
-            runQueryBasedOnLastName();
-        }
-        else if (chooseBox.getSelectedItem().equals("Profession")) {
-            runQueryBasedOnProfession();
-        }
-    }//GEN-LAST:event_readButtonActionPerformed
-
     private void chooseBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseBoxActionPerformed
         if (chooseBox.getSelectedItem().equals("FirstName")) {
             disableComponents();
-            readButton.setEnabled(true);
+            readAllFirstNames();
         }
         else if (chooseBox.getSelectedItem().equals("LastName")) {
             disableComponents();
-            readButton.setEnabled(true);
+            readAllLastNames();
         }
         else if (chooseBox.getSelectedItem().equals("Profession")) {
             disableComponents();
-            readButton.setEnabled(true);
+            readAllProfession();
         }
         else {
             disableComponents();
-            readButton.setEnabled(false);
         }
     }//GEN-LAST:event_chooseBoxActionPerformed
     
@@ -529,36 +419,45 @@ private void executeHQLQueryDeleteProfession() {
     private void createButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createButtonMouseClicked
         if (chooseBox.getSelectedItem().equals("FirstName")) {
             executeHQLQueryCreateFirstName();
+            readAllFirstNames();
         }
         else if (chooseBox.getSelectedItem().equals("LastName")) {
             executeHQLQueryCreateLastName();
+            readAllLastNames();
         }
         else if (chooseBox.getSelectedItem().equals("Profession")) {
             executeHQLQueryCreateProfession();
+            readAllProfession();
         }
     }//GEN-LAST:event_createButtonMouseClicked
 
     private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked
         if (chooseBox.getSelectedItem().equals("FirstName")) {
             executeHQLQueryUpdateFirstName();
+            readAllFirstNames();
         }
         else if (chooseBox.getSelectedItem().equals("LastName")) {
             executeHQLQueryUpdateLastName();
+            readAllLastNames();
         }
         else if (chooseBox.getSelectedItem().equals("Profession")) {
             executeHQLQueryUpdateProfession();
+            readAllProfession();
         }
     }//GEN-LAST:event_updateButtonMouseClicked
 
     private void deleteButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseClicked
         if (chooseBox.getSelectedItem().equals("FirstName")) {
             executeHQLQueryDeleteFirstName();
+            readAllFirstNames();
         }
         else if (chooseBox.getSelectedItem().equals("LastName")) {
             executeHQLQueryDeleteLastName();
+            readAllLastNames();
         }
         else if (chooseBox.getSelectedItem().equals("Profession")) {
             executeHQLQueryDeleteProfession();
+            readAllProfession();
         }
     }//GEN-LAST:event_deleteButtonMouseClicked
 
@@ -570,28 +469,22 @@ private void executeHQLQueryDeleteProfession() {
         if (chooseBox.getSelectedItem().equals("FirstName")) {
             String firstNameFromSelectedRow = (String) DbTable.getModel().getValueAt(DbTable.getSelectedRow(), 1);
             textField1.setText(firstNameFromSelectedRow);
-            
             String sexFromSelectedRow = (String) DbTable.getModel().getValueAt(DbTable.getSelectedRow(), 2);
             textField2.setText(sexFromSelectedRow);
-            
             enableComponenetsFirstName();
         }
         else if (chooseBox.getSelectedItem().equals("LastName")) {
             String lastNameFromSelectedRow = (String) DbTable.getModel().getValueAt(DbTable.getSelectedRow(), 1);
             textField1.setText(lastNameFromSelectedRow);
-            
             enableComponenetsLastName();
         }
         else if (chooseBox.getSelectedItem().equals("Profession")) {
             String ProfessionFromSelectedRow = (String) DbTable.getModel().getValueAt(DbTable.getSelectedRow(), 1);
             textField1.setText(ProfessionFromSelectedRow);
-            
             String minAgeFromSelectedRow = (String) DbTable.getModel().getValueAt(DbTable.getSelectedRow(), 2);
             textField2.setText(minAgeFromSelectedRow);
-            
             String maxAgeFromSelectedRow = (String) DbTable.getModel().getValueAt(DbTable.getSelectedRow(), 3);
             textField3.setText(maxAgeFromSelectedRow);
-            
             enableComponenetsProfession();
         }
         else {
@@ -703,7 +596,6 @@ private void executeHQLQueryDeleteProfession() {
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label2;
     private javax.swing.JLabel label3;
-    private javax.swing.JButton readButton;
     private javax.swing.JTextField textField1;
     private javax.swing.JTextField textField2;
     private javax.swing.JTextField textField3;
