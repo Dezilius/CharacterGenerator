@@ -469,28 +469,22 @@ public class DBManagementUI extends javax.swing.JFrame {
         if (chooseBox.getSelectedItem().equals("FirstName")) {
             String firstNameFromSelectedRow = (String) DbTable.getModel().getValueAt(DbTable.getSelectedRow(), 1);
             textField1.setText(firstNameFromSelectedRow);
-            
             String sexFromSelectedRow = (String) DbTable.getModel().getValueAt(DbTable.getSelectedRow(), 2);
             textField2.setText(sexFromSelectedRow);
-            
             enableComponenetsFirstName();
         }
         else if (chooseBox.getSelectedItem().equals("LastName")) {
             String lastNameFromSelectedRow = (String) DbTable.getModel().getValueAt(DbTable.getSelectedRow(), 1);
             textField1.setText(lastNameFromSelectedRow);
-            
             enableComponenetsLastName();
         }
         else if (chooseBox.getSelectedItem().equals("Profession")) {
             String ProfessionFromSelectedRow = (String) DbTable.getModel().getValueAt(DbTable.getSelectedRow(), 1);
             textField1.setText(ProfessionFromSelectedRow);
-            
             String minAgeFromSelectedRow = (String) DbTable.getModel().getValueAt(DbTable.getSelectedRow(), 2);
             textField2.setText(minAgeFromSelectedRow);
-            
             String maxAgeFromSelectedRow = (String) DbTable.getModel().getValueAt(DbTable.getSelectedRow(), 3);
             textField3.setText(maxAgeFromSelectedRow);
-            
             enableComponenetsProfession();
         }
         else {

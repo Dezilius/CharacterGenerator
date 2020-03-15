@@ -109,11 +109,9 @@ public class GeneratorUI extends javax.swing.JFrame {
             Tools.removePoint(educationField, 5);
             message = "5 point(s) removed from education";
         }
-
         else if (age >= 20 && age < 40) {
             AttrChar.improvementValue(1);
         }
-
         else if (age >= 40 && age < 50) {
             AttrChar.improvementValue(2);
             AttrChar.remove3Attr(5);
@@ -121,7 +119,6 @@ public class GeneratorUI extends javax.swing.JFrame {
             movementRate -= 1;
             message = "5 point(s) removed from appearance\n1 point(s) removed from movement rate";
         }
-
         else if (age >= 50 && age < 60) {
             AttrChar.improvementValue(3);
             AttrChar.remove3Attr(10);
@@ -129,7 +126,6 @@ public class GeneratorUI extends javax.swing.JFrame {
             movementRate -= 2;
             message = "10 point(s) removed from appearance\n2 point(s) removed from movement rate";
         }
-
         else if (age >= 60 && age < 70) {
             AttrChar.improvementValue(4);
             AttrChar.remove3Attr(20);
@@ -137,7 +133,6 @@ public class GeneratorUI extends javax.swing.JFrame {
             movementRate -= 3;
             message = "15 point(s) removed from appearance\n3 point(s) removed from movement rate";
         }
-
         else if (age >= 70 && age < 80) {
             AttrChar.improvementValue(4);
             AttrChar.remove3Attr(40);
