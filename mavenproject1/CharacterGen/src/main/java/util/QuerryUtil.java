@@ -6,6 +6,7 @@
 package util;
 
 import callofcthulhuDB.util.HibernateUtil;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -27,27 +28,26 @@ private static final String QUERY_READ_ALL_LAST_NAME="from LastName";
 private static final String QUERY_READ_ALL_PROFESSION="from Profession";
 
     public static List executeHQLQueryNumberOfFirstName(String hql) {
+        List ans = new ArrayList<>();
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             Query q = session.createQuery(hql);
             List result = q.list();
-            List ans = readNumberOfFirstName(result);
+            ans = readNumberOfFirstName(result);
             session.getTransaction().commit();
-            return ans;
         } catch (HibernateException he) {
             he.printStackTrace();
         }
-        return null;
+        return ans;
     }
     private static List readNumberOfFirstName(List result) {
-
+        List ans = new ArrayList<>();
         for (Object o : result) {
             callofcthulhuDB.entity.FirstName name = (callofcthulhuDB.entity.FirstName) o;
-            List ans = randomFirstName(name.getId());
-            return ans;
+            ans = randomFirstName(name.getId());
         }
-        return null;
+        return ans;
     }
     private static List randomFirstName(Integer number) {
             int numberOfFirstName = (int) (Math.random() * (number)) + 1;
@@ -55,41 +55,40 @@ private static final String QUERY_READ_ALL_PROFESSION="from Profession";
             return result;
     }
     private static List executeHQLQueryFirstName(String hql) {
+        List result = new ArrayList<>();
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             Query q = session.createQuery(hql);
-            List result = q.list();
+            result = q.list();
             session.getTransaction().commit();
-            return result;
         } catch (HibernateException he) {
             he.printStackTrace();
         } 
-            return null;
+        return result;
     }
 
     public static List executeHQLQueryNumberOfLastName(String hql) {
+        List ans = new ArrayList<>();
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             Query q = session.createQuery(hql);
             List result = q.list();
-            List ans = readNumberOfLastName(result);
+            ans = readNumberOfLastName(result);
             session.getTransaction().commit();
-            return ans;
         } catch (HibernateException he) {
             he.printStackTrace();
         }
-        return null;
+        return ans;
     }
     private static List readNumberOfLastName(List result) {
-
+        List ans = new ArrayList<>();
         for (Object o : result) {
             callofcthulhuDB.entity.LastName name = (callofcthulhuDB.entity.LastName) o;
-            List ans = randomLastName(name.getId());
-            return ans;
+            ans = randomLastName(name.getId());
         }
-        return null;
+        return ans;
     }
     private static List randomLastName(Integer number) {
             int numberOfLastName = (int) (Math.random() * (number)) + 1;
@@ -97,41 +96,40 @@ private static final String QUERY_READ_ALL_PROFESSION="from Profession";
             return result;
     }
     private static List executeHQLQueryLastName(String hql) {
+        List result = new ArrayList<>();    
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             Query q = session.createQuery(hql);
-            List result = q.list();
+            result = q.list();
             session.getTransaction().commit();
-            return result;
         } catch (HibernateException he) {
             he.printStackTrace();
         }
-        return null;
+        return result;
     }
 
     public static List executeHQLQueryNumberOfProfession(String hql) {
+        List ans = new ArrayList<>();
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             Query q = session.createQuery(hql);
             List result = q.list();
-            List ans = readNumberOfProfession(result);
+            ans = readNumberOfProfession(result);
             session.getTransaction().commit();
-            return ans;
         } catch (HibernateException he) {
             he.printStackTrace();
         }
-        return null;
+        return ans;
     }
     private static List readNumberOfProfession(List result) {
-
+        List ans = new ArrayList<>();
         for (Object o : result) {
             callofcthulhuDB.entity.Profession profession = (callofcthulhuDB.entity.Profession) o;
-            List ans = randomProfession(profession.getId());
-            return ans;
+            ans = randomProfession(profession.getId());
         }
-        return null;
+        return ans;
     }
     private static List randomProfession(Integer number) {
             int numberOfProfession = (int) (Math.random() * (number)) + 1;
@@ -139,17 +137,17 @@ private static final String QUERY_READ_ALL_PROFESSION="from Profession";
             return result;
     }
     private static List executeHQLQueryProfession(String hql) {
+        List result = new ArrayList<>();
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             Query q = session.createQuery(hql);
-            List result = q.list();
+            result = q.list();
             session.getTransaction().commit();
-            return result;
         } catch (HibernateException he) {
             he.printStackTrace();
         }
-        return null;
+        return result;
 }
     
     public static void runQueryBasedOnReadAllFirstName(javax.swing.JTable DbTable) {
